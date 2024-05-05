@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import ttk
 from tkinter import messagebox
 from user import userMenu
 from administrator import adminMenu
@@ -9,12 +10,14 @@ class LoginPage(tk.Frame):
     def __init__(self, root):
         super().__init__(root)
         self.root = root
+
         self.root.title("로그인")
         self.root.geometry("400x250")
 
         self.create_window()
 
     def create_window(self):
+
         # 사용자 이름 입력 필드
         self.username_label = tk.Label(self, text="사용자 이름:")
         self.username_label.pack()
@@ -28,14 +31,17 @@ class LoginPage(tk.Frame):
         self.password_entry.pack()
 
         # 로그인 버튼
-        self.login_button = tk.Button(
-            self, text="로그인", command=self.check_credentials
+        self.login_button = ttk.Button(
+            self, text="로그인", style="Custom.TButton", command=self.check_credentials
         )
         self.login_button.pack()
 
         # 회원가입 버튼
-        self.create_account_button = tk.Button(
-            self, text="회원가입", command=self.create_account_page
+        self.create_account_button = ttk.Button(
+            self,
+            text="회원가입",
+            style="Custom.TButton",
+            command=self.create_account_page,
         )
         self.create_account_button.pack()
 
@@ -77,6 +83,16 @@ class LoginPage(tk.Frame):
 
 if __name__ == "__main__":
     root = tk.Tk()
+
+    # 이미지 파일을 PhotoImage 객체로 불러오기
+    photo = tk.PhotoImage(file="Eng_dic/interface/seonjiwon/img/Bounding_Box.png")
+
+    # Label 위젯에 이미지 설정하여 배경 이미지로 적용
+    background_label = tk.Label(root, image=photo)
+    background_label.place(x=0, y=0, relwidth=1, relheight=1)
+
+    style = ttk.Style()
+    style.configure("Custom.TButton", background="yellow", font=("Arial", 12))
     app = LoginPage(root)
     app.pack()
     root.mainloop()
