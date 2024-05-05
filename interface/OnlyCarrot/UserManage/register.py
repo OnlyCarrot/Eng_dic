@@ -1,3 +1,4 @@
+import openpyxl
 import tkinter as tk
 from tkinter import messagebox
 
@@ -5,6 +6,7 @@ from tkinter import messagebox
 def NextStep(entry_id, entry_pw, entry_name, root):
     # 이 부분에서는 간단히 입력된 정보를 출력하는 것으로 가정
     messagebox.showinfo("회원가입 완료", f"다음 정보로 회원가입이 완료되었습니다:\nID: {entry_id.get()}\n비밀번호: {entry_pw.get()}\n이름: {entry_name.get()}")
+    Register(entry_id, entry_pw, entry_name)
     
     # 다음 화면으로 이동
     root.destroy()
@@ -71,6 +73,28 @@ def ShowLevelTest():
 # interface.py에 있는 ShowHome 함수를 여기에 작성했다고 가정하고, 간단하게 print
 def ShowHome():
     messagebox.showinfo("ShowUpHome", "Home 창을 보여줍니다.")
+
+def Register(input_id, input_pw, input_name):
+    # 파일 경로 설정
+    file_path = r"C:\Eng_dic\interface\OnlyCarrot\UserList.xlsx"
+    
+    # 엑셀 파일 열기
+    wb = openpyxl.load_workbook(file_path)
+    sheet = wb['usersheet']
+    
+    # 마지막 행 찾기
+    last_row = sheet.max_row + 1
+    
+    # 데이터 저장
+    sheet[f'A{last_row}'] = input_id.get()
+    sheet[f'B{last_row}'] = input_pw.get()
+    sheet[f'C{last_row}'] = input_name.get()
+    sheet[f'D{last_row}'] = 'user'  # 기본 역할은 'user'
+    
+    # 엑셀 파일 저장
+    wb.save(file_path)
+    
+    messagebox.showinfo("회원가입 완료", "회원가입이 완료되었습니다.")
 
 # 회원가입 화면 보여주기
 ShowRegister()

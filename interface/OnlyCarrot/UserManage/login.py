@@ -1,3 +1,4 @@
+import openpyxl
 import tkinter as tk
 from tkinter import messagebox
 
@@ -32,14 +33,21 @@ def ShowLogin():
 
 # 이 함수는 사용자가 입력한 정보를 확인하고 로그인을 처리
 def Login(input_id, input_pw, root):
-    #if input_id in DB and input_pw in DB
     
-    # 여기서는 데이터베이스가 없으니까 간단히 ID가 "user", 비밀번호가 "password"인 경우에만 로그인 성공으로 처리
-    if input_id == "user" and input_pw == "pw":
-        messagebox.showinfo("로그인 성공", "로그인 성공했습니다.")
-        # 이 부분에 따라 user나 admin을 반환, 일단 메시지 출력
-    else:
-        messagebox.showerror("로그인 실패", "ID 혹은 비밀번호가 잘못되었습니다.")
+    file_path = r"C:\Eng_dic\interface\OnlyCarrot\UserList.xlsx"
+    wb = openpyxl.load_workbook(file_path)
+    sheet = wb['usersheet']
+    
+    for row in sheet.iter_rows(values_only=True):
+        user_id, password, name, role = row
+        
+        if input_id == user_id and input_pw == password:
+            messagebox.showinfo("로그인 성공", "로그인 성공했습니다.")
+            print(role)
+            #사용자 신원 반환
+            return role 
+    
+    messagebox.showerror("로그인 실패", "ID 혹은 비밀번호가 잘못되었습니다.")
 
     # 로그인 후에는 로그인 창을 닫고 메인 창을 열도록 설정
     #root.destroy()
@@ -50,4 +58,5 @@ def ShowHome():
 
 # 로그인 화면 보여주기
 ShowLogin()
+
 
