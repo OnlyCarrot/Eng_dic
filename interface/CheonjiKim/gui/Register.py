@@ -39,7 +39,7 @@ def open_signup_window():
 
     label_username = tk.Label(signup_window, text="Username:")
     label_username.grid(row=3, column=0, padx=5, pady=5)
-    entry_username = tk.Entry(signup_window, show="*")
+    entry_username = tk.Entry(signup_window)
     entry_username.grid(row=3, column=1, padx=5, pady=5)
     
 

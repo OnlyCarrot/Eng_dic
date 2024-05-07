@@ -1,17 +1,20 @@
 import tkinter as tk
 from tkinter import messagebox
 from Register import open_signup_window
+from LoadVoca import open_voca_window
 
-def login(id, password):
+def login(id, password, window):
     # username parameter를 추가해야 한다. 
     # Check if the id and password match a predefined value
     if id == "admin" and password == "password":
-        messagebox.showinfo(f"환영합니다. {id}님!")
+        messagebox.showinfo("alert", f"환영합니다. {id}님!")
+        window.destroy()
+        open_voca_window()
     
-    elif(1):
-        # id와 pw가 적절하면
-        # 환영합니다. id님 출력한다.
-        pass
+    # elif(1):
+    #     # id와 pw가 적절하면
+    #     # 환영합니다. id님 출력한다.
+    #     pass
 
     else:
         messagebox.showerror("Login", "Invalid id or password")
@@ -33,7 +36,7 @@ def main():
     entry_password.grid(row=1, column=1, padx=5, pady=5)
 
     # Create a login button
-    login_button = tk.Button(root, text="Login", command=lambda: login(entry_id.get(), entry_password.get()))
+    login_button = tk.Button(root, text="Login", command=lambda: login(entry_id.get(), entry_password.get(), root))
     login_button.grid(row=2, column=0, columnspan=2, padx=5, pady=5)
 
     # Create a signup button
