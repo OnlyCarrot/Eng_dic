@@ -15,7 +15,7 @@ ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
-class LevelTest:
+class SignUp:
     def __init__(self):
         self.window = Tk()
         self.window.title("수준별 토익 영단어 프로그램")
@@ -129,4 +129,4 @@ class LevelTest:
 
 
 if __name__ == "__main__":
-    LevelTest()
+    SignUp()
