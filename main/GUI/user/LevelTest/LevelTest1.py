@@ -1,9 +1,11 @@
 from pathlib import Path
 from tkinter import *
 from tkinter import messagebox
-"""from User.mainpage import MainWindow
+"""
+from User.mainpage import MainWindow
 from Admin.admin import AdminPage
-from signup import SignupPage"""
+from signup import SignupPage
+"""
 from center_window import center_window  # center_window 모듈 가져오기
 
 OUTPUT_PATH = Path(__file__).parent
