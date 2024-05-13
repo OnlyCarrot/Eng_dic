@@ -34,7 +34,6 @@ class VocaDBManager:
         
     #단어가 존재하는지를 확인하는 함수
     def word_exists(self, word_name):
-        wb = self.wb
         ws = self.ws
         # Iterate through each row in column A (English words)
         for row in ws.iter_rows(min_row=2, max_col=1, max_row=ws.max_row, values_only=True):
@@ -87,10 +86,19 @@ class VocaDBManager:
             return idx_counter
         return False
     
+
+    # array를 return할 예정
+    def get_all_word_records(self):
+        ws = self.ws
+        words = []
+        for row in ws.iter_rows(min_row=2, max_row=ws.max_row, values_only=True):
+            if (not row[0] == None):
+                words.append(row)
+        return words
+
+    # array를 return할 예정 
+    def get_words_in_level(self, level=0):
+        pass
+    
 vocaManager = VocaDBManager(voca_file_path)
-
-ist = vocaManager.get_idx_of_word("abandon")
-print(ist)
-print(vocaManager.get_word_record("abandon"))
-
 
