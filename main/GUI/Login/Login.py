@@ -122,7 +122,7 @@ class Login:
             bd=0,
             bg="#D9D9D9",
             fg="#000716",
-            highlightthickness=0,
+            highlightthickness=1,
         )
         self.entry_1.place(
             x=728.0,
@@ -136,7 +136,7 @@ class Login:
             bd=0,
             bg="#D9D9D9",
             fg="#000716",
-            highlightthickness=0
+            highlightthickness=1
         )
         self.entry_2.place(
             x=728.5,
@@ -178,7 +178,7 @@ class Login:
             height=77.0
         )
 
-        self.window.resizable(True, True)
+        self.window.resizable(False, False)
         self.window.mainloop()
 
     def check_credentials(self):
