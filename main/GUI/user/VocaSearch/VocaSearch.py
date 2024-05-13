@@ -3,6 +3,7 @@ from tkinter import *
 from tkinter import messagebox
 import os
 import sys
+import tkinter.font
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
 
@@ -32,6 +33,7 @@ class VocaSearch:
             relief="ridge"
         )
         self.canvas.place(x=0, y=0)
+        font = tkinter.font.Font(family="맑은 고딕", size=18, slant="roman")
 
         image_image = PhotoImage(
             file=relative_to_assets("image.png"))
@@ -94,6 +96,20 @@ class VocaSearch:
             800.0,
             60.0,
             image=entry_image
+        )
+        self.entry = Entry(
+            self.canvas,
+            bd=0,
+            bg="#E5E5E5",
+            fg="#000716",
+            highlightthickness=0,
+            font=font
+        )
+        self.entry.place(
+            x=650.0,
+            y=37.0,
+            width=240.0,
+            height=50.0
         )
         # back 버튼
         button_image = PhotoImage(
