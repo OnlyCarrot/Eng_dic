@@ -66,8 +66,16 @@ class VocaDBManager:
         # Save the changes to the Excel file
         wb.save(voca_file_path)
 
+    def get_word_record(self, word_name):
+        if self.word_exists(word_name):
+            ws = self.ws
+            for row in ws.iter_rows(min_row=2, max_row=ws.max_row, values_only=True):
+                if word_name in row:
+                    break
+            return row
+        return False
     
-    # 단어의 열 위치를 반환한다.
+    # 엑셀에서 해당 단어의 열 번호를 반환한다.
     def get_idx_of_word(self, word_name):
         if self.word_exists(word_name):
             idx_counter = 1
@@ -81,7 +89,8 @@ class VocaDBManager:
     
 vocaManager = VocaDBManager(voca_file_path)
 
-#ist = vocaManager.word_exists("abandon")
-# vocaManager.add_word("abcdefghi", "테스트용", "v")
+ist = vocaManager.get_idx_of_word("abandon")
+print(ist)
+print(vocaManager.get_word_record("abandon"))
 
 
