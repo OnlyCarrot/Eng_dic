@@ -6,7 +6,7 @@ import sys
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../../..")
 from GUI.center_window import center_window
-from func.user.DailyTest import show_word_meaning
+from func.user.DailyTest import show_word_meaning, grade_score
 
 # center_window 모듈 가져오기
 
@@ -119,8 +119,19 @@ class DailyTest:
         entry_image_19 = PhotoImage(file=relative_to_assets("TextBox-18.png"))
         entry_19 = self.canvas.create_image(950.0, 344.0, image=entry_image_19)
 
-        # Test
-        show_word_meaning(self, [1, 10])
+        # Test [1, 10] col_num으로 수정, word[english, mean] list return
+        word = show_word_meaning(self, [1, 10])
+
+        # entry 값 뜻 같은지 체크 test
+        english_entry = Entry(
+            self.canvas, bd=0, bg="#D9D9D9", fg="#000716", highlightthickness=0
+        )
+        english_entry.place(x=390, y=110, width=140.0, height=33.0)
+        user_input_word = []
+        # user_input_word.append("abandon") -> 1개로 출력됨
+        user_input_word.append("an")
+        score = grade_score(user_input_word, word)
+        print(score)
 
         self.window.resizable(True, True)
         self.window.mainloop()

@@ -15,14 +15,27 @@ def show_word_meaning(self, col_num):
     # 시트 선택
     sheet = workbook["wordsheet"]
 
-    i = 0
-    j = 0
+    word = []
 
-    # 단어 뜻을 보여줌 start_column ~ start_column + 5 까지는 x좌표가 610
-    for row in sheet.iter_rows(col_num[0], col_num[1] - 5, values_only=True):
-        self.canvas.create_text(610.0, 130.0 + i * 53.5, text=row[0])
-        i += 1
-    # start_column + 5 ~ end_column 까지는 x좌표가 950
-    for row in sheet.iter_rows(col_num[0] + 5, col_num[1], values_only=True):
-        self.canvas.create_text(950.0, 130.0 + j * 53.5, text=row[0])
-        j += 1
+    for row in sheet.iter_rows(col_num[0], col_num[1], values_only=True):
+        word.append([row[0], row[1]])
+
+    # 단어 뜻을 보여줌 x좌표가 610 에 1~5번 단어
+    for i in range(0, 5):
+        self.canvas.create_text(610.0, 130.0 + i * 53.5, text=word[i][1])
+    # 단어 뜻을 보여줌 x좌표가 950 에 6~10번 단어
+    for i in range(0, 5):
+        self.canvas.create_text(950.0, 130.0 + i * 53.5, text=word[i + 5][1])
+
+    # 단어 [영어,뜻] 담은 list return
+    return word
+
+
+def grade_score(user_input_word, word):
+    score = 0
+    for i in range(0, len(word)):
+        correct_answer = word[i][0]
+        if user_input_word[0] == correct_answer:
+            score += 1
+
+    return score
