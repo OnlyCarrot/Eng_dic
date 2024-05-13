@@ -14,8 +14,11 @@ class VocaDBManager:
         # Load the Excel workbook        
         self.wb = load_workbook(voca_file_path)
 
-        # Select the worksheet named 'wordsheet'
+        # Select the worksheet
         self.ws = self.wb['wordsheet']
+        self.ws2 = self.wb['wordsheet2']
+        # self.ws3;
+        # self.ws4;
         
     def delete_word(self,word_name):
         if(self.word_exists(word_name)):
@@ -100,5 +103,5 @@ class VocaDBManager:
     def get_words_in_level(self, level=0):
         pass
     
-vocaManager = VocaDBManager(voca_file_path)
+voca_manager = VocaDBManager(voca_file_path)
 
