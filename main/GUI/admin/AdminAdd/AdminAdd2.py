@@ -1,6 +1,7 @@
 from pathlib import Path
 from tkinter import *
 from tkinter import messagebox
+import tkinter.font
 import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__))+'/../../..')
@@ -32,6 +33,9 @@ class AdminAdd2:
             relief="ridge"
         )
         self.canvas.place(x=0, y=0)
+
+        # entry 글자 크기 및 변수 코드
+        font = tkinter.font.Font(family="맑은 고딕", size=24, slant="roman")
 
         image_image_1 = PhotoImage(
             file=relative_to_assets("image-1.png"))
@@ -76,35 +80,63 @@ class AdminAdd2:
         # 단어 추가 버튼
         button_image = PhotoImage(
             file=relative_to_assets("Button-1.png"))
-        temp = self.canvas.create_image(
-            800.0,
-            400.0,
-            image=button_image
+        self.button = Button(
+            self.canvas,
+            image=button_image,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
+        )
+        self.button.place(
+            x = 700.0,
+            y = 370.0,
         )
 
         # text box
-        entry_image_1 = PhotoImage(
-            file=relative_to_assets("TextBox-1.png"))
-        entry_1 = self.canvas.create_image(
-            715.0,
-            310.0,
-            image=entry_image_1
+        self.entry_1 = Entry(
+            self.canvas,
+            bd=0,
+            bg="#D9D9D9",
+            fg="#000716",
+            highlightthickness=0,
+            font=font
+        )
+        self.entry_1.place(
+            x=578.0,
+            y=80.0,
+            width=270.0,
+            height=62.0
         )
 
-        entry_image_2 = PhotoImage(
-            file=relative_to_assets("TextBox-2.png"))
-        entry_2 = self.canvas.create_image(
-            715.0,
-            210.0,
-            image=entry_image_2
+        self.entry_2 = Entry(
+            self.canvas,
+            bd=0,
+            bg="#D9D9D9",
+            fg="#000716",
+            highlightthickness=0,
+            font=font
+        )
+        self.entry_2.place(
+            x=578.0,
+            y=180.0,
+            width=270.0,
+            height=62.0
         )
 
-        entry_image_3 = PhotoImage(
-            file=relative_to_assets("TextBox-3.png"))
-        entry_3 = self.canvas.create_image(
-            715.0,
-            110.0,
-            image=entry_image_3
+        self.entry_2 = Entry(
+            self.canvas,
+            bd=0,
+            bg="#D9D9D9",
+            fg="#000716",
+            highlightthickness=0,
+            font=font
+        )
+        self.entry_2.place(
+            x=578.0,
+            y=280.0,
+            width=270.0,
+            height=62.0
         )
 
         self.window.resizable(False, False)

@@ -45,8 +45,8 @@ class Login:
 
         # entry 글자 크기 및 변수 코드
         font = tkinter.font.Font(family="맑은 고딕", size=18, slant="roman")
+
         # 이미지 및 위젯 생성 코드
-        
         image_image_1 = PhotoImage(
             file=relative_to_assets("image_1.png"))
         image_1 = self.canvas.create_image(
@@ -119,6 +119,7 @@ class Login:
             image=image_image_10
         )
 
+        # text box
         self.entry_1 = Entry(
             self.canvas,
             bd=0,
@@ -139,7 +140,8 @@ class Login:
             bd=0,
             bg="#D9D9D9",
             fg="#000716",
-            highlightthickness=0
+            highlightthickness=0,
+            font=font
         )
         self.entry_2.place(
             x=728.5,
@@ -148,6 +150,7 @@ class Login:
             height=33.0
         )
 
+        # Login 버튼
         button_image_1 = PhotoImage(
         file=relative_to_assets("Button.png"))
         self.button_1 = Button(
@@ -164,6 +167,8 @@ class Login:
             width=196.0,
             height=77.0
         )
+
+        # Sign Up 버튼
         button_image_2 = PhotoImage(
         file=relative_to_assets("Button-1.png"))
         self.button_2 = Button(

@@ -1,6 +1,7 @@
 from pathlib import Path
 from tkinter import *
 from tkinter import messagebox
+import tkinter.font
 import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__))+'/../../..')
@@ -32,6 +33,9 @@ class AdminUserInfo1:
             relief="ridge"
         )
         self.canvas.place(x=0, y=0)
+
+        # entry 글자 크기 및 변수 코드
+        font = tkinter.font.Font(family="맑은 고딕", size=24, slant="roman")
 
         image_image = PhotoImage(
             file=relative_to_assets("image.png"))
@@ -66,12 +70,20 @@ class AdminUserInfo1:
         )
 
          # TextBox
-        entry_image = PhotoImage(
-            file=relative_to_assets("TextBox.png"))
-        entry = self.canvas.create_image(
-            700.0,
-            65.0,
-            image=entry_image
+        self.entry_1 = Entry(
+            self.canvas,
+            bd=0,
+            bg="#D9D9D9",
+            fg="#000716",
+            highlightthickness=0,
+            font=font,
+            
+        )
+        self.entry_1.place(
+            x=255.0,
+            y=31.0,
+            width= 900.0,
+            height=60.0,
         )
 
         entry_image_1 = PhotoImage(
@@ -117,22 +129,34 @@ class AdminUserInfo1:
         # search 버튼
         button_image = PhotoImage(
             file=relative_to_assets("Button.png"))
-        temp = self.canvas.create_image(
-            1125.0,
-            60.0,
+        self.button = Button(
+            self.canvas,
             image=button_image,
-            tags="button"
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
         )
+        self.button.place(
+            x = 1090.0,
+            y = 35.0,
+        )
+
         # back 버튼
         button_image_1 = PhotoImage(
             file=relative_to_assets("Button-1.png"))
-        temp_1 = self.canvas.create_image(
-            600.0,
-            465.0,
-            image=button_image_1
+        self.button = Button(
+            self.canvas,
+            image=button_image_1,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
         )
-
-        # self.canvas.tag_raise("button", "entry")  # 검색 버튼이 입력창에 가려지지 않도록 앞으로 옮기기
+        self.button.place(
+            x = 500.0,
+            y = 433.0,
+        )
 
         self.window.resizable(False, False)
         self.window.mainloop()

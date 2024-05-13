@@ -1,6 +1,7 @@
 from pathlib import Path
 from tkinter import *
 from tkinter import messagebox
+import tkinter.font
 import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__))+'/../../..')
@@ -33,6 +34,9 @@ class AdminAdd1:
         )
         self.canvas.place(x=0, y=0)
 
+        # entry 글자 크기 및 변수 코드
+        font = tkinter.font.Font(family="맑은 고딕", size=24, slant="roman")
+
         image_image = PhotoImage(
             file=relative_to_assets("image.png"))
         image = self.canvas.create_image(
@@ -60,20 +64,35 @@ class AdminAdd1:
         # 중복 검사 버튼
         button_image = PhotoImage(
             file=relative_to_assets("Button.png"))
-        temp = self.canvas.create_image(
-            800.0,
-            400.0,
-            image=button_image
+        self.button = Button(
+            self.canvas,
+            image=button_image,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
         )
-
+        self.button.place(
+            x = 700.0,
+            y = 370.0,
+        )
+        
         # text box
-        entry_image = PhotoImage(
-            file=relative_to_assets("TextBox.png"))
-        entry = self.canvas.create_image(
-            800.0,
-            200.0,
-            image=entry_image
+        self.entry_1 = Entry(
+            self.canvas,
+            bd=0,
+            bg="#D9D9D9",
+            fg="#000716",
+            highlightthickness=0,
+            font=font
         )
+        self.entry_1.place(
+            x=560.0,
+            y=170.0,
+            width=480.0,
+            height=65.0
+        )
+        
 
         self.window.resizable(False, False)
         self.window.mainloop()
