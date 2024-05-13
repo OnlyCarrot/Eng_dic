@@ -73,6 +73,20 @@ class AreaSelect:
             image=entry_image
         )
 
+        self.entry = Entry(
+            self.canvas,
+            bd=0,
+            bg="#D9D9D9",
+            fg="#000716",
+            highlightthickness=0,
+        )
+        self.entry.place(
+            x=480.0,
+            y=170.0,
+            width=260.0,
+            height=60.0
+        )
+
         entry_image_1 = PhotoImage(
             file=relative_to_assets("TextBox-1.png"))
         entry_1 = self.canvas.create_image(
@@ -81,15 +95,29 @@ class AreaSelect:
             image=entry_image_1
         )
 
+        self.entry_1 = Entry(
+            self.canvas,
+            bd=0,
+            bg="#D9D9D9",
+            fg="#000716",
+            highlightthickness=0,
+        )
+        self.entry_1.place(
+            x=480.0,
+            y=270.0,
+            width=260.0,
+            height=60.0
+        )
+
         button_image = PhotoImage(
-            file=relative_to_assets("Button.png"))
+        file=relative_to_assets("Button.png"))
         temp = self.canvas.create_image(
             990.0,
             433.0,
             image=button_image
         )
 
-        self.window.resizable(True, True)
+        self.window.resizable(False, False)
         self.window.mainloop()
 
 
