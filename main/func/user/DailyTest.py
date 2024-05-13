@@ -1,4 +1,5 @@
 from openpyxl import load_workbook
+import random
 
 
 def daily_test(start_column, end_column):
@@ -20,6 +21,9 @@ def show_word_meaning(self, col_num):
     for row in sheet.iter_rows(col_num[0], col_num[1], values_only=True):
         word.append([row[0], row[1]])
 
+    # shuffle한 값으로 저장
+    random.shuffle(word)
+
     # 단어 뜻을 보여줌 x좌표가 610 에 1~5번 단어
     for i in range(0, 5):
         self.canvas.create_text(610.0, 130.0 + i * 53.5, text=word[i][1])
@@ -31,6 +35,7 @@ def show_word_meaning(self, col_num):
     return word
 
 
+# user_input_word는 list로 받을거라 나중에 user_input_word[i] 로 수정
 def grade_score(user_input_word, word):
     score = 0
     for i in range(0, len(word)):

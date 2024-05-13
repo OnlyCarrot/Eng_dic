@@ -128,8 +128,7 @@ class DailyTest:
         )
         english_entry.place(x=390, y=110, width=140.0, height=33.0)
         user_input_word = []
-        # user_input_word.append("abandon") -> 1개로 출력됨
-        user_input_word.append("an")
+        user_input_word.append("abandon")
         score = grade_score(user_input_word, word)
         print(score)
 
