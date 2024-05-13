@@ -113,7 +113,7 @@ class AdminMenu:
             image=button_image_5
         )
 
-        self.window.resizable(True, True)
+        self.window.resizable(False, False)
         self.window.mainloop()
 
 

@@ -79,7 +79,7 @@ class AdminDelete:
 
         self.canvas.tag_raise("button", "entry")  # 검색 버튼이 입력창에 가려지지 않도록 앞으로 옮기기
 
-        self.window.resizable(True, True)
+        self.window.resizable(False, False)
         self.window.mainloop()
 
 

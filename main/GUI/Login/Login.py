@@ -1,5 +1,6 @@
 from pathlib import Path
 from tkinter import *
+import tkinter.font
 from tkinter import messagebox
 import sys
 import os
@@ -17,7 +18,6 @@ ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame0"
 
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
-
 
 class Login: 
     def __init__(self):
@@ -43,6 +43,8 @@ class Login:
 
         self.canvas.place(x=0, y=0)
 
+        # entry 글자 크기 및 변수 코드
+        font = tkinter.font.Font(family="맑은 고딕", size=18, slant="roman")
         # 이미지 및 위젯 생성 코드
         
         image_image_1 = PhotoImage(
@@ -122,7 +124,8 @@ class Login:
             bd=0,
             bg="#D9D9D9",
             fg="#000716",
-            highlightthickness=1,
+            highlightthickness=0,
+            font=font
         )
         self.entry_1.place(
             x=728.0,
@@ -136,7 +139,7 @@ class Login:
             bd=0,
             bg="#D9D9D9",
             fg="#000716",
-            highlightthickness=1
+            highlightthickness=0
         )
         self.entry_2.place(
             x=728.5,

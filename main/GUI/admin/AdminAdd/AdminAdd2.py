@@ -107,7 +107,7 @@ class AdminAdd2:
             image=entry_image_3
         )
 
-        self.window.resizable(True, True)
+        self.window.resizable(False, False)
         self.window.mainloop()
 
 
