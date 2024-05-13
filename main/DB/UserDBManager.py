@@ -66,5 +66,4 @@ class UserDBManager:
         pass
 
 
-um = UserDBManager()
-print(um.get_user_record("ad1"))
+user_manager = UserDBManager(user_file_path)

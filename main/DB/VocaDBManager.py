@@ -14,8 +14,11 @@ class VocaDBManager:
         # Load the Excel workbook        
         self.wb = load_workbook(voca_file_path)
 
-        # Select the worksheet named 'wordsheet'
+        # Select the worksheet
         self.ws = self.wb['wordsheet']
+        self.ws2 = self.wb['wordsheet2']
+        # self.ws3;
+        # self.ws4;
         
     def delete_word(self,word_name):
         if(self.word_exists(word_name)):
@@ -107,9 +110,7 @@ class VocaDBManager:
     
 
 
-vocaManager = VocaDBManager(voca_file_path)
-vocaManager.edit_word("abandon", "밥을 먹다", "")
-print(vocaManager.get_word_record("abandon"))
+voca_manager = VocaDBManager(voca_file_path)
 
 
 
