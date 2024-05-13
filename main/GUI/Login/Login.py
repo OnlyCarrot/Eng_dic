@@ -1,12 +1,15 @@
 from pathlib import Path
 from tkinter import *
 from tkinter import messagebox
+import sys
+import os
 """
 from User.mainpage import MainWindow
 from Admin.admin import AdminPage
 from signup import SignupPage
 """
-from center_window import center_window  # center_window 모듈 가져오기
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../..')
+from GUI.center_window import center_window  # center_window 모듈 가져오기
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame0"
