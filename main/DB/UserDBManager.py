@@ -8,6 +8,7 @@ user_file_path = f"{cwd}\\main\\DB\\UserList.xlsx"
 wb = load_workbook(user_file_path)
 
 
+
 def userExists(userId):
     if(userId):
         #엑셀에서 userId가 있는지 확인한다.
