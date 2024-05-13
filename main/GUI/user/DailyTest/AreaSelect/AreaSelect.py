@@ -3,6 +3,7 @@ from tkinter import *
 from tkinter import messagebox
 import os
 import sys
+import tkinter.font
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
 
@@ -32,6 +33,8 @@ class AreaSelect:
             relief="ridge"
         )
         self.canvas.place(x=0, y=0)
+
+        font = tkinter.font.Font(family="맑은 고딕", size=18, slant="roman")
 
         image_image = PhotoImage(
             file=relative_to_assets("image.png"))
@@ -79,6 +82,7 @@ class AreaSelect:
             bg="#D9D9D9",
             fg="#000716",
             highlightthickness=0,
+            font=font
         )
         self.entry.place(
             x=480.0,
@@ -101,6 +105,7 @@ class AreaSelect:
             bg="#D9D9D9",
             fg="#000716",
             highlightthickness=0,
+            font=font
         )
         self.entry_1.place(
             x=480.0,
