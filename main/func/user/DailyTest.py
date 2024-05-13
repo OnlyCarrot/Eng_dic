@@ -2,15 +2,27 @@ from openpyxl import load_workbook
 
 
 def daily_test(start_column, end_column):
+    # start_col, end_col정보를 저장해서 넘김
+    col_num = [start_column, end_column]
+
+    return col_num
+
+
+def show_word_meaning(self, col_num):
     # 엑셀 파일 열기
     workbook = load_workbook("main/DB/WordList.xlsx")
 
     # 시트 선택
     sheet = workbook["wordsheet"]
 
-    # 데이터 저장할 리스트 초기화
-    data = []
+    i = 0
+    j = 0
 
-    # 시트를 순회하며 사용자의 로그인 정보와 맞는 행의 모든 정보를 return
-    for row in sheet.iter_rows(start_column, end_column, values_only=True):
-        print(row[0], row[1], row[2], end="\n")
+    # 단어 뜻을 보여줌 start_column ~ start_column + 5 까지는 x좌표가 610
+    for row in sheet.iter_rows(col_num[0], col_num[1] - 5, values_only=True):
+        self.canvas.create_text(610.0, 130.0 + i * 53.5, text=row[0])
+        i += 1
+    # start_column + 5 ~ end_column 까지는 x좌표가 950
+    for row in sheet.iter_rows(col_num[0] + 5, col_num[1], values_only=True):
+        self.canvas.create_text(950.0, 130.0 + j * 53.5, text=row[0])
+        j += 1
