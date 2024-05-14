@@ -100,11 +100,19 @@ class LevelVoca:
         # back 버튼
         button_image = PhotoImage(
             file=relative_to_assets("Button.png"))
-        temp = self.canvas.create_image(
-            790.0,
-            450.0,
-            image=button_image
+        self.button = Button(
+            self.canvas,
+            image=button_image,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
         )
+        self.button.place(
+            x = 700.0,
+            y = 400.0,
+        )
+        
 
         self.window.resizable(True, True)
         self.window.mainloop()
