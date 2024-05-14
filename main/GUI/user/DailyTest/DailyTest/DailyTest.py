@@ -7,6 +7,7 @@ from func.user.DailyTest import show_word_meaning, grade_score
 import tkinter.font
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
+from func.user.DailyTest import show_word_meaning, grade_score
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -402,6 +403,16 @@ class DailyTest:
             width=130.0,
             height=35.0
         )
+
+        # Test [1, 10] col_num으로 수정, word[english, mean] list return
+        word = show_word_meaning(self, [1, 10])
+
+        # entry 값 뜻 같은지 체크 test
+        user_input_word = []
+        user_input_word.append("appoint")
+        score = grade_score(user_input_word, word)
+        print(score)
+
         self.window.resizable(False, False)
         self.window.mainloop()
 
