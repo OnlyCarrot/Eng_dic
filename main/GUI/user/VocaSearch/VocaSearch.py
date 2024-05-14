@@ -114,19 +114,35 @@ class VocaSearch:
         # back 버튼
         button_image = PhotoImage(
             file=relative_to_assets("Button.png"))
-        temp = self.canvas.create_image(
-            790.0,
-            450.0,
-            image=button_image
+        self.button = Button(
+            self.canvas,
+            image=button_image,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
         )
+        self.button.place(
+            x = 700.0,
+            y = 415.0,
+        )
+        
         # search 버튼
         button_image_1 = PhotoImage(
             file=relative_to_assets("Button-1.png"))
-        temp_1 = self.canvas.create_image(
-            909.0,
-            65.0,
-            image=button_image_1
+        self.button = Button(
+            self.canvas,
+            image=button_image_1,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
         )
+        self.button.place(
+            x = 905.0,
+            y = 40.0,
+        )
+        
         
         self.window.resizable(True, True)
         self.window.mainloop()
