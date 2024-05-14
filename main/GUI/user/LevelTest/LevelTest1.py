@@ -111,6 +111,17 @@ class LevelTest1:
             y=112.3,
             width=130.0,
             height=35.0
+<<<<<<< HEAD
+=======
+        )
+
+        entry_image_1 = PhotoImage(
+            file=relative_to_assets("TextBox-1.png"))
+        entry_1 = self.canvas.create_image(
+            460.0,
+            130.0,
+            image=entry_image_1
+>>>>>>> 22b4b12 (fix)
         )
 
         entry_image_1 = PhotoImage(file=relative_to_assets("TextBox-1.png"))
@@ -133,6 +144,23 @@ class LevelTest1:
             fg="#000716",
             highlightthickness=0,
             font=font
+<<<<<<< HEAD
+=======
+        )
+        self.entry.place(
+            x=885.0,
+            y=112.3,
+            width=130.0,
+            height=35.0
+        )
+
+        entry_image_4 = PhotoImage(
+            file=relative_to_assets("TextBox-5.png"))
+        entry_4 = self.canvas.create_image(
+            460.0,
+            183.5,
+            image=entry_image_4
+>>>>>>> 22b4b12 (fix)
         )
         self.entry.place(
             x=885.0,
@@ -355,6 +383,9 @@ class LevelTest1:
             image=entry_image_19
         )
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 22b4b12 (fix)
         self.entry = Entry(
             self.canvas,
             bd=0,
@@ -369,9 +400,12 @@ class LevelTest1:
             width=130.0,
             height=35.0
         )
+<<<<<<< HEAD
 =======
         
 >>>>>>> 1bd22a4 (all fix done!)
+=======
+>>>>>>> 22b4b12 (fix)
         self.window.resizable(False, False)
         self.window.mainloop()
 

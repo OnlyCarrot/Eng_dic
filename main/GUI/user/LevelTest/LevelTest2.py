@@ -385,6 +385,9 @@ class LevelTest2:
             image=entry_image_19
         )
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 22b4b12 (fix)
         self.entry = Entry(
             self.canvas,
             bd=0,
@@ -399,9 +402,12 @@ class LevelTest2:
             width=130.0,
             height=35.0
         )
+<<<<<<< HEAD
 =======
         
 >>>>>>> 1bd22a4 (all fix done!)
+=======
+>>>>>>> 22b4b12 (fix)
         self.window.resizable(False, False)
         self.window.mainloop()
 
