@@ -77,19 +77,41 @@ class DailyTest:
             image=image_image_4
         )
         # back 버튼
-        button_image_1 = PhotoImage(file=relative_to_assets("Button-1.png"))
+        button_image_1 = PhotoImage(
+            file=relative_to_assets("Button-1.png"))
+        self.button = Button(
+            self.canvas,
+            image=button_image_1,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
+        )
+        self.button.place(
+            x = 500.0,
+            y = 408.0,
+        )
         temp_1 = self.canvas.create_image(
           610.0, 
           450.0, 
           image=button_image_1
         )
         # submit 버튼
-        button_image = PhotoImage(file=relative_to_assets("Button.png"))
-        temp = self.canvas.create_image(
-          840.0, 
-          450.0, 
-          image=button_image
+        button_image = PhotoImage(
+            file=relative_to_assets("Button.png"))
+        self.button = Button(
+            self.canvas,
+            image=button_image,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
         )
+        self.button.place(
+            x = 750.0,
+            y = 408.0,
+        )
+        
         # TextBox
         entry_image = PhotoImage(
             file=relative_to_assets("TextBox.png"))
@@ -380,22 +402,7 @@ class DailyTest:
             width=130.0,
             height=35.0
         )
-
-        # Test [1, 10] col_num으로 수정, word[english, mean] list return
-        word = show_word_meaning(self, [1, 10])
-
-        # entry 값 뜻 같은지 체크 test
-        english_entry = Entry(
-            self.canvas, bd=0, bg="#D9D9D9", fg="#000716", highlightthickness=0
-        )
-
-        english_entry.place(x=390, y=110, width=140.0, height=33.0)
-        user_input_word = []
-        user_input_word.append("abandon")
-        score = grade_score(user_input_word, word)
-        print(score)
-
-        self.window.resizable(True, True)
+        self.window.resizable(False, False)
         self.window.mainloop()
 
 

@@ -114,7 +114,7 @@ class LevelVoca:
         )
         
 
-        self.window.resizable(True, True)
+        self.window.resizable(False, False)
         self.window.mainloop()
 
 

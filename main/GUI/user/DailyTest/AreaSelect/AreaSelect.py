@@ -117,15 +117,21 @@ class AreaSelect:
           height=60.0
         )
 
-        button_image = PhotoImage(file=relative_to_assets("Button.png"))
-        temp = self.canvas.create_image(
-          990.0, 
-          433.0, 
-          image=button_image
+        button_image = PhotoImage(
+        file=relative_to_assets("Button.png"))
+        self.button = Button(
+            self.canvas,
+            image=button_image,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
         )
-
-        # entry,entry1 dailytest로 넘기기
-        # daily_test(entry, entry_1)
+        self.button.place(
+            x = 900.0,
+            y = 408.0,
+        )
+        
 
         self.window.resizable(False, False)
         self.window.mainloop()

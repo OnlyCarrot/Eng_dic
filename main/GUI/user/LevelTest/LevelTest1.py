@@ -52,11 +52,37 @@ class LevelTest1:
         image_image_5 = PhotoImage(file=relative_to_assets("image-5.png"))
         image_5 = self.canvas.create_image(575.0, 45.0, image=image_image_5)
         # back 버튼
-        button_image_1 = PhotoImage(file=relative_to_assets("Button-1.png"))
-        temp_1 = self.canvas.create_image(620.0, 450.0, image=button_image_1)
+        button_image_1 = PhotoImage(
+            file=relative_to_assets("Button-1.png"))
+        self.button = Button(
+            self.canvas,
+            image=button_image_1,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
+        )
+        self.button.place(
+            x = 500.0,
+            y = 408.0,
+        )
+        
         # next 버튼
-        button_image = PhotoImage(file=relative_to_assets("Button.png"))
-        temp = self.canvas.create_image(840.0, 450.0, image=button_image)
+        button_image = PhotoImage(
+            file=relative_to_assets("Button.png"))
+        self.button = Button(
+            self.canvas,
+            image=button_image,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
+        )
+        self.button.place(
+            x = 740.0,
+            y = 408.0,
+        )
+        
         # TextBox
         entry_image = PhotoImage(file=relative_to_assets("TextBox.png"))
         entry = self.canvas.create_image(610.0, 130.0, image=entry_image)
@@ -115,26 +141,15 @@ class LevelTest1:
         entry_image_18 = PhotoImage(file=relative_to_assets("TextBox-19.png"))
         entry_18 = self.canvas.create_image(800.0, 344.0, image=entry_image_18)
 
-        entry_image_19 = PhotoImage(file=relative_to_assets("TextBox-18.png"))
-        entry_19 = self.canvas.create_image(950.0, 344.0, image=entry_image_19)
-
-        # random word 40개 뽑아오기
-        word = select_random_word()
-
-        # word 뜻 보여주기
-        show_word_meaning(self, word)
-
-        # entry 값 뜻 같은지 체크 test
-        english_entry = Entry(
-            self.canvas, bd=0, bg="#D9D9D9", fg="#000716", highlightthickness=0
+        entry_image_19 = PhotoImage(
+            file=relative_to_assets("TextBox-18.png"))
+        entry_19 = self.canvas.create_image(
+            950.0,
+            344.0,
+            image=entry_image_19
         )
-        english_entry.place(x=390, y=110, width=140.0, height=33.0)
-        user_input_word = []
-        user_input_word.append("abandon")
-        score = grade_score(user_input_word, word)
-        print(score)
-
-        self.window.resizable(True, True)
+        
+        self.window.resizable(False, False)
         self.window.mainloop()
 
 

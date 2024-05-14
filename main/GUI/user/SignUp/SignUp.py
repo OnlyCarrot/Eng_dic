@@ -73,7 +73,7 @@ class SignUp:
         # signUpTest id, username, password, role, level
         sign_up("s", "ss", "sss", "user", 4)
 
-        self.window.resizable(True, True)
+        self.window.resizable(False, False)
         self.window.mainloop()
 
 
