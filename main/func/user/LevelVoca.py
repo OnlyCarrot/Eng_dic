@@ -3,7 +3,6 @@ import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from main.func.Sheet import Sheet
-from main.func.Word import Word
 
 class LevelVoca:
     def __init__(self):
