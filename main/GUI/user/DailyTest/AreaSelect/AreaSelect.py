@@ -116,11 +116,19 @@ class AreaSelect:
 
         button_image = PhotoImage(
         file=relative_to_assets("Button.png"))
-        temp = self.canvas.create_image(
-            990.0,
-            433.0,
-            image=button_image
+        self.button = Button(
+            self.canvas,
+            image=button_image,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
         )
+        self.button.place(
+            x = 900.0,
+            y = 408.0,
+        )
+        
 
         self.window.resizable(False, False)
         self.window.mainloop()

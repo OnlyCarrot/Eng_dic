@@ -75,19 +75,35 @@ class LevelTest1:
         # back 버튼
         button_image_1 = PhotoImage(
             file=relative_to_assets("Button-1.png"))
-        temp_1 = self.canvas.create_image(
-            620.0,
-            450.0,
-            image=button_image_1
+        self.button = Button(
+            self.canvas,
+            image=button_image_1,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
         )
+        self.button.place(
+            x = 500.0,
+            y = 408.0,
+        )
+        
         # next 버튼
         button_image = PhotoImage(
             file=relative_to_assets("Button.png"))
-        temp = self.canvas.create_image(
-            840.0,
-            450.0,
-            image=button_image
+        self.button = Button(
+            self.canvas,
+            image=button_image,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
         )
+        self.button.place(
+            x = 740.0,
+            y = 408.0,
+        )
+        
         # TextBox
         entry_image = PhotoImage(
             file=relative_to_assets("TextBox.png"))
@@ -249,7 +265,7 @@ class LevelTest1:
             image=entry_image_19
         )
         
-        self.window.resizable(True, True)
+        self.window.resizable(False, False)
         self.window.mainloop()
 
 

@@ -75,12 +75,20 @@ class ShowResult:
         # done 버튼
         button_image = PhotoImage(
             file=relative_to_assets("Button.png"))
-        temp = self.canvas.create_image(
-            750.0,
-            450.0,
-            image=button_image
+        self.button = Button(
+            self.canvas,
+            image=button_image,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
         )
-        self.window.resizable(True, True)
+        self.button.place(
+            x = 650.0,
+            y = 408.0,
+        )
+        
+        self.window.resizable(False, False)
         self.window.mainloop()
 
 

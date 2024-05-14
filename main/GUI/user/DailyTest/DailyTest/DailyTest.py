@@ -78,6 +78,18 @@ class DailyTest:
         # back 버튼
         button_image_1 = PhotoImage(
             file=relative_to_assets("Button-1.png"))
+        self.button = Button(
+            self.canvas,
+            image=button_image_1,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
+        )
+        self.button.place(
+            x = 500.0,
+            y = 408.0,
+        )
         temp_1 = self.canvas.create_image(
             610.0,
             450.0,
@@ -86,11 +98,19 @@ class DailyTest:
         # submit 버튼
         button_image = PhotoImage(
             file=relative_to_assets("Button.png"))
-        temp = self.canvas.create_image(
-            840.0,
-            450.0,
-            image=button_image
+        self.button = Button(
+            self.canvas,
+            image=button_image,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
         )
+        self.button.place(
+            x = 750.0,
+            y = 408.0,
+        )
+        
         # TextBox
         entry_image = PhotoImage(
             file=relative_to_assets("TextBox.png"))
@@ -382,7 +402,7 @@ class DailyTest:
             width=130.0,
             height=35.0
         )
-        self.window.resizable(True, True)
+        self.window.resizable(False, False)
         self.window.mainloop()
 
 

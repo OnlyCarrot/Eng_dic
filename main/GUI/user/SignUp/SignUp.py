@@ -121,7 +121,7 @@ class SignUp:
             image=button_image_1
         )
 
-        self.window.resizable(True, True)
+        self.window.resizable(False, False)
         self.window.mainloop()
 
 
