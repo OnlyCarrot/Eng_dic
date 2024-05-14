@@ -11,6 +11,6 @@ def sign_up(id, username, password, role, level):
     sheet.append(new_user_data)
 
     # 엑셀 파일 저장
-    workbook.save("main/DB/UserList.xlsx")
+    #sheet.save("main/DB/UserList.xlsx")
 
     print("추가되었습니다.")

@@ -6,6 +6,7 @@ import sys
 import tkinter.font
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
+from func.user.DailyTest import Daily
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -402,6 +403,15 @@ class DailyTest:
             width=130.0,
             height=35.0
         )
+
+        #Test
+        col_num = Daily.daily_test(1, 10)
+        word = Daily.show_word_meaning(self, col_num)
+        user_input_word = []
+        user_input_word.append("apply for")
+        score = Daily.grade_score(user_input_word, word)
+        print(score)
+
         self.window.resizable(False, False)
         self.window.mainloop()
 

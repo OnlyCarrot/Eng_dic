@@ -5,6 +5,7 @@ import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
+from func.user.SignUp import sign_up
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -120,6 +121,9 @@ class SignUp:
             434.0,
             image=button_image_1
         )
+
+        #Test
+        sign_up("S", "ss", "sss", "ssss", 4)
 
         self.window.resizable(False, False)
         self.window.mainloop()
