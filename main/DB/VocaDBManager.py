@@ -28,7 +28,7 @@ class VocaDBManager:
         wordsheets = self.wordsheets
         for ws in wordsheets:
             # B열을 탐색하여 해당 word_name이 존재하는지 탐색한다.
-            for row in ws.iter_rows(min_row=2, min_col=1, max_col=2, max_row=ws.max_row, values_only=True):
+            for row in ws.iter_rows(min_row=2, max_col=1, max_row=ws.max_row, values_only=True):
                 if word_name in row:
                     return True
         return False
@@ -42,11 +42,12 @@ class VocaDBManager:
         wordsheets = self.wordsheets
         for ws in wordsheets:
             idx_counter = 1
-            for row in ws.iter_rows(min_row=2, min_col=1, max_col=2, max_row=ws.max_row, values_only=True):
+            for row in ws.iter_rows(min_row=2, max_col=1, max_row=ws.max_row, values_only=True):
                 idx_counter += 1
                 if word_name in row:
-                    break
-        return idx_counter 
+                    return idx_counter
+        return False
+        
 
     def delete_word(self,word_name):
         if(self.word_exists(word_name)):
@@ -91,10 +92,9 @@ class VocaDBManager:
         empty_row = ws.max_row + 1
         
         # Write the data to the next empty row
-        ws[f'A{empty_row}'] = ws.max_row
-        ws[f'B{empty_row}'] = word_name
-        ws[f'C{empty_row}'] = kor_meaning
-        ws[f'D{empty_row}'] = word_class
+        ws[f'A{empty_row}'] = word_name
+        ws[f'B{empty_row}'] = kor_meaning
+        ws[f'C{empty_row}'] = word_class
         
         # Save the changes to the Excel file
         self.wb.save(voca_file_path)
@@ -142,8 +142,10 @@ class VocaDBManager:
 voca_manager = VocaDBManager(voca_file_path)
 #voca_manager.add_word("asdfasdfsdaf","뜻","v",3)
 
-words = voca_manager.get_all_word_records()
-print(words)
+# voca_manager.add_word("zxcvzcxvzxcv","침입하다", "v",3)
+# words = voca_manager.get_word_records_by_sheetloc(3)
+print(voca_manager.get_word_record("precious"))
+# print(words)
 
 
 
