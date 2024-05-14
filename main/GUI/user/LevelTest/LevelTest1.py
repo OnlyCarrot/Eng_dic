@@ -403,7 +403,7 @@ class LevelTest1:
         )
 
         #Test
-        word = LevelTest.select_random_word()
+        word = LevelTest.select_word()
         LevelTest.show_word_meaning(self, word)
         LevelTest.grade_score(" ", word)
 
