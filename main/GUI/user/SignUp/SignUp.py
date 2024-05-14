@@ -70,9 +70,12 @@ class SignUp:
         button_image_1 = PhotoImage(file=relative_to_assets("Button-1.png"))
         temp_1 = self.canvas.create_image(1025.0, 434.0, image=button_image_1)
 
+<<<<<<< HEAD
         # signUpTest id, username, password, role, level
         sign_up("s", "ss", "sss", "user", 4)
 
+=======
+>>>>>>> 1bd22a4 (all fix done!)
         self.window.resizable(False, False)
         self.window.mainloop()
 

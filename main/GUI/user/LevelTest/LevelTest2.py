@@ -384,6 +384,7 @@ class LevelTest2:
             344.0,
             image=entry_image_19
         )
+<<<<<<< HEAD
         self.entry = Entry(
             self.canvas,
             bd=0,
@@ -398,6 +399,9 @@ class LevelTest2:
             width=130.0,
             height=35.0
         )
+=======
+        
+>>>>>>> 1bd22a4 (all fix done!)
         self.window.resizable(False, False)
         self.window.mainloop()
 
