@@ -14,10 +14,3 @@ class open_sheet:
 
         # 시트 선택
         return workbook["usersheet"]
-
-from openpyxl import load_workbook
-import random
-import os
-import sys
-sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../../..')
-from func.globalFunc import open_sheet
