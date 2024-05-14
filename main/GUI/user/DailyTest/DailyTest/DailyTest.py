@@ -405,8 +405,8 @@ class DailyTest:
         )
 
         #Test
-        col_num = Daily.daily_test(1, 10)
-        word = Daily.show_word_meaning(self, col_num)
+        index = Daily.daily_test(1, 10)
+        word = Daily.show_word_meaning(self, index)
         user_input_word = []
         user_input_word.append("apply for")
         score = Daily.grade_score(user_input_word, word)

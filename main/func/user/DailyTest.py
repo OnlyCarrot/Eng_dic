@@ -1,25 +1,31 @@
 from openpyxl import load_workbook
 import random
-from func.globalFunc import open_sheet
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
+from main.func.Sheet import Sheet
 
 class Daily:
-    def daily_test(start_column, end_column):
+
+    def daily_test(start_index, end_index):
         # start_col, end_col정보를 저장해서 넘김
-        col_num = [start_column, end_column]
+        return [start_index, end_index]
 
-        return col_num
-
-
-    def show_word_meaning(self, col_num):
-        sheet = open_sheet.wordsheet("wordsheet1")
+    #area에 맞는 단어 뽑아오기
+    def select_word(index):
+        sheet = Sheet("wordsheet1").worksheet
 
         word = []
-
-        for row in sheet.iter_rows(col_num[0], col_num[1], values_only=True):
+        for row in sheet.iter_rows(index[0], index[1], values_only=True):
             word.append([row[0], row[1]])
 
-        # shuffle한 값으로 저장
-        random.shuffle(word)
+        # shuffle한 [단어, 뜻]값 return 
+        random.shuffle(word) 
+        return word 
+
+    #뽑아온 단어 화면에 쏴주기
+    def show_word_meaning(self, index):
+        word = Daily.select_word(index)
 
         # 단어 뜻을 보여줌 x좌표가 610 에 1~5번 단어
         for i in range(0, 5):
@@ -28,7 +34,6 @@ class Daily:
         for i in range(0, 5):
             self.canvas.create_text(800.0, 130.0 + i * 53.5, text=word[i + 5][1])
 
-        # 단어 [영어,뜻] 담은 list return
         return word
 
 

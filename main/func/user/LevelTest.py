@@ -1,13 +1,14 @@
 from openpyxl import load_workbook
 import random
-from func.globalFunc import open_sheet
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
+from main.func.Sheet import Sheet
 
 class LevelTest:
 
-    def select_random_word():
-        
-        sheet = open_sheet.wordsheet("wordsheet1")
-
+    def select_word():
+        sheet = Sheet("wordsheet1").worksheet
         word = []
 
         # num_words 만큼 반복하여 랜덤한 단어 추출

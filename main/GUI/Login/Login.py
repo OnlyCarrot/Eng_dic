@@ -195,14 +195,14 @@ class Login:
         entered_username = self.entry_1.get()
         entered_password = self.entry_2.get()
 
-        user_info = []
-        user_info = login_validation(entered_username, entered_password)
+        
+        user = login_validation(entered_username, entered_password)
 
         # 입력된 값과 저장된 값 비교
-        if user_info[0].startswith("ad"):
+        if user.id.startswith("ad"):
             messagebox.showinfo("로그인 성공", "관리자님, 환영합니다!")
             self.open_admin_page()
-        elif user_info:
+        elif user:
             messagebox.showinfo("로그인 성공", "환영합니다!")
             self.open_main_page()
         else:
