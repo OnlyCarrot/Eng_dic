@@ -11,6 +11,7 @@ from signup import SignupPage
 """
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
+from func.Login import login_validation
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame0"
@@ -194,11 +195,14 @@ class Login:
         entered_username = self.entry_1.get()
         entered_password = self.entry_2.get()
 
+        user_info = []
+        user_info = login_validation(entered_username, entered_password)
+
         # 입력된 값과 저장된 값 비교
-        if entered_username == "admin" and entered_password == "adminpassword":
+        if user_info[0].startswith("ad"):
             messagebox.showinfo("로그인 성공", "관리자님, 환영합니다!")
             self.open_admin_page()
-        elif entered_username == self.saved_username and entered_password == self.saved_password:
+        elif user_info:
             messagebox.showinfo("로그인 성공", "환영합니다!")
             self.open_main_page()
         else:
