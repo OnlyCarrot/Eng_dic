@@ -1,4 +1,3 @@
-main/func/Login.py
 from openpyxl import load_workbook
 from func.globalFunc import open_sheet
 
