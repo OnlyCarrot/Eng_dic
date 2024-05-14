@@ -1,7 +1,3 @@
-from openpyxl import load_workbook
-import random
-
-
 def daily_test(start_column, end_column):
     # start_col, end_col정보를 저장해서 넘김
     col_num = [start_column, end_column]
@@ -10,11 +6,7 @@ def daily_test(start_column, end_column):
 
 
 def show_word_meaning(self, col_num):
-    # 엑셀 파일 열기
-    workbook = load_workbook("main/DB/WordList.xlsx")
-
-    # 시트 선택
-    sheet = workbook["wordsheet"]
+    sheet = open_sheet.wordsheet("wordsheet1")
 
     word = []
 
@@ -26,10 +18,10 @@ def show_word_meaning(self, col_num):
 
     # 단어 뜻을 보여줌 x좌표가 610 에 1~5번 단어
     for i in range(0, 5):
-        self.canvas.create_text(610.0, 130.0 + i * 53.5, text=word[i][1])
+        self.canvas.create_text(460.0, 130.0 + i * 53.5, text=word[i][1])
     # 단어 뜻을 보여줌 x좌표가 950 에 6~10번 단어
     for i in range(0, 5):
-        self.canvas.create_text(950.0, 130.0 + i * 53.5, text=word[i + 5][1])
+        self.canvas.create_text(800.0, 130.0 + i * 53.5, text=word[i + 5][1])
 
     # 단어 [영어,뜻] 담은 list return
     return word

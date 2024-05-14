@@ -1,12 +1,10 @@
 from openpyxl import load_workbook
+from func.globalFunc import open_sheet
+
 
 
 def sign_up(id, username, password, role, level):
-    # 엑셀 파일 열기
-    workbook = load_workbook("main/DB/UserList.xlsx")
-
-    # 시트 선택
-    sheet = workbook["usersheet"]
+    sheet = open_sheet.usersheet()
 
     # 마지막 행에 새로운 사용자 정보 추가
     new_user_data = [id, username, password, role, level]
