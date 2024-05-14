@@ -18,6 +18,7 @@ from signup import SignupPage
 """
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../..")
 from GUI.center_window import center_window  # center_window 모듈 가져오기
+from func.Login import login_validation
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame0"
@@ -199,9 +200,8 @@ class Login:
         self.window.mainloop()
 
     def check_credentials(self):
-        # 입력된 사용자 이름과 비밀번호 가져오기
-        entered_username = self.entry_1.get()
-        entered_password = self.entry_2.get()
+        # 사용자가 있으면 id, password, Name, role, level을 받아옴
+        user_info = login_validation(self.entry_1.get(), self.entry_2.get())
 
         # 사용자가 있으면 id, password, Name, role, level을 받아옴
         user_info = login_validation(entered_username, entered_password)
