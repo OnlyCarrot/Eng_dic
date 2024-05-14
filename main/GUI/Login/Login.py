@@ -53,35 +53,81 @@ class Login:
 
         # entry 글자 크기 및 변수 코드
         font = tkinter.font.Font(family="맑은 고딕", size=18, slant="roman")
+
         # 이미지 및 위젯 생성 코드
+        image_image_1 = PhotoImage(
+            file=relative_to_assets("image_1.png"))
+        image_1 = self.canvas.create_image(
+            600.0,
+            250.0,
+            image=image_image_1
+        )
 
-        image_image_1 = PhotoImage(file=relative_to_assets("image_1.png"))
-        image_1 = self.canvas.create_image(600.0, 250.0, image=image_image_1)
+        image_image_2 = PhotoImage(
+            file=relative_to_assets("image_2.png"))
+        image_2 = self.canvas.create_image(
+            237.0,
+            221.0,
+            image=image_image_2
+        )
 
-        image_image_2 = PhotoImage(file=relative_to_assets("image_2.png"))
-        image_2 = self.canvas.create_image(237.0, 221.0, image=image_image_2)
+        image_image_3 = PhotoImage(
+            file=relative_to_assets("image_3.png"))
+        image_3 = self.canvas.create_image(
+            232.0,
+            431.0,
+            image=image_image_3
+        )
 
-        image_image_3 = PhotoImage(file=relative_to_assets("image_3.png"))
-        image_3 = self.canvas.create_image(232.0, 431.0, image=image_image_3)
+        image_image_4 = PhotoImage(
+            file=relative_to_assets("image_4.png"))
+        image_4 = self.canvas.create_image(
+            900.0,
+            250.0,
+            image=image_image_4
+        )
 
-        image_image_4 = PhotoImage(file=relative_to_assets("image_4.png"))
-        image_4 = self.canvas.create_image(900.0, 250.0, image=image_image_4)
+        image_image_5 = PhotoImage(
+            file=relative_to_assets("image_5.png"))
+        image_5 = self.canvas.create_image(
+            905.0,
+            80.0,
+            image=image_image_5
+        )
 
-        image_image_5 = PhotoImage(file=relative_to_assets("image_5.png"))
-        image_5 = self.canvas.create_image(905.0, 80.0, image=image_image_5)
+        image_image_7 = PhotoImage(
+            file=relative_to_assets("image_7.png"))
+        image_7 = self.canvas.create_image(
+            906.0,
+            229.0,
+            image=image_image_7
+        )
 
-        image_image_7 = PhotoImage(file=relative_to_assets("image_7.png"))
-        image_7 = self.canvas.create_image(906.0, 229.0, image=image_image_7)
+        image_image_8 = PhotoImage(
+            file=relative_to_assets("image_8.png"))
+        image_8 = self.canvas.create_image(
+            906.0,
+            342.0,
+            image=image_image_8
+        )
 
-        image_image_8 = PhotoImage(file=relative_to_assets("image_8.png"))
-        image_8 = self.canvas.create_image(906.0, 342.0, image=image_image_8)
+        image_image_9 = PhotoImage(
+            file=relative_to_assets("image-9.png"))
+        image_9 = self.canvas.create_image(
+            740.0,
+            211.0,
+            image=image_image_9
+        )
 
-        image_image_9 = PhotoImage(file=relative_to_assets("image-9.png"))
-        image_9 = self.canvas.create_image(740.0, 211.0, image=image_image_9)
+        image_image_10 = PhotoImage(
+            file=relative_to_assets("image-10.png"))
+        image_10 = self.canvas.create_image(
+            770.0,
+            322.0,
+            image=image_image_10
+        )
 
-        image_image_10 = PhotoImage(file=relative_to_assets("image-10.png"))
-        image_10 = self.canvas.create_image(770.0, 322.0, image=image_image_10)
-
+        # text box
         self.entry_1 = Entry(
             self.canvas,
             bd=0,
@@ -90,14 +136,32 @@ class Login:
             highlightthickness=0,
             font=font,
         )
-        self.entry_1.place(x=728.0, y=224.0, width=360.0, height=33.0)
+        self.entry_1.place(
+          x=728.0,
+          y=224.0,
+          width=360.0,
+          height=33.0
+        )
 
         self.entry_2 = Entry(
-            self.canvas, bd=0, bg="#D9D9D9", fg="#000716", highlightthickness=0
+            self.canvas,
+            bd=0,
+            bg="#D9D9D9",
+            fg="#000716",
+            highlightthickness=0,
+            font=font
         )
-        self.entry_2.place(x=728.5, y=334.0, width=360.0, height=33.0)
+        self.entry_2.place(
+            x=728.5,
+            y=334.0,
+            width=360.0,
+            height=33.0
+        )
 
-        button_image_1 = PhotoImage(file=relative_to_assets("Button.png"))
+        # Login 버튼
+        button_image_1 = PhotoImage(
+        file=relative_to_assets("Button.png"))
+
         self.button_1 = Button(
             self.canvas,
             image=button_image_1,
@@ -106,8 +170,16 @@ class Login:
             command=self.check_credentials,
             relief="flat",
         )
-        self.button_1.place(x=704.0, y=402.0, width=196.0, height=77.0)
-        button_image_2 = PhotoImage(file=relative_to_assets("Button-1.png"))
+        self.button_1.place(
+            x=704.0,
+            y=402.0,
+            width=196.0,
+            height=77.0
+        )
+
+        # Sign Up 버튼
+        button_image_2 = PhotoImage(
+        file=relative_to_assets("Button-1.png"))
         self.button_2 = Button(
             self.canvas,
             image=button_image_2,
@@ -116,7 +188,12 @@ class Login:
             # command=self.signup,
             relief="flat",
         )
-        self.button_2.place(x=924.0, y=402.0, width=196.0, height=77.0)
+        self.button_2.place(
+          x=924.0,
+          y=402.0,
+          width=196.0,
+          height=77.0
+        )
 
         self.window.resizable(False, False)
         self.window.mainloop()

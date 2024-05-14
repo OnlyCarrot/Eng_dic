@@ -64,53 +64,101 @@ class AdminMenu:
             250.0,
             image=image_image_3
         )
+
         # 단어 추가 버튼
         button_image = PhotoImage(
             file=relative_to_assets("Button.png"))
-        temp = self.canvas.create_image(
-            908.0,
-            95.0,
-            image=button_image
+        self.button = Button(
+            self.canvas,
+            image=button_image,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
         )
+        self.button.place(
+            x = 703.0,
+            y = 57.0,
+        )
+
         # 단어 수정 버튼
         button_image_1 = PhotoImage(
             file=relative_to_assets("Button-1.png"))
-        temp_1 = self.canvas.create_image(
-            908.0,
-            169.0,
-            image=button_image_1
+        self.button = Button(
+            self.canvas,
+            image=button_image_1,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
         )
+        self.button.place(
+            x = 700.0,
+            y = 131.0,
+        )
+
         # 단어 삭제 버튼
         button_image_2 = PhotoImage(
             file=relative_to_assets("Button-2.png"))
-        temp_2 = self.canvas.create_image(
-            908.0,
-            243.0,
-            image=button_image_2
+        self.button = Button(
+            self.canvas,
+            image=button_image_2,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
         )
+        self.button.place(
+            x = 700.0,
+            y = 208.0,
+        )
+
         # 사용자 정보 조회 버튼
         button_image_3 = PhotoImage(
             file=relative_to_assets("Button-3.png"))
-        temp_3 = self.canvas.create_image(
-            908.0,
-            317.0,
-            image=button_image_3
+        self.button = Button(
+            self.canvas,
+            image=button_image_2,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
         )
+        self.button.place(
+            x = 700.0,
+            y = 284.0,
+        )
+
         # logout 버튼
         button_image_4 = PhotoImage(
             file=relative_to_assets("Button-4.png"))
-        temp_4 = self.canvas.create_image(
-            806.0,
-            440.0,
-            image=button_image_4
+        self.button = Button(
+            self.canvas,
+            image=button_image_4,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
         )
+        self.button.place(
+            x = 708.0,
+            y = 403.0,
+        )
+
         # quit program 버튼
         button_image_5 = PhotoImage(
             file=relative_to_assets("Button-5.png"))
-        temp_5 = self.canvas.create_image(
-            1026.0,
-            440.0,
-            image=button_image_5
+        self.button = Button(
+            self.canvas,
+            image=button_image_5,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
+        )
+        self.button.place(
+            x = 930.0,
+            y = 403.0,
         )
 
         self.window.resizable(False, False)

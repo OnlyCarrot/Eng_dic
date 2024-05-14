@@ -14,8 +14,11 @@ class VocaDBManager:
         # Load the Excel workbook        
         self.wb = load_workbook(voca_file_path)
 
-        # Select the worksheet named 'wordsheet'
+        # Select the worksheet
         self.ws = self.wb['wordsheet']
+        self.ws2 = self.wb['wordsheet2']
+        # self.ws3;
+        # self.ws4;
         
     def delete_word(self,word_name):
         if(self.word_exists(word_name)):
@@ -26,9 +29,14 @@ class VocaDBManager:
         
     def edit_word(self, word_name, kor_meaning, word_class):
         if(self.word_exists(word_name)):
-            # 해당 영어 단어가 있는 행에서 뜻과 품사 부분을 수정하게 해라.
-    
-            pass
+            wb = self.wb
+            ws = self.ws
+            row_num = self.get_idx_of_word(word_name)
+            if kor_meaning != "":
+                ws[f'B{row_num}'] = kor_meaning
+            if word_class != "":
+                 ws[f'C{row_num}'] = word_class
+            wb.save(voca_file_path)
         else:
             return False
         
@@ -87,7 +95,7 @@ class VocaDBManager:
         return False
     
 
-    # array를 return할 예정
+    # DB의 모든 단어의 array를 반환한다.
     def get_all_word_records(self):
         ws = self.ws
         words = []
@@ -100,5 +108,11 @@ class VocaDBManager:
     def get_words_in_level(self, level=0):
         pass
     
-vocaManager = VocaDBManager(voca_file_path)
+
+
+voca_manager = VocaDBManager(voca_file_path)
+
+
+
+
 

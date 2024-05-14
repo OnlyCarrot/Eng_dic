@@ -67,44 +67,83 @@ class UserMenu:
         # 단어장 조회 및 검색 버튼
         button_image = PhotoImage(
             file=relative_to_assets("Button.png"))
-        temp = self.canvas.create_image(
-            908.0,
-            105.0,
-            image=button_image
+        self.button = Button(
+            self.canvas,
+            image=button_image,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
         )
+        self.button.place(
+            x = 700.0,
+            y = 70.0,
+        )
+
         # 수준별 단어 버튼
         button_image_1 = PhotoImage(
             file=relative_to_assets("Button-1.png"))
-        temp_1 = self.canvas.create_image(
-            908.0,
-            201.0,
-            image=button_image_1
+        self.button = Button(
+            self.canvas,
+            image=button_image_1,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
         )
+        self.button.place(
+            x = 700.0,
+            y = 170.0,
+        )
+        
         # 일일 테스트 버튼
         button_image_2 = PhotoImage(
             file=relative_to_assets("Button-2.png"))
-        temp_2 = self.canvas.create_image(
-            908.0,
-            297.0,
-            image=button_image_2
+        self.button = Button(
+            self.canvas,
+            image=button_image_2,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
+        )
+        self.button.place(
+            x = 700.0,
+            y = 270.0,
         )
 
         # logout 버튼
         button_image_3 = PhotoImage(
             file=relative_to_assets("Button-3.png"))
-        temp_3 = self.canvas.create_image(
-            806.0,
-            440.0,
-            image=button_image_3
+        self.button = Button(
+            self.canvas,
+            image=button_image_3,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
         )
+        self.button.place(
+            x = 710.0,
+            y = 400.0,
+        )
+        
         # quit program 버튼
         button_image_4 = PhotoImage(
             file=relative_to_assets("Button-4.png"))
-        temp_4 = self.canvas.create_image(
-            1026.0,
-            440.0,
-            image=button_image_4
+        self.button = Button(
+            self.canvas,
+            image=button_image_4,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
         )
+        self.button.place(
+            x = 920.0,
+            y = 400.0,
+        )
+        
 
         self.window.resizable(True, True)
         self.window.mainloop()
