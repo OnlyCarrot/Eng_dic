@@ -1,13 +1,11 @@
 from openpyxl import load_workbook
 import random
+from func.globalFunc import open_sheet
 
 
 def select_random_word():
-    # 엑셀 파일 열기
-    workbook = load_workbook("main/DB/WordList.xlsx")
-
-    # 시트 선택
-    sheet = workbook["wordsheet"]
+    
+    sheet = open_sheet.wordsheet("wordsheet")
 
     word = []
 
