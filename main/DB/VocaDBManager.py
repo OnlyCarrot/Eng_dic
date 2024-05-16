@@ -3,12 +3,13 @@ from openpyxl import load_workbook
 
 cwd = os.getcwd()
 # 단어 엑셀 파일이 있는 경로이다.
-voca_file_path = f"{cwd}\\main\\DB\\WordList.xlsx"
+voca_file_path = f"{cwd}/main/DB/WordList.xlsx"
+
 
 class VocaDBManager:
 
     # VocaFileManager는 파일의 경로를 매개변수로 가진다.
-    def __init__(self, voca_file_path = f"{cwd}\\main\\DB\\WordList.xlsx"):
+    def __init__(self, voca_file_path = f"{cwd}/main/DB/WordList.xlsx"):
         self.voca_file_path = voca_file_path
 
         # Load the Excel workbook        
@@ -107,8 +108,8 @@ class VocaDBManager:
         for ws in wordsheets:
             for row in ws.iter_rows(min_row=2, max_row=ws.max_row, values_only=True):
                 if word_name in row:
-                    break
-        return row
+                    return row
+        
         
     
 
@@ -144,7 +145,8 @@ voca_manager = VocaDBManager(voca_file_path)
 
 # voca_manager.add_word("zxcvzcxvzxcv","침입하다", "v",3)
 # words = voca_manager.get_word_records_by_sheetloc(3)
-print(voca_manager.get_word_record("precious"))
+print(voca_manager.get_all_word_records())
+
 # print(words)
 
 
