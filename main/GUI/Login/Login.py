@@ -8,7 +8,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
 from GUI.user.SignUp.SignUp import SignUp
 from GUI.user.UserMenu.UserMenu import UserMenu
-#from func.Login import login_validation
+from func.Login import login_validation
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame0"
@@ -193,7 +193,8 @@ class Login:
         entered_password = self.entry_2.get()
 
         
-        """user = login_validation(entered_username, entered_password)
+        
+        user = login_validation(entered_username, entered_password)
 
         # 입력된 값과 저장된 값 비교
         if user == False:
@@ -204,7 +205,7 @@ class Login:
         elif user:
             messagebox.showinfo("로그인 성공", "환영합니다!")
             self.open_main_page()
-            """
+        
     # signup로 가는 함수 입니다.
     def signup(self):
         self.window.withdraw()
