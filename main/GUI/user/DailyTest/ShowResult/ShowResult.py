@@ -5,7 +5,6 @@ import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
-#from GUI.user.UserMenu.UserMenu import UserMenu
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -83,7 +82,7 @@ class ShowResult:
             image=button_image,
             borderwidth=0,
             highlightthickness=0,
-            command=self.test,
+            command=self.Done,
             relief="flat"
         )
         self.button.place(
@@ -94,7 +93,8 @@ class ShowResult:
         self.window.resizable(False, False)
         self.window.mainloop()
 
-    """def Done(self):
-        self.window.withdraw
-        UserMenu(self.window)"""
+    def Done(self):
+        from GUI.user.UserMenu.UserMenu import UserMenu
+        self.window.withdraw()
+        UserMenu(self.window)
     
