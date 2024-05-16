@@ -6,7 +6,8 @@ import sys
 import tkinter.font
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
-from func.user.DailyTest import Daily
+from GUI.user.DailyTest.ShowResult.ShowResult import ShowResult
+#from func.user.DailyTest import Daily
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -16,8 +17,10 @@ def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
 class DailyTest:
-    def __init__(self):
-        self.window = Tk()
+    def __init__(self, parent):
+        self.parent = parent
+        self.window = Toplevel(parent)
+        #self.window = Tk()
         self.window.title("수준별 토익 영단어 프로그램")
         self.window.geometry("1200x500")
         self.window.configure(bg="#FFFFFF")
@@ -84,7 +87,7 @@ class DailyTest:
             image=button_image_1,
             borderwidth=0,
             highlightthickness=0,
-            # command=
+            command=self.Back,
             relief="flat"
         )
         self.button.place(
@@ -104,7 +107,7 @@ class DailyTest:
             image=button_image,
             borderwidth=0,
             highlightthickness=0,
-            # command=
+            command=self.Submit,
             relief="flat"
         )
         self.button.place(
@@ -405,17 +408,20 @@ class DailyTest:
         )
 
         #Test
-        index = Daily.daily_test(1, 10)
+        """index = Daily.daily_test(1, 10)
         word = Daily.show_word_meaning(self, index)
         user_input_word = []
         user_input_word.append("apply for")
         score = Daily.grade_score(user_input_word, word)
-        print(score)
+        print(score)"""
 
         self.window.resizable(False, False)
         self.window.mainloop()
 
+    def Submit(self):
+        self.window.withdraw()
+        ShowResult(self.window)
 
-
-if __name__ == "__main__":
-    DailyTest()
+    def Back(self):
+        self.window.destroy()
+        self.parent.deiconify()

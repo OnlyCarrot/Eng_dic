@@ -4,14 +4,11 @@ import tkinter.font
 from tkinter import messagebox
 import sys
 import os
-"""
-from User.mainpage import MainWindow
-from Admin.admin import AdminPage
-from signup import SignupPage
-"""
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
-from func.Login import login_validation
+from GUI.user.SignUp.SignUp import SignUp
+from GUI.user.UserMenu.UserMenu import UserMenu
+#from func.Login import login_validation
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame0"
@@ -159,7 +156,7 @@ class Login:
             image=button_image_1,
             borderwidth=0,
             highlightthickness=0,
-            command=self.check_credentials,
+            command=self.usermenu,
             relief="flat"
         )
         self.button_1.place(
@@ -177,7 +174,7 @@ class Login:
             image=button_image_2,
             borderwidth=0,
             highlightthickness=0,
-            # command=self.signup,
+            command=self.signup,
             relief="flat"
         )
         self.button_2.place(
@@ -196,7 +193,7 @@ class Login:
         entered_password = self.entry_2.get()
 
         
-        user = login_validation(entered_username, entered_password)
+        """user = login_validation(entered_username, entered_password)
 
         # 입력된 값과 저장된 값 비교
         if user.id.startswith("ad"):
@@ -206,20 +203,16 @@ class Login:
             messagebox.showinfo("로그인 성공", "환영합니다!")
             self.open_main_page()
         else:
-            messagebox.showerror("로그인 실패", "사용자 이름 또는 비밀번호가 올바르지 않습니다.")
-
-'''
-def open_main_page(self):
-        MainWindow(self.window)
-
-    def open_admin_page(self):
-        self.window.withdraw()
-        AdminPage(self.window)
-
+            messagebox.showerror("로그인 실패", "사용자 이름 또는 비밀번호가 올바르지 않습니다.")"""
+    # signup로 가는 함수 입니다.
     def signup(self):
         self.window.withdraw()
-        SignupPage(self.window)
-'''
+        SignUp(self.window)
+    
+    # usermenu로 가는 함수 입니다. 로그인 검증 기능 완성 시 삭제.
+    def usermenu(self):
+        self.window.withdraw()
+        UserMenu(self.window)
 
 if __name__ == "__main__":
     Login()

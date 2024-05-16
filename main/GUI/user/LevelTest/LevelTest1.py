@@ -6,7 +6,8 @@ import sys
 import tkinter.font
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
-from func.user.LevelTest import LevelTest
+from GUI.user.LevelTest.LevelTest2 import LevelTest2
+#from func.user.LevelTest import LevelTest
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -16,8 +17,10 @@ def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
 class LevelTest1:
-    def __init__(self):
-        self.window = Tk()
+    def __init__(self, parent):
+        self.parent = parent
+        self.window = Toplevel(parent)
+        #self.window = Tk()
         self.window.title("수준별 토익 영단어 프로그램")
         self.window.geometry("1200x500")
         self.window.configure(bg="#FFFFFF")
@@ -84,7 +87,7 @@ class LevelTest1:
             image=button_image_1,
             borderwidth=0,
             highlightthickness=0,
-            # command=
+            command=self.Back,
             relief="flat"
         )
         self.button.place(
@@ -100,7 +103,7 @@ class LevelTest1:
             image=button_image,
             borderwidth=0,
             highlightthickness=0,
-            # command=
+            command=self.Next,
             relief="flat"
         )
         self.button.place(
@@ -403,14 +406,17 @@ class LevelTest1:
         )
 
         #Test
-        word = LevelTest.select_word()
+        """word = LevelTest.select_word()
         LevelTest.show_word_meaning(self, word)
         LevelTest.grade_score(" ", word)
-
+        """
         self.window.resizable(False, False)
         self.window.mainloop()
 
-
-
-if __name__ == "__main__":
-    LevelTest1()
+    def Back(self):
+        self.window.destroy()
+        self.parent.deiconify()
+    
+    def Next(self):
+        self.window.withdraw
+        LevelTest2(self.window)

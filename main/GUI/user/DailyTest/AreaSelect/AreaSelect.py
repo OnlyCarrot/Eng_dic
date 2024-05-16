@@ -6,6 +6,7 @@ import sys
 import tkinter.font
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
+from GUI.user.DailyTest.DailyTest.DailyTest import DailyTest
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -15,8 +16,10 @@ def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
 class AreaSelect:
-    def __init__(self):
-        self.window = Tk()
+    def __init__(self, parent):
+        self.parent = parent
+        self.window = Toplevel(parent)
+        #self.window = Tk()
         self.window.title("수준별 토익 영단어 프로그램")
         self.window.geometry("1200x500")
         self.window.configure(bg="#FFFFFF")
@@ -121,7 +124,7 @@ class AreaSelect:
             image=button_image,
             borderwidth=0,
             highlightthickness=0,
-            # command=
+            command=self.Start,
             relief="flat"
         )
         self.button.place(
@@ -129,11 +132,9 @@ class AreaSelect:
             y = 408.0,
         )
         
-
         self.window.resizable(False, False)
         self.window.mainloop()
 
-
-
-if __name__ == "__main__":
-    AreaSelect()
+    def Start(self):
+        self.window.withdraw()
+        DailyTest(self.window)
