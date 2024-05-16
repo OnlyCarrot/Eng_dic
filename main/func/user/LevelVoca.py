@@ -23,4 +23,8 @@ class LevelVoca:
         
 
 #LevelVoca().show_word(1)
-print(LevelVoca().search_voca("apply for"))
+print(LevelVoca().search_voca("budget"))
+
+
+
+#(eng, kor, c, level)

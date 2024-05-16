@@ -196,14 +196,15 @@ class Login:
         """user = login_validation(entered_username, entered_password)
 
         # 입력된 값과 저장된 값 비교
-        if user.id.startswith("ad"):
+        if user == False:
+            messagebox.showerror("로그인 실패", "사용자 이름 또는 비밀번호가 올바르지 않습니다.")
+        elif user.id.startswith("ad"):
             messagebox.showinfo("로그인 성공", "관리자님, 환영합니다!")
             self.open_admin_page()
         elif user:
             messagebox.showinfo("로그인 성공", "환영합니다!")
             self.open_main_page()
-        else:
-            messagebox.showerror("로그인 실패", "사용자 이름 또는 비밀번호가 올바르지 않습니다.")"""
+            """
     # signup로 가는 함수 입니다.
     def signup(self):
         self.window.withdraw()

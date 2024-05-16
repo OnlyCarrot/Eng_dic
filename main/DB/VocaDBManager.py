@@ -1,14 +1,18 @@
-import os
 from openpyxl import load_workbook
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
+
+
 
 cwd = os.getcwd()
 # 단어 엑셀 파일이 있는 경로이다.
-voca_file_path = f"{cwd}\\main\\DB\\WordList.xlsx"
+voca_file_path = f"{cwd}/main/DB/WordList.xlsx"
 
 class VocaDBManager:
 
     # VocaFileManager는 파일의 경로를 매개변수로 가진다.
-    def __init__(self, voca_file_path = f"{cwd}\\main\\DB\\WordList.xlsx"):
+    def __init__(self, voca_file_path = f"{cwd}/main/DB/WordList.xlsx"):
         self.voca_file_path = voca_file_path
 
         # Load the Excel workbook        
@@ -22,6 +26,7 @@ class VocaDBManager:
         self.ws4 = self.wb['wordsheet4']
 
         self.wordsheets = [self.ws1, self.ws2, self.ws3, self.ws4]
+
         
     #단어가 존재하는지를 확인하는 함수
     def word_exists(self, word_name):
@@ -36,6 +41,11 @@ class VocaDBManager:
     
     # 엑셀에서 해당 단어의 열 번호를 반환한다.
     def get_row_loc_of_word(self, word_name):
+        """
+        get_row_loc_of_word는 단어의 열 번호를 반환합니다.
+        """
+
+
         if not (self.word_exists(word_name)):
             return False
         
@@ -49,28 +59,26 @@ class VocaDBManager:
         return False
         
 
-    def delete_word(self,word_name):
-        if(self.word_exists(word_name)):
-            # 해당 영어 단어가 있는 행을 지워라.
-            pass
-        else:
-            return False
-
-
-    # 아직 구현 안 됨   
-    # def edit_word(self, word_name, kor_meaning, word_class):
-    #     if(self.word_exists(word_name)):
-    #         wb = self.wb
-    #         ws = self.ws
-    #         row_loc = self.get_row_loc_of_word(word_name)
-    #         if kor_meaning != "":
-    #             ws[f'B{row_loc}'] = kor_meaning
-    #         if word_class != "":
-    #              ws[f'C{row_loc}'] = word_class
-    #         wb.save(voca_file_path)
-    #     else:
+    # def delete_word(self,word_name):
+    #     if(not self.word_exists(word_name)):
     #         return False
+    #     sheet_num = self.get_level_of_word(word_name)
+    #     ws = self.wordsheets[sheet_num-1]
+    #     row_idx = self.get_row_loc_of_word(word_name)
+    #     self.edit_word("","","")
+
+    #아직 구현 안 됨   
+    def edit_word(self, word_name, kor_meaning, word_class):
+        if(not self.word_exists(word_name)):
+            return False
         
+        sheet_num = self.get_level_of_word(word_name)
+        row_idx = self.get_row_loc_of_word(word_name)
+        ws = self.wordsheets[sheet_num - 1]
+        ws[f'B{row_idx}'] = kor_meaning
+        ws[f'C{row_idx}'] = word_class
+        self.wb.save(voca_file_path)
+        return    
     
     # 단어를 추가하는 메소드이다.
     # word_class는 품사라는 뜻이다. 
@@ -107,10 +115,22 @@ class VocaDBManager:
         for ws in wordsheets:
             for row in ws.iter_rows(min_row=2, max_row=ws.max_row, values_only=True):
                 if word_name in row:
-                    break
-        return row
-        
+                    return row
+        return False
     
+    def get_level_of_word(self, word_name):
+        if not self.word_exists(word_name):
+            return False
+        
+        wordsheets = self.wordsheets
+        counter = 1
+        for ws in wordsheets:
+            for row in ws.iter_rows(min_row=2, max_row=ws.max_row, values_only=True):
+                if word_name in row:
+                    return counter
+            counter += 1
+        return False
+        
 
     # DB의 모든 단어의 array를 반환한다.
     def get_all_word_records(self):
@@ -142,9 +162,8 @@ class VocaDBManager:
 voca_manager = VocaDBManager(voca_file_path)
 #voca_manager.add_word("asdfasdfsdaf","뜻","v",3)
 
-# voca_manager.add_word("zxcvzcxvzxcv","침입하다", "v",3)
+
 # words = voca_manager.get_word_records_by_sheetloc(3)
-print(voca_manager.get_word_record("precious"))
 # print(words)
 
 
