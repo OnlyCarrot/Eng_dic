@@ -58,14 +58,17 @@ class VocaDBManager:
                     return idx_counter
         return False
         
-
-    # def delete_word(self,word_name):
-    #     if(not self.word_exists(word_name)):
-    #         return False
-    #     sheet_num = self.get_level_of_word(word_name)
-    #     ws = self.wordsheets[sheet_num-1]
-    #     row_idx = self.get_row_loc_of_word(word_name)
-    #     self.edit_word("","","")
+    def delete_word(self,word_name):
+        if(not self.word_exists(word_name)):
+            return False
+        sheet_num = self.get_level_of_word(word_name)
+        ws = self.wordsheets[sheet_num-1]
+        row_idx = self.get_row_loc_of_word(word_name)
+        ws[f'A{row_idx}'] = ""
+        ws[f'B{row_idx}'] = ""
+        ws[f'C{row_idx}'] = ""
+        self.wb.save(voca_file_path)
+        return;
 
     #아직 구현 안 됨   
     def edit_word(self, word_name, kor_meaning, word_class):
@@ -157,10 +160,10 @@ class VocaDBManager:
     def get_words_in_level(self, level=0):
         pass
     
-
-
-voca_manager = VocaDBManager(voca_file_path)
-#voca_manager.add_word("asdfasdfsdaf","뜻","v",3)
+    def sort_words(self, sheet_num):
+        """
+        sort_words는 단어를 영어 로마자 순서에 맞게 오름차순으로 정렬합니다.
+        """
 
 
 # words = voca_manager.get_word_records_by_sheetloc(3)
