@@ -6,6 +6,7 @@ import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__))+'/../../..')
 from GUI.center_window import center_window
+from GUI.admin.AdminModify.AdminModify2 import AdminModify2
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -15,8 +16,10 @@ def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
 class AdminModify1:
-    def __init__(self):
-        self.window = Tk()
+    def __init__(self, parent):
+        self.parent = parent
+        self.window = Toplevel(parent)
+        #self.window = Tk()
         self.window.title("수준별 토익 영단어 프로그램")
         self.window.geometry("1200x500")
         self.window.configure(bg="#FFFFFF")
@@ -78,7 +81,7 @@ class AdminModify1:
             image=button_image,
             borderwidth=0,
             highlightthickness=0,
-            # command=
+            command=self.Back,
             relief="flat"
         )
         self.button.place(
@@ -105,7 +108,12 @@ class AdminModify1:
         self.window.resizable(False, False)
         self.window.mainloop()
 
+    # edit 버튼이 생길 시에 동작할 AdminModify2화면으로 이동하는 함수
+    def Next(self):
+        self.window.withdraw()
+        AdminModify2(self.window)
 
-
-if __name__ == "__main__":
-    AdminModify1()
+    def Back(self):
+        from GUI.admin.AdminMenu.AdminMenu import AdminMenu
+        self.window.withdraw()
+        AdminMenu(self.window)

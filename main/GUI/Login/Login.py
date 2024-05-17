@@ -8,6 +8,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
 from GUI.user.SignUp.SignUp import SignUp
 from GUI.user.UserMenu.UserMenu import UserMenu
+from GUI.admin.AdminMenu.AdminMenu import AdminMenu
 from func.Login import login_validation
 
 OUTPUT_PATH = Path(__file__).parent
@@ -18,8 +19,12 @@ def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
 class Login: 
-    def __init__(self):
-        self.window = Tk()
+    def __init__(self, parent=None):
+        if parent:
+            self.window = Toplevel(parent)
+        else:
+            self.window = Tk()
+
         self.window.title("수준별 토익 영단어 프로그램")
         self.window.geometry("1200x500")
         self.window.configure(bg="#FFFFFF")
@@ -215,6 +220,11 @@ class Login:
     def usermenu(self):
         self.window.withdraw()
         UserMenu(self.window)
+
+    # AdminMenu로 가는 함수 입니다. 로그인 검증 기능 완성 시 삭제.
+    def adminmenu(self):
+        self.window.withdraw()
+        AdminMenu(self.window)
 
 if __name__ == "__main__":
     Login()
