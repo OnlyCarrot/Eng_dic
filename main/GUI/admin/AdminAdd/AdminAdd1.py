@@ -6,6 +6,7 @@ import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__))+'/../../..')
 from GUI.center_window import center_window
+from GUI.admin.AdminAdd.AdminAdd2 import AdminAdd2
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -15,8 +16,10 @@ def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
 class AdminAdd1:
-    def __init__(self):
-        self.window = Tk()
+    def __init__(self, parent):
+        self.parent = parent
+        self.window = Toplevel(parent)
+        #self.window = Tk()
         self.window.title("수준별 토익 영단어 프로그램")
         self.window.geometry("1200x500")
         self.window.configure(bg="#FFFFFF")
@@ -69,7 +72,7 @@ class AdminAdd1:
             image=button_image,
             borderwidth=0,
             highlightthickness=0,
-            # command=
+            command=self.Next,
             relief="flat"
         )
         self.button.place(
@@ -97,7 +100,6 @@ class AdminAdd1:
         self.window.resizable(False, False)
         self.window.mainloop()
 
-
-
-if __name__ == "__main__":
-    AdminAdd1()
+    def Next(self):
+        self.window.withdraw()
+        AdminAdd2(self.window)

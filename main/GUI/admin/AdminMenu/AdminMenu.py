@@ -5,6 +5,10 @@ import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__))+'/../../..')
 from GUI.center_window import center_window
+from GUI.admin.AdminAdd.AdminAdd1 import AdminAdd1
+from GUI.admin.AdminDelete.AdminDelete import AdminDelete
+from GUI.admin.AdminModify.AdminModify1 import AdminModify1
+from GUI.admin.AdminUserInfo.AdminUserInfo1 import AdminUserInfo1
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -14,8 +18,10 @@ def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
 class AdminMenu:
-    def __init__(self):
-        self.window = Tk()
+    def __init__(self, parent):
+        self.parent = parent
+        self.window = Toplevel(parent)
+        #self.window = Tk()
         self.window.title("수준별 토익 영단어 프로그램")
         self.window.geometry("1200x500")
         self.window.configure(bg="#FFFFFF")
@@ -73,7 +79,7 @@ class AdminMenu:
             image=button_image,
             borderwidth=0,
             highlightthickness=0,
-            # command=
+            command=self.Add,
             relief="flat"
         )
         self.button.place(
@@ -89,7 +95,7 @@ class AdminMenu:
             image=button_image_1,
             borderwidth=0,
             highlightthickness=0,
-            # command=
+           command=self.Modify,
             relief="flat"
         )
         self.button.place(
@@ -105,7 +111,7 @@ class AdminMenu:
             image=button_image_2,
             borderwidth=0,
             highlightthickness=0,
-            # command=
+            command=self.Delete,
             relief="flat"
         )
         self.button.place(
@@ -118,10 +124,10 @@ class AdminMenu:
             file=relative_to_assets("Button-3.png"))
         self.button = Button(
             self.canvas,
-            image=button_image_2,
+            image=button_image_3,
             borderwidth=0,
             highlightthickness=0,
-            # command=
+            command=self.UserInfo,
             relief="flat"
         )
         self.button.place(
@@ -137,7 +143,7 @@ class AdminMenu:
             image=button_image_4,
             borderwidth=0,
             highlightthickness=0,
-            # command=
+            command=self.Back,
             relief="flat"
         )
         self.button.place(
@@ -153,7 +159,7 @@ class AdminMenu:
             image=button_image_5,
             borderwidth=0,
             highlightthickness=0,
-            # command=
+            command=self.Quit,
             relief="flat"
         )
         self.button.place(
@@ -163,8 +169,28 @@ class AdminMenu:
 
         self.window.resizable(False, False)
         self.window.mainloop()
+    
+    def Add(self):
+        self.window.withdraw()
+        AdminAdd1(self.window)
 
+    def Delete(self):
+        self.window.withdraw()
+        AdminDelete(self.window)
 
+    def Modify(self):
+        self.window.withdraw()
+        AdminModify1(self.window)
 
-if __name__ == "__main__":
-    AdminMenu()
+    def UserInfo(self):
+        self.window.withdraw()
+        AdminUserInfo1(self.window)
+
+    def Quit(self):
+        self.window.destroy()
+        sys.exit()
+
+    def Back(self):
+        from GUI.Login.Login import Login
+        self.window.withdraw()
+        Login(self.window)

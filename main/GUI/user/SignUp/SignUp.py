@@ -3,9 +3,11 @@ from tkinter import *
 from tkinter import messagebox
 import os
 import sys
+import tkinter.font
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
-from func.user.SignUp import sign_up
+from GUI.user.LevelTest.LevelTest1 import LevelTest1
+#from func.user.SignUp import sign_up
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -15,8 +17,10 @@ def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
 class SignUp:
-    def __init__(self):
-        self.window = Tk()
+    def __init__(self, parent):
+        self.parent = parent
+        self.window = Toplevel(parent)
+        #self.window = Tk()
         self.window.title("수준별 토익 영단어 프로그램")
         self.window.geometry("1200x500")
         self.window.configure(bg="#FFFFFF")
@@ -33,6 +37,8 @@ class SignUp:
             relief="ridge"
         )
         self.canvas.place(x=0, y=0)
+
+        font = tkinter.font.Font(family="맑은 고딕", size=13, slant="roman")
 
         image_image = PhotoImage(
             file=relative_to_assets("image.png"))
@@ -81,7 +87,20 @@ class SignUp:
             145,
             image=entry_image_1
         )
-
+        self.entry_1 = Entry(
+            self.canvas,
+            bd=0,
+            bg="#D9D9D9",
+            fg="#000716",
+            highlightthickness=0,
+            font=font
+        )
+        self.entry_1.place(
+            x=727.0,
+            y=142.0,
+            width=363.0,
+            height=26.0
+        )
         entry_image_2 = PhotoImage(
             file=relative_to_assets("Group-3.png"))
         entry_2 = self.canvas.create_image(
@@ -89,7 +108,20 @@ class SignUp:
             216,
             image=entry_image_2
         )
-
+        self.entry_2 = Entry(
+            self.canvas,
+            bd=0,
+            bg="#D9D9D9",
+            fg="#000716",
+            highlightthickness=0,
+            font=font
+        )
+        self.entry_2.place(
+            x=727.0,
+            y=213.0,
+            width=363.0,
+            height=26.0
+        )
         entry_image_3 = PhotoImage(
             file=relative_to_assets("Group-4.png"))
         entry_3 = self.canvas.create_image(
@@ -97,7 +129,20 @@ class SignUp:
             287,
             image=entry_image_3
         )
-
+        self.entry_3 = Entry(
+            self.canvas,
+            bd=0,
+            bg="#D9D9D9",
+            fg="#000716",
+            highlightthickness=0,
+            font=font
+        )
+        self.entry_3.place(
+            x=727.0,
+            y=283.0,
+            width=363.0,
+            height=26.0
+        )
         entry_image_4 = PhotoImage(
             file=relative_to_assets("Group-5.png"))
         entry_4 = self.canvas.create_image(
@@ -105,30 +150,65 @@ class SignUp:
             358,
             image=entry_image_4
         )
+        self.entry_4 = Entry(
+            self.canvas,
+            bd=0,
+            bg="#D9D9D9",
+            fg="#000716",
+            highlightthickness=0,
+            font=font
+        )
+        self.entry_4.place(
+            x=727.0,
+            y=353.0,
+            width=363.0,
+            height=26.0
+        )
         # login 버튼
         button_image = PhotoImage(
             file=relative_to_assets("Button.png"))
-        temp = self.canvas.create_image(
-            810.0,
-            434.0,
-            image=button_image
+        self.button = Button(
+            self.canvas,
+            image=button_image,
+            borderwidth=0,
+            highlightthickness=0,
+            command=self.Back,
+            relief="flat"
+        )
+        self.button.place(
+            x=710.0,
+            y=400.0,
+            width=196.0,
+            height=77.0
         )
         # next 버튼
         button_image_1 = PhotoImage(
             file=relative_to_assets("Button-1.png"))
-        temp_1 = self.canvas.create_image(
-            1025.0,
-            434.0,
-            image=button_image_1
+        self.button_1 = Button(
+            self.canvas,
+            image=button_image_1,
+            borderwidth=0,
+            highlightthickness=0,
+            command=self.Next,
+            relief="flat"
+        )
+        self.button_1.place(
+            x=920.0,
+            y=400.0,
+            width=196.0,
+            height=77.0
         )
 
         #Test
-        sign_up("S", "ss", "sss", "ssss", 4)
+        #sign_up("S", "ss", "sss", "ssss", 4)
 
         self.window.resizable(False, False)
         self.window.mainloop()
 
+    def Back(self):
+        self.window.destroy()
+        self.parent.deiconify()
 
-
-if __name__ == "__main__":
-    SignUp()
+    def Next(self):
+        self.window.withdraw()
+        LevelTest1(self.window)

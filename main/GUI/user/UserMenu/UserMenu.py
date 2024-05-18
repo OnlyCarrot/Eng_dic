@@ -5,6 +5,9 @@ import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
+from GUI.user.VocaSearch.VocaSearch import VocaSearch
+from GUI.user.LevelVoca.LevelVoca import LevelVoca
+from GUI.user.DailyTest.AreaSelect.AreaSelect import AreaSelect
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -14,8 +17,10 @@ def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
 class UserMenu:
-    def __init__(self):
-        self.window = Tk()
+    def __init__(self, parent):
+        self.parent = parent
+        self.window = Toplevel(parent)
+        #self.window = Tk()
         self.window.title("수준별 토익 영단어 프로그램")
         self.window.geometry("1200x500")
         self.window.configure(bg="#FFFFFF")
@@ -72,7 +77,7 @@ class UserMenu:
             image=button_image,
             borderwidth=0,
             highlightthickness=0,
-            # command=
+            command=self.VocaSearch,
             relief="flat"
         )
         self.button.place(
@@ -88,7 +93,7 @@ class UserMenu:
             image=button_image_1,
             borderwidth=0,
             highlightthickness=0,
-            # command=
+            command=self.LevelVoca,
             relief="flat"
         )
         self.button.place(
@@ -104,7 +109,7 @@ class UserMenu:
             image=button_image_2,
             borderwidth=0,
             highlightthickness=0,
-            # command=
+            command=self.DailyTest,
             relief="flat"
         )
         self.button.place(
@@ -144,11 +149,19 @@ class UserMenu:
             y = 400.0,
         )
         
-
         self.window.resizable(False, False)
         self.window.mainloop()
+    """
+    단순 화면 전환만 적용했습니다. 부가 기능은 추후에 더할 예정.
+    """
+    def VocaSearch(self):
+        self.window.withdraw()
+        VocaSearch(self.window)
 
+    def LevelVoca(self):
+        self.window.withdraw()
+        LevelVoca(self.window)
 
-
-if __name__ == "__main__":
-    UserMenu()
+    def DailyTest(self):
+        self.window.withdraw()
+        AreaSelect(self.window)

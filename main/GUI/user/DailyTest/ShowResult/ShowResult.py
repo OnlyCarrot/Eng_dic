@@ -14,8 +14,10 @@ def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
 class ShowResult:
-    def __init__(self):
-        self.window = Tk()
+    def __init__(self, parent):
+        self.parent = parent
+        self.window = Toplevel(parent)
+        #self.window = Tk()
         self.window.title("수준별 토익 영단어 프로그램")
         self.window.geometry("1200x500")
         self.window.configure(bg="#FFFFFF")
@@ -80,7 +82,7 @@ class ShowResult:
             image=button_image,
             borderwidth=0,
             highlightthickness=0,
-            # command=
+            command=self.Done,
             relief="flat"
         )
         self.button.place(
@@ -91,7 +93,8 @@ class ShowResult:
         self.window.resizable(False, False)
         self.window.mainloop()
 
-
-
-if __name__ == "__main__":
-    ShowResult()
+    def Done(self):
+        from GUI.user.UserMenu.UserMenu import UserMenu
+        self.window.withdraw()
+        UserMenu(self.window)
+    
