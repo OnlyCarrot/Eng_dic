@@ -2,10 +2,26 @@ from openpyxl import load_workbook
 import random
 import os
 import sys
+from datetime import date
+
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from main.func.Sheet import Sheet
 
 class Daily:
+    #마지막 테스트 수행일을 담음
+    last_run_date = None
+
+    #지금 날짜랑 비교해서 수행여부 확인
+    def is_runned():
+        today = date.today()
+        print(Daily.last_run_date)
+        print(today)
+        if Daily.last_run_date == today:
+            print("오늘은 이미 daily_test를 실행했습니다.")
+            return None
+        
+        Daily.last_run_date = today
+        print(Daily.last_run_date)
 
     def daily_test(start_index, end_index):
         # start_col, end_col정보를 저장해서 넘김
@@ -46,3 +62,15 @@ class Daily:
                 score += 1
 
         return score
+    
+    def change_level(user_level, score):
+        if(score == 10):
+            user_level += 10
+        elif(score >= 7):
+            user_level += 5 
+        return user_level
+
+    
+#Test
+#Daily.is_runned()
+print(Daily.change_level(600, 10))

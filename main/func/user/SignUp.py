@@ -3,10 +3,14 @@ import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from main.func.Sheet import Sheet
+from main.func.user import LevelTest
 
 
 
 def sign_up(id, username, password, role, level):
+    # 레벨 테스트를 통해 얻은 점수를 가져옴
+    score = LevelTest.grade_score()
+
     loaded_xlsx = Sheet("usersheet")
     sheet = loaded_xlsx.worksheet
     workbook = loaded_xlsx.workbook
