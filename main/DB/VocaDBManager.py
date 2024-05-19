@@ -45,7 +45,6 @@ class VocaDBManager:
         get_row_loc_of_word는 단어의 열 번호를 반환합니다.
         """
 
-
         if not (self.word_exists(word_name)):
             return False
         
@@ -161,6 +160,7 @@ class VocaDBManager:
         pass
     
     def sort_words(self, sheet_num):
+        pass
         """
         sort_words는 단어를 영어 로마자 순서에 맞게 오름차순으로 정렬합니다.
         """

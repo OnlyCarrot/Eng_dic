@@ -74,3 +74,4 @@ class Daily:
 #Test
 #Daily.is_runned()
 print(Daily.change_level(600, 10))
+print(date.today())
