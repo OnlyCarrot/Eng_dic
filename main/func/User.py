@@ -1,10 +1,11 @@
 class User:
-    def __init__(self, id, password, name, role, level):
+    def __init__(self, id, password, name, role, level, last_test_date):
         self.id = id
         self.password = password
         self.name = name
         self.role = role
         self.level = level
+        self.last_test_date = last_test_date
 
     def id(self):
         return self.id
@@ -20,4 +21,7 @@ class User:
     
     def level(self):
         return self.level
+    
+    def last_test_date(self):
+        return self.last_test_date
         

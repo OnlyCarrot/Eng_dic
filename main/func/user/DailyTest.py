@@ -8,11 +8,10 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from main.func.Sheet import Sheet
 
 class Daily:
-    #마지막 테스트 수행일을 담음
-    last_run_date = None
 
     #지금 날짜랑 비교해서 수행여부 확인
-    def is_runned():
+    def is_runned(user):
+        last_run_date = None
         today = date.today()
         print(Daily.last_run_date)
         print(today)
@@ -20,6 +19,7 @@ class Daily:
             print("오늘은 이미 daily_test를 실행했습니다.")
             return None
         
+        #sheet 값 수정
         Daily.last_run_date = today
         print(Daily.last_run_date)
 

@@ -16,8 +16,9 @@ def login_validation(id, password):
         name = row[2]
         role = row[3]
         level = row[4]
+        last_test_date = row[5]
         if id == row[0] and password == row[1]:
-            user = User(id, password, name, role, level)
+            user = User(id, password, name, role, level, last_test_date)
             return user
 
     return False
