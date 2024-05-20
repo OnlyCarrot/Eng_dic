@@ -8,20 +8,20 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from main.func.Sheet import Sheet
 
 class Daily:
-
+    last_run_date =  None
     #지금 날짜랑 비교해서 수행여부 확인
     def is_runned(user):
-        last_run_date = None
+        Daily.last_run_date = user
         today = date.today()
-        print(Daily.last_run_date)
-        print(today)
+        print(Daily.last_run_date, today)
         if Daily.last_run_date == today:
             print("오늘은 이미 daily_test를 실행했습니다.")
             return None
         
+    def update_last_runned_date():
         #sheet 값 수정
-        Daily.last_run_date = today
-        print(Daily.last_run_date)
+        Daily.last_run_date = date.today()
+        print(Daily.last_run_date, "로 업데이트 되었습니다")
 
     def daily_test(start_index, end_index):
         # start_col, end_col정보를 저장해서 넘김
@@ -72,6 +72,5 @@ class Daily:
 
     
 #Test
-#Daily.is_runned()
-print(Daily.change_level(600, 10))
-print(date.today())
+Daily.is_runned(date(2024, 5, 20))
+Daily.update_last_runned_date()

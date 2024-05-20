@@ -1,2 +1,1 @@
-
-    
+Daily.is_runned()
