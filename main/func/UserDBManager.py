@@ -61,9 +61,5 @@ class UserDBManager:
             return user_level
         return False
 
-    # 전체 유저의 점수대별 분포를 보여준다.
-    def get_dist():
-        pass
-
 
 user_manager = UserDBManager(user_file_path)

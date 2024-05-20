@@ -4,6 +4,15 @@ import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 
 
+# 테스트
+"""
+# some_file.py
+import sys
+# caution: path[0] is reserved for script path (or '' in REPL)
+sys.path.insert(1, '/path/to/application/app/folder')
+
+import file
+"""
 
 cwd = os.getcwd()
 # 단어 엑셀 파일이 있는 경로이다.
