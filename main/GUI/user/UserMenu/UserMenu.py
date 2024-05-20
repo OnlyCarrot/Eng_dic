@@ -125,7 +125,7 @@ class UserMenu:
             image=button_image_3,
             borderwidth=0,
             highlightthickness=0,
-            # command=
+            command=self.Back,
             relief="flat"
         )
         self.button.place(
@@ -141,7 +141,7 @@ class UserMenu:
             image=button_image_4,
             borderwidth=0,
             highlightthickness=0,
-            # command=
+            command=self.Quit,
             relief="flat"
         )
         self.button.place(
@@ -165,3 +165,12 @@ class UserMenu:
     def DailyTest(self):
         self.window.withdraw()
         AreaSelect(self.window)
+
+    def Quit(self):
+        self.window.destroy()
+        sys.exit()
+
+    def Back(self):
+        from GUI.Login.Login import Login
+        self.window.withdraw()
+        Login(self.window)
