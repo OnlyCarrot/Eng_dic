@@ -126,7 +126,7 @@ class AdminAdd2:
             height=62.0
         )
 
-        self.entry_2 = Entry(
+        self.entry_3 = Entry(
             self.canvas,
             bd=0,
             bg="#D9D9D9",
@@ -134,7 +134,7 @@ class AdminAdd2:
             highlightthickness=0,
             font=font
         )
-        self.entry_2.place(
+        self.entry_3.place(
             x=578.0,
             y=280.0,
             width=270.0,
