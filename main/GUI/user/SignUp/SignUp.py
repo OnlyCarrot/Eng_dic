@@ -160,7 +160,7 @@ class SignUp:
         )
         self.entry_4.place(
             x=727.0,
-            y=353.0,
+            y=354.0,
             width=363.0,
             height=26.0
         )
