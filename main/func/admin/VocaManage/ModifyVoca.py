@@ -1,11 +1,7 @@
 import os
-cwd = os.getcwd()
-voca_file_path = f"{cwd}/main/DB/VocaList.xlsx"
-sheet_loc = f"{cwd}/main/func/Sheet.py"
-
-
-
-
+import sys
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
+from func.Sheet import Sheet
 
 def edit_word(self, word_name, kor_meaning, word_class):
     if(not self.word_exists(word_name)):

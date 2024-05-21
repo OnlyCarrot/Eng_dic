@@ -88,7 +88,7 @@ class VocaDBManager:
         ws = self.wordsheets[sheet_num - 1]
         ws[f'B{row_idx}'] = kor_meaning
         ws[f'C{row_idx}'] = word_class
-        self.wb.save(voca_file_path)
+        self.wb.save("WordList.xlsx")
         return    
     
     # 단어를 추가하는 메소드이다.
@@ -174,9 +174,9 @@ class VocaDBManager:
         sort_words는 단어를 영어 로마자 순서에 맞게 오름차순으로 정렬합니다.
         """
 
-
-# words = voca_manager.get_word_records_by_sheetloc(3)
-# print(words)
+voca_manager = VocaDBManager()
+words = voca_manager.edit_word("benefit","베네핏","v")
+print(voca_manager.get_word_record("benefit"))
 
 
 
