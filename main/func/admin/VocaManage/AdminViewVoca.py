@@ -8,7 +8,7 @@ def get_all_word_records():
     DB속 모든 단어 레코드를 반환합니다.
     첫 번째 레벨부터 네 번째 레벨까지 모두 반환합니다.
     """
-    sheet = Sheet()
+    sheet = Sheet("wordsheet1")
     wordsheets = sheet.wordsheets
     words = []
     for ws in wordsheets:
@@ -22,7 +22,7 @@ def get_words_in_level(word_level):
     DB속 해당 레벨에 맞는 단어 레코드를 반환합니다.
     첫 번째 매개변수에는 1,2,3,4 중 하나를 입력합니다.
     """
-    sheet = Sheet()
+    sheet = Sheet("wordsheet1")
     wordsheets = sheet.wordsheets
     if (not word_level in (1,2,3,4)):
         print("word_level 값이 잘못되었습니다.")

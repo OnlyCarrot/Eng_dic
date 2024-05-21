@@ -66,7 +66,7 @@ def add_word(word_name, kor_meaning, word_class, word_level):
         word_level: 단어의 레벨(1,2,3,4 중 하나)
 
     """
-    sheet = Sheet()
+    sheet = Sheet("0")
     wordsheets = sheet.wordsheets
 
     # Check if the word is already in the Excel file

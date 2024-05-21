@@ -3,8 +3,6 @@ import os
 cwd = os.getcwd()
 
 # 단어 엑셀 파일이 있는 경로이다.
-voca_file_path = f"{cwd}/main/DB/WordList.xlsx"
-
 class Sheet:
     def __init__(self, sheet):
         if(sheet == "usersheet"):
@@ -27,6 +25,7 @@ class Sheet:
         return self.worksheet
     
     def save(self):
+        voca_file_path = f"{cwd}/main/DB/WordList.xlsx"
         self.workbook.save(voca_file_path)
     
 

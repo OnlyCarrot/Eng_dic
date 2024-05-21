@@ -8,7 +8,7 @@ def delete_word(word_name):
     """
     해당 단어를 DB에서 삭제합니다.
     """
-    sheet = Sheet()
+    sheet = Sheet("wordsheet1")
     wordsheets = sheet.wordsheets
 
     if(not word_exists(word_name)):
