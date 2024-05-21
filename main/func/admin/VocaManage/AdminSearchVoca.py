@@ -9,6 +9,7 @@ def word_exists(word_name):
     """
     DB에 해당 단어가 존재하면 True를, 존재하지 않으면 False를 반환합니다.
     """
+    if(word_name == ''): return False
     sheet = Sheet("wordsheet1")
     wordsheets = sheet.wordsheets
     for ws in wordsheets:
@@ -32,8 +33,6 @@ def get_word_record(word_name):
             if word_name in row:
                 return row
     return False
-
-
 
 def get_row_loc_of_word(word_name):
     """

@@ -8,18 +8,17 @@ class UserInfo:
     def __init__(self):
         self.sheet = Sheet("usersheet").worksheet
         
-    
     def show_selected_user(self, user_id):
         for row in self.sheet.iter_rows(values_only=True):
-            id, password, name, role, level = row
+            id, password, name, role, level, last_date = row
             if(user_id == id):
-                print(id, password, name, role, level)
+                print(id, password, name, role, level, last_date)
 
     def show_all_user(self):
         for row in self.sheet.iter_rows(values_only=True):
-            id, password, name, role, level = row
+            id, password, name, role, level, last_date = row
             if(not id.startswith("ad")):
-                print(id, password, name, role, level)
+                print(id, password, name, role, level, last_date)
 
     def show_total_user_count(self):
         total_user_count = 0 
@@ -47,4 +46,4 @@ class UserInfo:
 
 UserInfo().show_distribution_user()
 UserInfo().show_total_user_count()
-            
+UserInfo().show_all_user()
