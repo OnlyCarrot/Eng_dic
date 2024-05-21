@@ -34,6 +34,7 @@ def get_word_record(word_name):
     return False
 
 
+
 def get_row_loc_of_word(word_name):
     """
     단어의 열 번호(엑셀의 열 번호)를 정수값으로 반환합니다.
@@ -66,7 +67,3 @@ def get_level_of_word(word_name):
                 return counter
         counter += 1
     return False
-
-
-
-print(get_word_record("apply for"))

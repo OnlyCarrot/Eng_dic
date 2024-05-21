@@ -3,7 +3,7 @@ import openpyxl
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from func.Sheet import Sheet
-from .AdminSearchVoca import word_exists, get_row_loc_of_word, get_level_of_word
+from AdminSearchVoca import word_exists, get_row_loc_of_word, get_level_of_word, get_word_record
 
 # 엑셀 파일을 로드합니다.
 file_path = r"C:\Eng_dic\interface\OnlyCarrot\WordList.xlsx"
