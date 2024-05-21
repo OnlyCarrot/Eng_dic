@@ -14,24 +14,7 @@ def word_exists(word_name):
                 return True
     return False
 
-#get_low
 
-def get_row_loc_of_word(self, word_name):
-        """
-        get_row_loc_of_word는 단어의 열 번호를 반환합니다.
-        """
-
-        sheet = Sheet()
-        wordsheets = sheet.wordsheets
-        if not (word_exists(word_name)):
-            return False
-        for ws in wordsheets:
-            idx_counter = 1
-            for row in ws.iter_rows(min_row=2, max_col=1, max_row=ws.max_row, values_only=True):
-                idx_counter += 1
-                if word_name in row:
-                    return idx_counter
-        return False
 
 
 
