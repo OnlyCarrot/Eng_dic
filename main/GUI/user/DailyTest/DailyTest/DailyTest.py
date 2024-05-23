@@ -7,7 +7,7 @@ import tkinter.font
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
 from GUI.user.DailyTest.ShowResult.ShowResult import ShowResult
-#from func.user.DailyTest import Daily
+from func.user.DailyTest import Daily
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"

@@ -7,7 +7,7 @@ import tkinter.font
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
 from GUI.user.DailyTest.DailyTest.DailyTest import DailyTest
-from func.user.DailyTest import DailyTest
+from func.user.DailyTest import Daily
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -125,7 +125,7 @@ class AreaSelect:
             image=button_image,
             borderwidth=0,
             highlightthickness=0,
-            command=self.Start,
+            command=self.get_area_select,
             relief="flat"
         )
         self.button.place(
@@ -139,8 +139,9 @@ class AreaSelect:
     def get_area_select(self):
         entered_start_num = self.entry.get()
         entered_end_num = self.entry_1.get()
-        DailyTest.daily_test(entered_start_num, entered_end_num)
-        print(1)
+        return Daily.daily_test(entered_start_num, entered_end_num)
+        
+
     def Start(self):
         self.window.withdraw()
         DailyTest(self.window)
