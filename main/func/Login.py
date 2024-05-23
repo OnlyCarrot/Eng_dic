@@ -5,11 +5,8 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from func.Sheet import Sheet
 from func.User import User
 
-
-
 def login_validation(id, password):
     sheet = Sheet("usersheet").worksheet
-
 
     # 시트를 순회하며 사용자의 로그인 정보와 맞는 행의 모든 정보를 return
     for row in sheet.iter_rows(values_only=True):
@@ -20,5 +17,4 @@ def login_validation(id, password):
         if id == row[0] and password == row[1]:
             user = User(id, password, name, role, level, last_test_date)
             return user
-
     return False

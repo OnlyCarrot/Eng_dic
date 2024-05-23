@@ -2,7 +2,7 @@ import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from func.Sheet import Sheet
-from AdminSearchVoca import word_exists, get_row_loc_of_word, get_level_of_word, get_word_record
+from AdminSearchVoca import word_exists, get_row_loc_of_word, get_level_of_word, is_str_vaild, process_str
 from AdminViewVoca import get_words_in_level
 
 def delete_word(word_name):
@@ -12,7 +12,9 @@ def delete_word(word_name):
     sheet = Sheet("wordsheet1")
     wordsheets = sheet.wordsheets
 
-    if(not word_exists(word_name)):
+    if(not is_str_vaild(word_name)): return False
+    word_name = process_str(word_name)
+    if not word_exists(word_name):
         return False
     
     word_level = get_level_of_word(word_name)

@@ -63,3 +63,4 @@ class UserDBManager:
 
 
 user_manager = UserDBManager(user_file_path)
+print(user_manager.user_exists("ad1"))
