@@ -8,6 +8,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
 from GUI.user.LevelTest.LevelTest1 import LevelTest1
 from func.user.SignUp import sign_up
+from func.UserDBManager import UserDBManager
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -210,12 +211,20 @@ class SignUp:
         EnteredUsername = self.entry_2.get()
         EnteredPw1 = self.entry_3.get()
         EnteredPw2 = self.entry_4.get()
-
+        ub = UserDBManager()
+        if ub.user_exists(EnteredId):   
+            messagebox.showerror("ID 중복", "중복되는 ID입니다!")
+        else:
+            templist = []
+            templist.append(EnteredId)
+            templist.append(EnteredUsername)
+            templist.append(EnteredPw1)
+            templist.append(EnteredPw2)
+            self.window.withdraw()
+            LevelTest1(self.window)
 
     def Back(self):
         self.window.destroy()
         self.parent.deiconify()
 
-    def Next(self):
-        self.window.withdraw()
-        LevelTest1(self.window)
+    

@@ -71,6 +71,21 @@ class AdminDelete:
             height=60.0,
         )
 
+        self.entry_2 = Entry(
+            self.canvas,
+            bd=0,
+            bg="#D9D9D9",
+            fg="#000716",
+            highlightthickness=0,
+            font=font,
+        )
+        self.entry_2.place(
+            x=110.0,
+            y=210.0,
+            width=80.0,
+            height=60.0,
+        )
+
         # search 버튼
         button_image = PhotoImage(
             file=relative_to_assets("Button.png"))
@@ -87,6 +102,22 @@ class AdminDelete:
             y = 35.0,
         )
 
+        # delete 버튼
+        button_image_2 = PhotoImage(
+            file=relative_to_assets("Button-2.png"))
+        self.button = Button(
+            self.canvas,
+            image=button_image_2,
+            borderwidth=0,
+            highlightthickness=0,
+            # command=
+            relief="flat"
+        )
+        self.button.place(
+            x = 45.0,
+            y = 320.0,
+        )
+    
          # back 버튼
         button_image_1 = PhotoImage(
             file=relative_to_assets("Button-1.png"))
