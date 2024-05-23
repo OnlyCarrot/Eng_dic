@@ -9,6 +9,8 @@ from main.func.Sheet import Sheet
 
 class Daily:
     last_run_date =  None
+    index = []
+
     #지금 날짜랑 비교해서 수행여부 확인
     def is_runned(user):
         Daily.last_run_date = user
@@ -25,23 +27,25 @@ class Daily:
 
     def daily_test(start_index, end_index):
         # start_col, end_col정보를 저장해서 넘김
-        return [start_index, end_index]
+        Daily.index.append(int(start_index))
+        Daily.index.append(int(end_index))
 
     #area에 맞는 단어 뽑아오기
-    def select_word(index):
+    def select_word():
         sheet = Sheet("wordsheet1").worksheet
 
         word = []
-        for row in sheet.iter_rows(index[0], index[1], values_only=True):
+        for row in sheet.iter_rows(Daily.index[0], Daily.index[1], values_only=True):
             word.append([row[0], row[1]])
 
         # shuffle한 [단어, 뜻]값 return 
         random.shuffle(word) 
         return word 
+    
 
     #뽑아온 단어 화면에 쏴주기
-    def show_word_meaning(self, index):
-        word = Daily.select_word(index)
+    def show_word_meaning(self):
+        word = Daily.select_word()
 
         # 단어 뜻을 보여줌 x좌표가 610 에 1~5번 단어
         for i in range(0, 5):
@@ -72,5 +76,5 @@ class Daily:
 
     
 #Test
-Daily.is_runned(date(2024, 5, 20))
-Daily.update_last_runned_date()
+#Daily.is_runned(date(2024, 5, 20))
+#Daily.update_last_runned_date()
