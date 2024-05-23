@@ -18,9 +18,9 @@ class LevelVoca:
         elif(level < 700):
             sheet = self.sheet2    
         elif(level < 800):
-            sheet = self.sheet2    
+            sheet = self.sheet3    
         elif(level < 900):
-            sheet = self.sheet2    
+            sheet = self.sheet4    
 
         # 리스트박스 초기화
         listbox.delete(0, END)
