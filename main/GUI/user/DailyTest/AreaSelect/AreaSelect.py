@@ -137,11 +137,9 @@ class AreaSelect:
         self.window.mainloop()
 
     def get_area_select(self):
+        self.window.withdraw()
         entered_start_num = self.entry.get()
         entered_end_num = self.entry_1.get()
-        return Daily.daily_test(entered_start_num, entered_end_num)
-        
-
-    def Start(self):
-        self.window.withdraw()
+        Daily.daily_test(entered_start_num, entered_end_num)
         DailyTest(self.window)
+        

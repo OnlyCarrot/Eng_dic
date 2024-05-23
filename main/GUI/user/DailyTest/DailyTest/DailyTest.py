@@ -241,10 +241,12 @@ class DailyTest:
                 height=35.0
             )
 
+        
 
         #Test
-        """index = Daily.daily_test(1, 10)
-        word = Daily.show_word_meaning(self, index)
+        index = Daily.show_word_meaning(self)
+        
+        """word = Daily.show_word_meaning(self, index)
         user_input_word = []
         user_input_word.append("apply for")
         score = Daily.grade_score(user_input_word, word)
