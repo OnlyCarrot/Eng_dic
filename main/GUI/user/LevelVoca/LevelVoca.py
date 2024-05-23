@@ -1,10 +1,12 @@
 from pathlib import Path
 from tkinter import *
 from tkinter import messagebox
+from tkinter import ttk
 import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
+from func.user.LevelVoca import LevelVoca as lv
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -114,6 +116,24 @@ class LevelVoca:
             x = 700.0,
             y = 400.0,
         )
+
+        # 스크롤바 프레임 생성
+        scroll_frame = Frame(self.canvas)
+        scroll_frame.place(x=409, y=116, width=744, height=250)
+
+        # 스크롤바 생성
+        scrollbar = ttk.Scrollbar(scroll_frame)
+        scrollbar.pack(side=RIGHT, fill=Y)
+
+        # 리스트박스 생성
+        self.listbox = Listbox(scroll_frame, yscrollcommand=scrollbar.set)
+        self.listbox.pack(side=LEFT, fill=BOTH, expand=True)
+
+        # 스크롤바와 리스트박스 연결
+        scrollbar.config(command=self.listbox.yview)
+
+        levelVoca = lv()
+        levelVoca.show_word(self.listbox, 650)  # 예시로 650 레벨의 단어장 표시
 
         self.window.resizable(False, False)
         self.window.mainloop()
