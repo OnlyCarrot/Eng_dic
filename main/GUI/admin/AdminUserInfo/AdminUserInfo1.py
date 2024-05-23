@@ -7,6 +7,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__))+'/../../..')
 from GUI.center_window import center_window
 from GUI.admin.AdminUserInfo.AdminUserInfo2 import AdminUserInfo2
+from func.UserDBManager import UserDBManager
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -36,6 +37,9 @@ class AdminUserInfo1:
             relief="ridge"
         )
         self.canvas.place(x=0, y=0)
+
+
+        
 
         # entry 글자 크기 및 변수 코드
         font = tkinter.font.Font(family="맑은 고딕", size=24, slant="roman")
@@ -160,6 +164,13 @@ class AdminUserInfo1:
             x = 500.0,
             y = 433.0,
         )
+
+        # 테스트
+        user_manager = UserDBManager()
+        
+        user_num = len(user_manager.get_all_user_records())
+        font = tkinter.font.Font(family="맑은 고딕", size=18, slant="roman")
+        self.canvas.create_text(470.0, 300.0, text=user_num, font=font)
 
         self.window.resizable(False, False)
         self.window.mainloop()
