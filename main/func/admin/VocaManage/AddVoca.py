@@ -21,11 +21,6 @@ def add_word(word_name, kor_meaning, word_class, word_level):
         print(f"The word '{word_name}' already exists in DB.")
         print("Go to Edit Word page.")
         return False
-    
-    if(not is_str_vaild(word_name)): return False
-    word_name = process_str(word_name)
-    if not word_exists(word_name):
-        return False
 
     if (not word_level in (1,2,3,4)):
         print("word_level 값이 잘못되었습니다.")
@@ -42,7 +37,9 @@ def add_word(word_name, kor_meaning, word_class, word_level):
     ws[f'C{empty_row}'] = word_class
     
     # Save the changes to the Excel file
+    print("df")
     sheet.save()
     return True
 
 add_word("adsfasdfsd","테스트","n", 4)
+print("f")
