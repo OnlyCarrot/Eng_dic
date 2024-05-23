@@ -165,12 +165,33 @@ class AdminUserInfo1:
             y = 433.0,
         )
 
-        # 테스트
+        # 총 회원 수 화면에 쏘기
         user_manager = UserDBManager()
-        
-        user_num = len(user_manager.get_all_user_records())
+        all_user_records = user_manager.get_all_user_records()
+        user_num = len(all_user_records)
         font = tkinter.font.Font(family="맑은 고딕", size=18, slant="roman")
-        self.canvas.create_text(470.0, 300.0, text=user_num, font=font)
+        self.canvas.create_text(493.0, 291.0, text=user_num, font=font)
+
+        # 레벨별 회원수 화면에 쏘기
+        level1 = 0
+        level2 = 0
+        level3 = 0
+        level4 = 0
+        for record in all_user_records:
+            user_level = record[4]
+            if user_level == 1:
+                level1 += 1
+            elif user_level == 2:
+                level2 += 1
+            elif user_level == 3:
+                level3 += 1
+            elif user_level == 4:
+                level4 += 1
+
+        levels_arr = [level1,level2,level3,level4]
+        for i in range(0, 4):
+            self.canvas.create_text(900.0, 183.0 + i * 68.5, text=levels_arr[i], font=font)
+
 
         self.window.resizable(False, False)
         self.window.mainloop()
