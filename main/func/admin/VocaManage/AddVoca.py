@@ -36,8 +36,6 @@ def add_word(word_name, kor_meaning, word_class, word_level):
     ws[f'B{empty_row}'] = kor_meaning
     ws[f'C{empty_row}'] = word_class
     
-    # Save the changes to the Excel file
-    print("df")
     sheet.save()
     return True
 

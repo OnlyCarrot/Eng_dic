@@ -170,7 +170,7 @@ class AdminUserInfo1:
         all_user_records = user_manager.get_all_user_records()
         user_num = len(all_user_records)
         font = tkinter.font.Font(family="맑은 고딕", size=18, slant="roman")
-        self.canvas.create_text(493.0, 291.0, text=user_num, font=font)
+        self.canvas.create_text(505.0, 288.0, text=user_num, font=font)
 
         # 레벨별 회원수 화면에 쏘기
         level1 = 0
@@ -190,7 +190,7 @@ class AdminUserInfo1:
 
         levels_arr = [level1,level2,level3,level4]
         for i in range(0, 4):
-            self.canvas.create_text(900.0, 183.0 + i * 68.5, text=levels_arr[i], font=font)
+            self.canvas.create_text(900.0, 178.0 + i * 70.5, text=levels_arr[i], font=font)
 
 
         self.window.resizable(False, False)
