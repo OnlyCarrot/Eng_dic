@@ -6,9 +6,7 @@ import sys
 import tkinter.font
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
-from GUI.user.LevelTest.LevelTest2 import LevelTest2
 from func.user.LevelTest import LevelTest
-
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
 
@@ -16,7 +14,7 @@ ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
-class LevelTest1:
+class LevelTest4:
     def __init__(self, parent):
         self.parent = parent
         self.window = Toplevel(parent)
@@ -95,15 +93,15 @@ class LevelTest1:
             y = 408.0,
         )
         
-        # next 버튼
-        button_image = PhotoImage(
-            file=relative_to_assets("Button.png"))
+        # submit 버튼
+        button_image_2 = PhotoImage(
+            file=relative_to_assets("Button-2.png"))
         self.button = Button(
             self.canvas,
-            image=button_image,
+            image=button_image_2,
             borderwidth=0,
             highlightthickness=0,
-            command=self.Next,
+            command=self.Submit,
             relief="flat"
         )
         self.button.place(
@@ -129,6 +127,7 @@ class LevelTest1:
             image=entry_image_2
         )
 
+        
         entry_image_4 = PhotoImage(
             file=relative_to_assets("TextBox-5.png"))
         entry_4 = self.canvas.create_image(
@@ -202,7 +201,6 @@ class LevelTest1:
 
         self.entrys = []
 
-        # TextBox
         for i in range(0, 5):
             self.entry = Entry(
                 self.canvas,
@@ -236,21 +234,15 @@ class LevelTest1:
                 width=130.0,
                 height=35.0
             )
-        index = LevelTest.show_word_meaning1(self)
 
-        #Test
-        """word = LevelTest.select_word()
-        LevelTest.show_word_meaning(self, word)
-        LevelTest.grade_score(" ", word)
-        """
+        index = LevelTest.show_word_meaning4(self)
+
         self.window.resizable(False, False)
         self.window.mainloop()
-    
 
     def Back(self):
         self.window.destroy()
         self.parent.deiconify()
-    
-    def Next(self):
-        self.window.withdraw
-        LevelTest2(self.window)
+
+    def Submit(self):
+        messagebox.showinfo("임시","(임시)제출완료")

@@ -6,7 +6,7 @@ import sys
 import tkinter.font
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
-from GUI.user.LevelTest.LevelTest2 import LevelTest2
+from GUI.user.LevelTest.LevelTest4 import LevelTest4
 from func.user.LevelTest import LevelTest
 
 OUTPUT_PATH = Path(__file__).parent
@@ -16,7 +16,7 @@ ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
-class LevelTest1:
+class LevelTest3:
     def __init__(self, parent):
         self.parent = parent
         self.window = Toplevel(parent)
@@ -236,7 +236,7 @@ class LevelTest1:
                 width=130.0,
                 height=35.0
             )
-        index = LevelTest.show_word_meaning1(self)
+        index = LevelTest.show_word_meaning3(self)
 
         #Test
         """word = LevelTest.select_word()
@@ -253,4 +253,4 @@ class LevelTest1:
     
     def Next(self):
         self.window.withdraw
-        LevelTest2(self.window)
+        LevelTest4(self.window)
