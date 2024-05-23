@@ -7,6 +7,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__))+'/../../..')
 from GUI.center_window import center_window
 from GUI.admin.AdminAdd.AdminAdd2 import AdminAdd2
+from func.admin.VocaManage.AdminSearchVoca import word_exists, is_str_vaild
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -101,5 +102,11 @@ class AdminAdd1:
         self.window.mainloop()
 
     def Next(self):
-        self.window.withdraw()
-        AdminAdd2(self.window)
+        addWord = self.entry_1.get()
+        if word_exists(addWord):
+            messagebox.showerror("단어 추가 실패", "중복되지 않는 단어를 추가하세요")
+        elif not is_str_vaild(addWord):
+            messagebox.showerror("단어 추가 실패", "유효한 단어를 추가하세요")
+        else:
+            self.window.withdraw()
+            AdminAdd2(self.window)
