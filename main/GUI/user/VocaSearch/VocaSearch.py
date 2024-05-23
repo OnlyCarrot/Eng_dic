@@ -6,6 +6,8 @@ import sys
 import tkinter.font
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
+from func.user.Voca import Voca
+from tkinter import ttk
 
 
 OUTPUT_PATH = Path(__file__).parent
@@ -146,11 +148,49 @@ class VocaSearch:
             y = 40.0,
         )
         
+        
+    # 스크롤바 프레임 생성
+        scroll_frame = Frame(self.canvas)
+        scroll_frame.place(x=417, y=154, width=744, height=250)
+
+    # 스크롤바 생성
+        scrollbar = ttk.Scrollbar(scroll_frame)
+        scrollbar.pack(side=RIGHT, fill=Y)
+
+    # 리스트박스 생성
+        self.listbox = Listbox(scroll_frame, yscrollcommand=scrollbar.set)
+        self.listbox.pack(side=LEFT, fill=BOTH, expand=True)
+
+    # 스크롤바와 리스트박스 연결
+        scrollbar.config(command=self.listbox.yview) 
+        voca = Voca()
+        results = voca.show_voca(self.listbox)
+
         self.window.resizable(False, False)
         self.window.mainloop()
+        
 
-    def search(self):
-        messagebox.showinfo("임시","(임시)검색하기")
+    
+    # def search(self):
+    #     enter_voca = self.entry.get()
+    #     voca = Voca()
+    #     voca_found = voca.search_voca(enter_voca) 
+    #     if voca_found:
+    #         eng, kor, c = voca_found
+    #         result = f"{eng} {kor} {c}"
+            
+    #         # 결과 값 보여주기
+    #         self.result_text_id = self.canvas.create_text(
+    #             790.0, 280.0,  # Coordinates of the image
+    #             text=result,
+    #             font=("맑은 고딕", 18),
+    #             fill="black"
+    #         )
+            
+    #     else:
+    #         messagebox.showinfo("오류","없는 단어입니다.")
+
+
         
     def Back(self):
         self.window.destroy()
