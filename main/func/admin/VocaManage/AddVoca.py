@@ -2,7 +2,7 @@ import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from func.Sheet import Sheet
-from AdminSearchVoca import word_exists, get_row_loc_of_word, get_level_of_word, get_word_record,is_str_vaild, process_str
+from func.admin.VocaManage.AdminSearchVoca import word_exists, get_row_loc_of_word, get_level_of_word, get_word_record,is_str_vaild, process_str
 
 def add_word(word_name, kor_meaning, word_class, word_level):
     """
