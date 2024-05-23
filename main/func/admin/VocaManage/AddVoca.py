@@ -41,5 +41,3 @@ def add_word(word_name, kor_meaning, word_class, word_level):
     sheet.save()
     return True
 
-add_word("adsfasdfsd","테스트","n", 4)
-print("f")
