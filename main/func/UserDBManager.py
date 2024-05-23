@@ -3,13 +3,13 @@ from openpyxl import load_workbook
 
 cwd = os.getcwd()
 
-user_file_path = f"{cwd}\\main\\DB\\UserList.xlsx"
+user_file_path = f"{cwd}/main/DB/UserList.xlsx"
 
 wb = load_workbook(user_file_path)
 
 class UserDBManager:
     # VocaFileManager는 파일의 경로를 매개변수로 가진다.
-    def __init__(self, user_file_path = f"{cwd}\\main\\DB\\UserList.xlsx"):
+    def __init__(self, user_file_path = f"{cwd}/main/DB/UserList.xlsx"):
         self.voca_file_path = user_file_path
       
         self.wb = load_workbook(user_file_path)
