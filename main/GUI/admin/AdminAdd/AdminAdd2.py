@@ -174,11 +174,11 @@ class AdminAdd2:
         kor_meaning = self.entry_2.get()
         word_class = self.entry_3.get()
         word_level = self.entry_4.get()
-        if add_word(word_name, kor_meaning, word_class, word_level):
-            messagebox.showinfo("단어 추가를 성공했습니다", "메뉴 창으로 돌아갑니다")
+        if add_word(word_name, kor_meaning, word_class, int(word_level)):
+            messagebox.showinfo("단어 추가 성공했습니다", "단어 추가 성공, 메뉴 창으로 돌아갑니다")
             self.window.withdraw()
             AdminMenu(self.window)
         else:
-            messagebox.showinfo("잘못된 형식으로 입력하였거나 정확한 단어 레벨 값을 입력하세요(1~4)")
+            messagebox.showinfo("단어 추가 실패", "잘못된 형식으로 입력하였거나 정확한 단어 레벨 값을 입력하세요(1~4)")
 
         
