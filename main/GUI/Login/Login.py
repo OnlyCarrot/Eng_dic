@@ -9,7 +9,9 @@ from GUI.center_window import center_window  # center_window 모듈 가져오기
 from GUI.user.SignUp.SignUp import SignUp
 from GUI.user.UserMenu.UserMenu import UserMenu
 from GUI.admin.AdminMenu.AdminMenu import AdminMenu
-from func.Login import login_validation
+from func.Login import login
+from func.User import User
+
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame0"
@@ -197,14 +199,14 @@ class Login:
         entered_username = self.entry_1.get()
         entered_password = self.entry_2.get()
 
-        
-        
-        user = login_validation(entered_username, entered_password)
+        valid = login(entered_username, entered_password)
+        user = User()
+
 
         # 입력된 값과 저장된 값 비교
-        if user == False:
+        if valid == False:
             messagebox.showerror("로그인 실패", "사용자 이름 또는 비밀번호가 올바르지 않습니다.")
-        elif user.role == "admin":
+        elif user.get_role() == "admin":
             messagebox.showinfo("로그인 성공", "관리자님, 환영합니다!")
             self.adminmenu()
         elif user:

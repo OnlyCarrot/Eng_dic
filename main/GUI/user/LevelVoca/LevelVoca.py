@@ -7,6 +7,8 @@ import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
 from func.user.LevelVoca import LevelVoca as lv
+from func.User import User
+
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -133,7 +135,8 @@ class LevelVoca:
         scrollbar.config(command=self.listbox.yview)
 
         levelVoca = lv()
-        levelVoca.show_word(self.listbox, 650)  # 예시로 650 레벨의 단어장 표시
+        user = User()
+        levelVoca.show_word(self.listbox, user.get_level())  # 예시로 650 레벨의 단어장 표시
 
         self.window.resizable(False, False)
         self.window.mainloop()

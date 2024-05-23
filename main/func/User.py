@@ -1,27 +1,38 @@
-class User:
-    def __init__(self, id, password, name, role, level, last_test_date):
-        self.id = id
-        self.password = password
-        self.name = name
-        self.role = role
-        self.level = level
-        self.last_test_date = last_test_date
+class Singleton(type):
+    _instances = {}
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            cls._instances[cls] = super().__call__(*args, **kwargs)
+        return cls._instances[cls]
 
-    def id(self):
-        return self.id
+class User(metaclass=Singleton):
+    def __init__(self):
+        self.user_data = {}
     
-    def password(self):
-        return self.password
+    def save_user(self, id, password, name, role, level, last_test_date):
+        self.user_data = {
+            'id': id,
+            'password': password,
+            'name': name,
+            'role': role,
+            'level': level,
+            'last_test_date': last_test_date
+        }
     
-    def name(self):
-        return self.name
+    def get_id(self):
+        return self.user_data.get('id')
     
-    def role(self):
-        return self.role
+    def get_password(self):
+        return self.user_data.get('password')
     
-    def level(self):
-        return self.level
+    def get_name(self):
+        return self.user_data.get('name')
     
-    def last_test_date(self):
-        return self.last_test_date
-        
+    def get_role(self):
+        return self.user_data.get('role')
+    
+    def get_level(self):
+        return self.user_data.get('level')
+    
+    def get_last_test_date(self):
+        return self.user_data.get('last_test_date')
