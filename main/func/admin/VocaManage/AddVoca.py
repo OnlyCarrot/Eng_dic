@@ -13,7 +13,7 @@ def add_word(word_name, kor_meaning, word_class, word_level):
         word_level: 단어의 레벨(1,2,3,4 중 하나)
 
     """
-    sheet = Sheet("0")
+    sheet = Sheet("wordsheet1")
     wordsheets = sheet.wordsheets
 
     # Check if the word is already in the Excel file
@@ -43,3 +43,6 @@ def add_word(word_name, kor_meaning, word_class, word_level):
     
     # Save the changes to the Excel file
     sheet.save()
+    return True
+
+add_word("adsfasdfsd","테스트","n", 4)

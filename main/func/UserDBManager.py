@@ -26,6 +26,15 @@ class UserDBManager:
             # ('ad1', 'adpw1', '정준화', 'admin', 0)
             return row
         return False
+    
+    def get_all_user_records(self):
+        users = []
+        ws = self.ws
+        for row in ws.iter_rows(min_row=2, max_row=ws.max_row, values_only=True):
+            if row[4] != 0:
+                users.append(row)
+        return users
+        
 
     # 해당 유저가 있는 행의 번호를 반환한다.
     def get_idx_of_user(self, user_id):
@@ -63,4 +72,3 @@ class UserDBManager:
 
 
 user_manager = UserDBManager(user_file_path)
-print(user_manager.user_exists("ad1"))
