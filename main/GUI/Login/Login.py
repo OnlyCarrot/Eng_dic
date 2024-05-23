@@ -161,7 +161,7 @@ class Login:
             image=button_image_1,
             borderwidth=0,
             highlightthickness=0,
-            command=self.usermenu,
+            command=self.check_credentials,
             relief="flat"
         )
         self.button_1.place(
@@ -204,12 +204,12 @@ class Login:
         # 입력된 값과 저장된 값 비교
         if user == False:
             messagebox.showerror("로그인 실패", "사용자 이름 또는 비밀번호가 올바르지 않습니다.")
-        elif user.id.startswith("ad"):
+        elif user.role == "admin":
             messagebox.showinfo("로그인 성공", "관리자님, 환영합니다!")
-            self.open_admin_page()
+            self.adminmenu()
         elif user:
             messagebox.showinfo("로그인 성공", "환영합니다!")
-            self.open_main_page()
+            self.usermenu()
         
     # signup로 가는 함수 입니다.
     def signup(self):

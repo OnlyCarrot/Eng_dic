@@ -7,7 +7,7 @@ import tkinter.font
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
 from GUI.user.LevelTest.LevelTest1 import LevelTest1
-#from func.user.SignUp import sign_up
+from func.user.SignUp import sign_up
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -189,7 +189,7 @@ class SignUp:
             image=button_image_1,
             borderwidth=0,
             highlightthickness=0,
-            command=self.Next,
+            command=self.temp1,
             relief="flat"
         )
         self.button_1.place(
@@ -204,6 +204,13 @@ class SignUp:
 
         self.window.resizable(False, False)
         self.window.mainloop()
+        
+    def temp1(self):
+        EnteredId = self.entry_1.get()
+        EnteredUsername = self.entry_2.get()
+        EnteredPw1 = self.entry_3.get()
+        EnteredPw2 = self.entry_4.get()
+
 
     def Back(self):
         self.window.destroy()

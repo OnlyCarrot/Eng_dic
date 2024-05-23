@@ -7,6 +7,7 @@ import tkinter.font
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
 from GUI.user.DailyTest.DailyTest.DailyTest import DailyTest
+from func.user.DailyTest import DailyTest
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -135,6 +136,11 @@ class AreaSelect:
         self.window.resizable(False, False)
         self.window.mainloop()
 
+    def get_area_select(self):
+        entered_start_num = self.entry.get()
+        entered_end_num = self.entry_1.get()
+        DailyTest.daily_test(entered_start_num, entered_end_num)
+        print(1)
     def Start(self):
         self.window.withdraw()
         DailyTest(self.window)
