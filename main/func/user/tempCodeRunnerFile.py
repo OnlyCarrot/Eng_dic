@@ -1,1 +1,2 @@
-Daily.is_runned()
+
+        elif(user < 900):
