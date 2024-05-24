@@ -73,7 +73,24 @@ class Daily:
         elif(score >= 7):
             user_level += 5 
         return user_level
+    
+    def is_digit_valid(ans):
+        if ans.strip() == '':
+            print("공백 값이 입력되었습니다. 유효한 단어를 입력하세요.")
+            return False
+        elif not ans.isdigit():
+            print("숫자가 아닌 값이 입력되었습니다.")
+            return False
+        return True
 
+    def is_str_valid(ans):
+        if ans.strip() == '':
+            print("공백 값이 입력되었습니다. 유효한 단어를 입력하세요.")
+            return False
+        if(not ans.replace(' ', '').isalpha()):
+            print("알파벳이 아닌 문자열이 입력되었습니다.")
+            return False
+        return True
     
 #Test
 #Daily.is_runned(date(2024, 5, 20))

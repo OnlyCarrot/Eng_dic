@@ -137,9 +137,12 @@ class AreaSelect:
         self.window.mainloop()
 
     def get_area_select(self):
-        self.window.withdraw()
         entered_start_num = self.entry.get()
         entered_end_num = self.entry_1.get()
-        Daily.daily_test(entered_start_num, entered_end_num)
-        DailyTest(self.window)
-        
+
+        if Daily.is_digit_valid(entered_start_num) and Daily.is_digit_valid(entered_end_num):
+            Daily.daily_test(entered_start_num, entered_end_num)
+            self.window.withdraw()
+            DailyTest(self.window)
+        else:
+            messagebox.showerror("숫자 입력 실패", "빈칸이거나 숫자가 아닙니다.")

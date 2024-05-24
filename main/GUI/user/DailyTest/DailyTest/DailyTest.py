@@ -256,8 +256,16 @@ class DailyTest:
         self.window.mainloop()
 
     def Submit(self):
-        self.window.withdraw()
-        ShowResult(self.window)
+        all_valid = True
+        for entry in self.entrys:
+            if not Daily.is_str_valid(entry.get()):
+                all_valid = False
+                break
+        if all_valid:
+            self.window.withdraw()
+            ShowResult(self.window)
+        else:
+            messagebox.showerror("제출 실패", "빈 칸이 존재하거나 잘못된 입력 형식입니다")
 
     def Back(self):
         self.window.destroy()
