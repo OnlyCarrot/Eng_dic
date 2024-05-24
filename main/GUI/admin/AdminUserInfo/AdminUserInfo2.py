@@ -7,6 +7,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__))+'/../../..')
 from GUI.center_window import center_window
 # from GUI.admin.AdminUserInfo.AdminUserInfo1 import glo_user_info1
+from func.admin.UserManage.RoadUserInfo import is_str_valid
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -97,7 +98,7 @@ class AdminUserInfo2:
             image=button_image,
             borderwidth=0,
             highlightthickness=0,
-            # command=
+            command=self.search,
             relief="flat"
         )
         self.button.place(
@@ -137,3 +138,9 @@ class AdminUserInfo2:
         from GUI.admin.AdminMenu.AdminMenu import AdminMenu
         self.window.withdraw()
         AdminMenu(self.window)
+
+    # search버튼을 눌러서 나온 결과
+    def search(self):
+        search_user_name = self.entry_1.get()
+        if not is_str_valid(search_user_name):
+            messagebox.showerror("사용자 검색 실패", "유효한 형식으로 입력하세요")

@@ -7,6 +7,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__))+'/../../..')
 from GUI.center_window import center_window
 from GUI.admin.AdminModify.AdminModify2 import AdminModify2
+from func.admin.VocaManage.ModifyVoca import is_str_valid
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -97,7 +98,7 @@ class AdminModify1:
             image=button_image_1,
             borderwidth=0,
             highlightthickness=0,
-            # command=
+            command=self.search,
             relief="flat"
         )
         self.button.place(
@@ -117,3 +118,8 @@ class AdminModify1:
         from GUI.admin.AdminMenu.AdminMenu import AdminMenu
         self.window.withdraw()
         AdminMenu(self.window)
+
+    def search(self):
+        modify_word = self.entry_1.get()
+        if not is_str_valid(modify_word):
+            messagebox.showerror("단어 수정 실패", "유효한 형식으로 입력하세요")

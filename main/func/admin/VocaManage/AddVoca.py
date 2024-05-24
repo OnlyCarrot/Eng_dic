@@ -16,6 +16,16 @@ def add_word(word_name, kor_meaning, word_class, word_level):
     sheet = Sheet("wordsheet1")
     wordsheets = sheet.wordsheets
 
+    if(kor_meaning.strip() == ''):
+        print("공백 값이 입력되었습니다. 유효한 단어를 입력하세요.")
+        return False
+    
+    # Check if word_class is valid
+    valid_word_classes = {"n", "v", "adj", "adv", "phr", "prep"}
+    if word_class not in valid_word_classes:
+        print("word_class 값이 잘못되었습니다.")
+        return False
+
     # Check if the word is already in the Excel file
     if word_exists(word_name):
         print(f"The word '{word_name}' already exists in DB.")

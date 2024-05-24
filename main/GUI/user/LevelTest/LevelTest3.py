@@ -252,5 +252,14 @@ class LevelTest3:
         self.parent.deiconify()
     
     def Next(self):
-        self.window.withdraw
-        LevelTest4(self.window)
+        all_valid = True
+        for entry in self.entrys:
+            if not LevelTest.is_str_vaild(entry.get()):
+                all_valid = False
+                break
+
+        if all_valid:
+            self.window.withdraw
+            LevelTest4(self.window)
+        else:
+            messagebox.showerror("제출 실패", "빈 칸이 존재하거나 잘못된 입력 형식입니다")

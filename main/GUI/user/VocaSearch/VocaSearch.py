@@ -171,24 +171,24 @@ class VocaSearch:
         
 
     
-    # def search(self):
-    #     enter_voca = self.entry.get()
-    #     voca = Voca()
-    #     voca_found = voca.search_voca(enter_voca) 
-    #     if voca_found:
-    #         eng, kor, c = voca_found
-    #         result = f"{eng} {kor} {c}"
+    def search(self):
+        enter_voca = self.entry.get()
+        voca = Voca()
+        voca_found = voca.search_voca(enter_voca) 
+        if voca_found:
+            eng, kor, c = voca_found
+            result = f"{eng} {kor} {c}"
             
-    #         # 결과 값 보여주기
-    #         self.result_text_id = self.canvas.create_text(
-    #             790.0, 280.0,  # Coordinates of the image
-    #             text=result,
-    #             font=("맑은 고딕", 18),
-    #             fill="black"
-    #         )
+            # 결과 값 보여주기
+            self.result_text_id = self.canvas.create_text(
+                790.0, 280.0,  # Coordinates of the image
+                text=result,
+                font=("맑은 고딕", 18),
+                fill="black"
+            )
             
-    #     else:
-    #         messagebox.showinfo("오류","없는 단어입니다.")
+        else:
+            messagebox.showinfo("오류","없는 단어입니다.")
 
 
         

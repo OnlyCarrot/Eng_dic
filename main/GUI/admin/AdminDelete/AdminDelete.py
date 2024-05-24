@@ -6,6 +6,7 @@ import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__))+'/../../..')
 from GUI.center_window import center_window
+from func.admin.VocaManage.DeleteVoca import is_str_valid
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -94,7 +95,7 @@ class AdminDelete:
             image=button_image,
             borderwidth=0,
             highlightthickness=0,
-            # command=
+            command=self.search,
             relief="flat"
         )
         self.button.place(
@@ -110,7 +111,7 @@ class AdminDelete:
             image=button_image_2,
             borderwidth=0,
             highlightthickness=0,
-            # command=
+            #command=
             relief="flat"
         )
         self.button.place(
@@ -136,6 +137,11 @@ class AdminDelete:
 
         self.window.resizable(False, False)
         self.window.mainloop()
+
+    def search(self):
+        delete_word = self.entry_1.get()
+        if not is_str_valid(delete_word):
+            messagebox.showerror("단어 삭제 실패", "유효한 형식으로 입력하세요")
 
     def Back(self):
         from GUI.admin.AdminMenu.AdminMenu import AdminMenu

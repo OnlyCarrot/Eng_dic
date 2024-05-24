@@ -9,6 +9,7 @@ from GUI.center_window import center_window  # center_window 모듈 가져오기
 from GUI.user.LevelTest.LevelTest1 import LevelTest1
 from func.user.SignUp import sign_up
 from func.UserDBManager import UserDBManager
+from func.user.SignUp import is_str_vaild, is_pw_dupli
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -211,9 +212,16 @@ class SignUp:
         EnteredUsername = self.entry_2.get()
         EnteredPw1 = self.entry_3.get()
         EnteredPw2 = self.entry_4.get()
+
+        entries = [EnteredId, EnteredUsername, EnteredPw1, EnteredPw2]
+        
         ub = UserDBManager()
         if ub.user_exists(EnteredId):   
             messagebox.showerror("ID 중복", "중복되는 ID입니다!")
+        elif not is_str_vaild(entries):
+            messagebox.showerror("회원가입 실패", "빈 칸이 존재합니다")
+        elif is_pw_dupli(EnteredPw1, EnteredPw2):
+            messagebox.showerror("회원가입 실패", "비밀번호가 일치하지 않습니다")
         else:
             templist = []
             templist.append(EnteredId)
@@ -226,5 +234,3 @@ class SignUp:
     def Back(self):
         self.window.destroy()
         self.parent.deiconify()
-
-    

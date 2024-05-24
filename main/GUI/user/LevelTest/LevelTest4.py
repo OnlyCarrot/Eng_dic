@@ -7,6 +7,7 @@ import tkinter.font
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
 from func.user.LevelTest import LevelTest
+from GUI.user.UserMenu.UserMenu import UserMenu
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
 
@@ -245,4 +246,14 @@ class LevelTest4:
         self.parent.deiconify()
 
     def Submit(self):
-        messagebox.showinfo("임시","(임시)제출완료")
+        all_valid = True
+        for entry in self.entrys:
+            if not LevelTest.is_str_vaild(entry.get()):
+                all_valid = False
+                break
+            
+        if all_valid:
+            messagebox.showinfo("임시","(임시)제출완료")
+        else:
+            messagebox.showerror("제출 실패", "빈 칸이 존재하거나 잘못된 입력 형식입니다")
+        

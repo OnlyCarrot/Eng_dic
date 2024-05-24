@@ -9,6 +9,7 @@ from GUI.center_window import center_window
 from GUI.admin.AdminUserInfo.AdminUserInfo2 import AdminUserInfo2
 from func.UserDBManager import UserDBManager
 from func.admin.VocaManage.AdminSearchVoca import process_str
+from func.admin.UserManage.RoadUserInfo import is_str_valid
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -210,5 +211,11 @@ class AdminUserInfo1:
         user_id = process_str(user_id)
         glo_user_info1 = um.get_user_record(user_id)
         #print(glo_user_info1)
-        self.window.withdraw()
-        AdminUserInfo2(self.window, glo_user_info1)
+
+        search_user_name = self.entry_1.get()
+        if not is_str_valid(search_user_name):
+            messagebox.showerror("사용자 검색 실패", "유효한 형식으로 입력하세요")
+        else:
+            self.window.withdraw()
+            AdminUserInfo2(self.window, glo_user_info1) 
+        

@@ -11,11 +11,11 @@ def is_str_vaild(word_name):
     입력받은 문자의 좌 우 공백을 제거하고, 영문자를 소문자로 바꾼 후 반환합니다.
     영문자가 아닌 기호가 들어간 경우에는 False를 반환합니다.
     """
-    if(word_name ==''):
+    if(word_name.strip() ==''):
         print("공백 값이 입력되었습니다. 유효한 단어를 입력하세요.")
         return False
     
-    if(not word_name.isalpha()):
+    if(not word_name.replace(' ', '').isalpha()):
         print("알파벳이 아닌 문자열이 입력되었습니다.")
         return False
     return True
