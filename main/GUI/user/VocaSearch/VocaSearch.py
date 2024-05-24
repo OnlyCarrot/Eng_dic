@@ -171,6 +171,14 @@ class VocaSearch:
         
 
     def search(self):
+
+        enter_voca = self.entry.get()
+        voca = Voca()
+        voca_found = voca.search_voca(enter_voca) 
+
+        if not voca_found:
+            messagebox.showinfo("오류", "없는 단어입니다.")
+            return
         
         root = tkinter.Tk()
         root.title("find word")
@@ -196,18 +204,13 @@ class VocaSearch:
 
         treelist = []
 
-        enter_voca = self.entry.get()
-        voca = Voca()
-        voca_found = voca.search_voca(enter_voca) 
-        if voca_found:
-            eng, kor, c = voca_found
-            result = (eng, kor, c)
-            treelist.append(result)
-        else:
-            messagebox.showinfo("오류","없는 단어입니다.")
+        eng, kor, c = voca_found
+        result = (eng, kor, c)
+        treelist.append(result)
+            
         for i in range(len(treelist)):
             treeview.insert('', 'end', text=treelist[i][0], values=(treelist[i][1], treelist[i][2]), iid=str(i)+"번")
-
+    
 
         root.mainloop()
 
