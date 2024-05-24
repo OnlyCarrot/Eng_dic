@@ -174,7 +174,10 @@ class AdminAdd2:
         kor_meaning = self.entry_2.get()
         word_class = self.entry_3.get()
         word_level = self.entry_4.get()
-        if add_word(word_name, kor_meaning, word_class, int(word_level)):
+
+        if not word_level.isdigit():
+            messagebox.showinfo("단어 추가 실패", "단어 레벨은 숫자여야 합니다.")
+        elif add_word(word_name, kor_meaning, word_class, int(word_level)):
             messagebox.showinfo("단어 추가 성공했습니다", "단어 추가 성공, 메뉴 창으로 돌아갑니다")
             self.window.withdraw()
             AdminMenu(self.window)

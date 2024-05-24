@@ -111,7 +111,7 @@ class AdminDelete:
             image=button_image_2,
             borderwidth=0,
             highlightthickness=0,
-            #command=
+            command=self.delete,
             relief="flat"
         )
         self.button.place(
@@ -147,3 +147,8 @@ class AdminDelete:
         from GUI.admin.AdminMenu.AdminMenu import AdminMenu
         self.window.withdraw()
         AdminMenu(self.window)
+
+    def delete(self):
+        delete_word = self.entry_2.get()
+        if not is_str_valid(delete_word):
+            messagebox.showerror("단어 삭제 실패", "유효한 형식으로 입력하세요")

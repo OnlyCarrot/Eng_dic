@@ -23,7 +23,7 @@ def add_word(word_name, kor_meaning, word_class, word_level):
     # Check if word_class is valid
     valid_word_classes = {"n", "v", "adj", "adv", "phr", "prep"}
     if word_class not in valid_word_classes:
-        print("word_class 값이 잘못되었습니다.")
+        print("word_class는 n, v, adj, adv, phr, prep 중 하나여야 합니다.")
         return False
 
     # Check if the word is already in the Excel file
