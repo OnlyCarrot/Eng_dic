@@ -4,8 +4,11 @@ from tkinter import messagebox
 import tkinter.font
 import os
 import sys
+
+
 sys.path.append(os.path.dirname(os.path.abspath(__file__))+'/../../..')
 from GUI.center_window import center_window
+import tkinter as tk
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -15,8 +18,9 @@ def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
 class AdminModify2:
-    def __init__(self, parent):
+    def __init__(self, parent, modify_word):
         self.parent = parent
+        self.modify_word = modify_word
         self.window = Toplevel(parent)
         #self.window = Tk()
         self.window.title("수준별 토익 영단어 프로그램")
@@ -87,7 +91,7 @@ class AdminModify2:
             image=button_image,
             borderwidth=0,
             highlightthickness=0,
-            command=self.Back,
+            command=self.Modify_then_Back,
             relief="flat"
         )
         self.button.place(
@@ -140,9 +144,30 @@ class AdminModify2:
             width=270.0,
             height=62.0
         )
-
+        
         self.window.resizable(False, False)
         self.window.mainloop()
+
+        
+    def Modify_then_Back(self):
+        #Modify 기능 실행
+        from func.admin.VocaManage.ModifyVoca import edit_word
+        modify_eng = self.entry_1.get()
+        modify_kor = self.entry_2.get()
+        modify_wc = self.entry_3.get()
+        edit_word(self.modify_word, modify_eng, modify_kor, modify_wc)
+
+        # 뒤로가기 기능 실행
+        from GUI.admin.AdminMenu.AdminMenu import AdminMenu
+        self.window.withdraw()
+        AdminMenu(self.window)
+
+    def Modify(self):
+        from func.admin.VocaManage.ModifyVoca import edit_word
+        modify_eng = self.entry_1.get()
+        modify_kor = self.entry_2.get()
+        modify_wc = self.entry_3.get()
+        edit_word(self.modify_word, modify_eng, modify_kor, modify_wc)
 
     def Back(self):
         from GUI.admin.AdminMenu.AdminMenu import AdminMenu
