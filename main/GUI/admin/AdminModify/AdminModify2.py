@@ -6,6 +6,8 @@ import os
 import sys
 
 
+
+
 sys.path.append(os.path.dirname(os.path.abspath(__file__))+'/../../..')
 from GUI.center_window import center_window
 import tkinter as tk
@@ -148,28 +150,25 @@ class AdminModify2:
         self.window.resizable(False, False)
         self.window.mainloop()
 
-        
-    def Modify_then_Back(self):
-        #Modify 기능 실행
-        from func.admin.VocaManage.ModifyVoca import edit_word
-        modify_eng = self.entry_1.get()
-        modify_kor = self.entry_2.get()
-        modify_wc = self.entry_3.get()
-        edit_word(self.modify_word, modify_eng, modify_kor, modify_wc)
-
-        # 뒤로가기 기능 실행
-        from GUI.admin.AdminMenu.AdminMenu import AdminMenu
-        self.window.withdraw()
-        AdminMenu(self.window)
-
-    def Modify(self):
-        from func.admin.VocaManage.ModifyVoca import edit_word
-        modify_eng = self.entry_1.get()
-        modify_kor = self.entry_2.get()
-        modify_wc = self.entry_3.get()
-        edit_word(self.modify_word, modify_eng, modify_kor, modify_wc)
-
     def Back(self):
         from GUI.admin.AdminMenu.AdminMenu import AdminMenu
         self.window.withdraw()
         AdminMenu(self.window)
+
+    def Modify_then_Back(self):
+        #Modify 기능 실행
+        from func.admin.VocaManage.ModifyVoca import edit_word
+        from main.func.admin.VocaManage.AdminSearchVoca import word_exists
+        modify_eng = self.entry_1.get()
+        if(word_exists(modify_eng)):
+            if(modify_eng == self.modify_word):
+                modify_kor = self.entry_2.get()
+                modify_wc = self.entry_3.get()
+                edit_word(self.modify_word, modify_eng, modify_kor, modify_wc)
+
+                # 뒤로가기 기능 실행
+                self.Back()
+            else:
+                messagebox.showerror("단어 수정 실패", "단어장에 존재하는 단어입니다")
+                # 뒤로가기 기능 실행
+                self.Back()        
