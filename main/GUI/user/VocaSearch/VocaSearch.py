@@ -170,26 +170,46 @@ class VocaSearch:
         self.window.mainloop()
         
 
-    
     def search(self):
+        
+        root = tkinter.Tk()
+        root.title("find word")
+        root.geometry("540x300+100+100")
+        root.resizable(False, False)
+
+        center_window(root, 500, 300)
+
+        lbl = tkinter.Label(root, text="word")
+        lbl.pack()
+
+        treeview = tkinter.ttk.Treeview(root, columns=["one", "two"], displaycolumns=["one", "two"])
+        treeview.pack()
+
+        treeview.column("#0", width=100)
+        treeview.heading("#0", text="단어")
+
+        treeview.column("#1", width=100, anchor="center")
+        treeview.heading("one", text="뜻", anchor="center")
+
+        treeview.column("#2", width=100, anchor="center")
+        treeview.heading("two", text="품사", anchor="center")
+
+        treelist = []
+
         enter_voca = self.entry.get()
         voca = Voca()
         voca_found = voca.search_voca(enter_voca) 
         if voca_found:
             eng, kor, c = voca_found
-            result = f"{eng} {kor} {c}"
-            
-            # 결과 값 보여주기
-            self.result_text_id = self.canvas.create_text(
-                790.0, 280.0,  # Coordinates of the image
-                text=result,
-                font=("맑은 고딕", 18),
-                fill="black"
-            )
-            
+            result = (eng, kor, c)
+            treelist.append(result)
         else:
             messagebox.showinfo("오류","없는 단어입니다.")
+        for i in range(len(treelist)):
+            treeview.insert('', 'end', text=treelist[i][0], values=(treelist[i][1], treelist[i][2]), iid=str(i)+"번")
 
+
+        root.mainloop()
 
         
     def Back(self):
