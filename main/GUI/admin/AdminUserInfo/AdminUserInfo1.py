@@ -8,10 +8,11 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__))+'/../../..')
 from GUI.center_window import center_window
 from GUI.admin.AdminUserInfo.AdminUserInfo2 import AdminUserInfo2
 from func.UserDBManager import UserDBManager
+from func.admin.VocaManage.AdminSearchVoca import process_str
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
-
+glo_user_info1 = []
 
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
@@ -203,5 +204,11 @@ class AdminUserInfo1:
 
     # search버튼을 눌러서 나온 결과 => UserInfo2화면으로 넘어가는 함수
     def Next(self):
+        global glo_user_info1
+        um = UserDBManager()
+        user_id = self.entry_1.get()
+        user_id = process_str(user_id)
+        glo_user_info1 = um.get_user_record(user_id)
+        #print(glo_user_info1)
         self.window.withdraw()
-        AdminUserInfo2(self.window)
+        AdminUserInfo2(self.window, glo_user_info1)

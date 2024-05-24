@@ -6,22 +6,23 @@ import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__))+'/../../..')
 from GUI.center_window import center_window
+# from GUI.admin.AdminUserInfo.AdminUserInfo1 import glo_user_info1
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
-
 
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
 class AdminUserInfo2:
-    def __init__(self, parent):
+    def __init__(self, parent, userinfo):
         self.parent = parent
         self.window = Toplevel(parent)
         #self.window = Tk()
         self.window.title("수준별 토익 영단어 프로그램")
         self.window.geometry("1200x500")
         self.window.configure(bg="#FFFFFF")
+        self.userinfo = userinfo
 
         center_window(self.window, 1200, 500)
 
@@ -127,6 +128,15 @@ class AdminUserInfo2:
             x = 500.0,
             y = 433.0,
         )
+
+        font = tkinter.font.Font(family="맑은 고딕", size=22, slant="roman")
+        level_info = f"Your Level: level {self.userinfo[4]}"
+        name_info = f"{self.userinfo[2]}"
+
+        # 점수 알려주기
+        self.canvas.create_text(850.0, 300.0, text=level_info, font=font)
+        # 이름 띄우기
+        self.canvas.create_text(330.0, 395.0, text=name_info, font=font)
 
         self.window.resizable(False, False)
         self.window.mainloop()
