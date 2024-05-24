@@ -64,14 +64,6 @@ class AdminUserInfo2:
             image=image_image_5
         )
 
-        image_image_6 = PhotoImage(
-            file=relative_to_assets("image-6.png"))
-        image_6 = self.canvas.create_image(
-            800.0,
-            280.0,
-            image=image_image_6
-        )
-
          # TextBox
         self.entry_1 = Entry(
             self.canvas,
