@@ -125,7 +125,7 @@ class UserMenu:
             image=button_image_3,
             borderwidth=0,
             highlightthickness=0,
-            command=self.Back,
+            command=self.Logout,
             relief="flat"
         )
         self.button.place(
@@ -170,7 +170,7 @@ class UserMenu:
         self.window.destroy()
         sys.exit()
 
-    def Back(self):
+    def Logout(self):
         from GUI.Login.Login import Login
         self.window.withdraw()
         Login(self.window)

@@ -18,7 +18,6 @@ class Voca:
             
     def show_voca(self, listbox): 
 
-
         # 리스트박스 초기화
         listbox.delete(0, END)
 
@@ -35,12 +34,9 @@ class Voca:
             for row in sheet.iter_rows(values_only=True):
                 eng, kor, c = row
                 if eng.startswith(input):
-                    print(eng, kor, c)
+                    #print(eng, kor, c)
                     find_word_list.append([eng, kor, c])
         if(len(find_word_list) > 0):
             return find_word_list
         else:
             return False
-    
-#print(Voca().search_voca("wave"))
-#print(Voca().search_voca("apply"))
