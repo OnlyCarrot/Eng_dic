@@ -204,9 +204,10 @@ class VocaSearch:
 
         treelist = []
 
-        eng, kor, c = voca_found
-        result = (eng, kor, c)
-        treelist.append(result)
+        # eng, kor, c = voca_found
+        # result = (eng, kor, c)
+        # treelist.append(result)
+        treelist = voca_found
             
         for i in range(len(treelist)):
             treeview.insert('', 'end', text=treelist[i][0], values=(treelist[i][1], treelist[i][2]), iid=str(i)+"번")

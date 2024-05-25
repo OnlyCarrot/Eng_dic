@@ -29,15 +29,18 @@ class Voca:
                 listbox.insert(END, f"{i}    {eng} - {kor} - {c}")
                 i += 1
             
-            
     def search_voca(self, input):
+        find_word_list = []
         for sheet in self.sheets:
             for row in sheet.iter_rows(values_only=True):
                 eng, kor, c = row
-                if input == eng:
+                if eng.startswith(input):
                     print(eng, kor, c)
-                    return eng, kor, c
-        return False
+                    find_word_list.append([eng, kor, c])
+        if(len(find_word_list) > 0):
+            return find_word_list
+        else:
+            return False
     
 #print(Voca().search_voca("wave"))
 #print(Voca().search_voca("apply"))
