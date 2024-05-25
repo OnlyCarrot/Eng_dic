@@ -236,13 +236,11 @@ class LevelTest3:
                 width=130.0,
                 height=35.0
             )
+
+        global index
         index = LevelTest.show_word_meaning3(self)
 
-        #Test
-        """word = LevelTest.select_word()
-        LevelTest.show_word_meaning(self, word)
-        LevelTest.grade_score(" ", word)
-        """
+    
         self.window.resizable(False, False)
         self.window.mainloop()
     
@@ -259,6 +257,9 @@ class LevelTest3:
                 break
 
         if all_valid:
+            EnteredEntry = [entry.get() for entry in self.entrys]
+            score = LevelTest.grade_score(EnteredEntry, index)
+            LevelTest.temp_score(score)
             self.window.withdraw
             LevelTest4(self.window)
         else:

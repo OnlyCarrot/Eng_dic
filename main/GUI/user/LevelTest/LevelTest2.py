@@ -17,7 +17,7 @@ def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
 class LevelTest2:
-    def __init__(self, parent):
+    def __init__(self, parent=None):
         self.parent = parent
         self.window = Toplevel(parent)
         #self.window = Tk()
@@ -236,13 +236,9 @@ class LevelTest2:
                 width=130.0,
                 height=35.0
             )
+        
+        global index
         index = LevelTest.show_word_meaning2(self)
-
-        #Test
-        """word = LevelTest.select_word()
-        LevelTest.show_word_meaning(self, word)
-        LevelTest.grade_score(" ", word)
-        """
         self.window.resizable(False, False)
         self.window.mainloop()
     
@@ -259,6 +255,9 @@ class LevelTest2:
                 break
 
         if all_valid:
+            EnteredEntry = [entry.get() for entry in self.entrys]
+            score = LevelTest.grade_score(EnteredEntry, index)
+            LevelTest.temp_score(score)
             self.window.withdraw
             LevelTest3(self.window)
         else:

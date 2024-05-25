@@ -236,22 +236,19 @@ class LevelTest1:
                 width=130.0,
                 height=35.0
             )
-        index = LevelTest.show_word_meaning1(self)
 
-        #Test
-        """word = LevelTest.select_word()
-        LevelTest.show_word_meaning(self, word)
-        LevelTest.grade_score(" ", word)
-        """
+        global index
+        index = LevelTest.show_word_meaning1(self)
+        print(index)
         self.window.resizable(False, False)
         self.window.mainloop()
-    
 
     def Back(self):
         self.window.destroy()
         self.parent.deiconify()
     
     def Next(self):
+        global score
         all_valid = True
         for entry in self.entrys:
             if not LevelTest.is_str_vaild(entry.get()):
@@ -259,6 +256,9 @@ class LevelTest1:
                 break
 
         if all_valid:
+            EnteredEntry = [entry.get() for entry in self.entrys]
+            score = LevelTest.grade_score(EnteredEntry, index)
+            LevelTest.temp_score(score)
             self.window.withdraw
             LevelTest2(self.window)
         else:

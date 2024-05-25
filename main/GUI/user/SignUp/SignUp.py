@@ -8,6 +8,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
 from GUI.user.LevelTest.LevelTest1 import LevelTest1
 from func.user.SignUp import sign_up
+from func.user.SignUp import temp_storage
 from func.UserDBManager import UserDBManager
 from func.user.SignUp import is_str_vaild, is_pw_dupli
 
@@ -206,7 +207,8 @@ class SignUp:
 
         self.window.resizable(False, False)
         self.window.mainloop()
-        
+    
+
     def temp1(self):
         EnteredId = self.entry_1.get()
         EnteredUsername = self.entry_2.get()
@@ -214,7 +216,7 @@ class SignUp:
         EnteredPw2 = self.entry_4.get()
 
         entries = [EnteredId, EnteredUsername, EnteredPw1, EnteredPw2]
-        
+        temp_storage(EnteredId, EnteredUsername, EnteredPw1)
         ub = UserDBManager()
         if ub.user_exists(EnteredId):   
             messagebox.showerror("ID 중복", "중복되는 ID입니다!")
@@ -223,14 +225,10 @@ class SignUp:
         elif is_pw_dupli(EnteredPw1, EnteredPw2):
             messagebox.showerror("회원가입 실패", "비밀번호가 일치하지 않습니다")
         else:
-            templist = []
-            templist.append(EnteredId)
-            templist.append(EnteredUsername)
-            templist.append(EnteredPw1)
-            templist.append(EnteredPw2)
             self.window.withdraw()
             LevelTest1(self.window)
-
+        
+        
     def Back(self):
         self.window.destroy()
         self.parent.deiconify()

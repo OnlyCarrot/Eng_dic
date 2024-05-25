@@ -7,7 +7,9 @@ import tkinter.font
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
 from func.user.LevelTest import LevelTest
+from func.user.SignUp import sign_up
 from GUI.user.UserMenu.UserMenu import UserMenu
+
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
 
@@ -235,12 +237,12 @@ class LevelTest4:
                 width=130.0,
                 height=35.0
             )
-
+        
+        global index
         index = LevelTest.show_word_meaning4(self)
-
         self.window.resizable(False, False)
         self.window.mainloop()
-
+        
     def Back(self):
         self.window.destroy()
         self.parent.deiconify()
@@ -253,7 +255,16 @@ class LevelTest4:
                 break
             
         if all_valid:
-            messagebox.showinfo("임시","(임시)제출완료")
+            EnteredEntry = [entry.get() for entry in self.entrys]
+            score = LevelTest.grade_score(EnteredEntry, index)
+            test_score = LevelTest.temp_score(score)
+            final = LevelTest.set_user_level(test_score)
+            sign_up(final)
+            messagebox.showinfo("회원가입 성공", "성공적으로 회원가입이 되었습니다.")
+            from GUI.Login.Login import Login
+            self.window.withdraw
+            Login(self.window)
         else:
-            messagebox.showerror("제출 실패", "빈 칸이 존재하거나 잘못된 입력 형식입니다")
-        
+            messagebox.showerror("제출 실패", "빈 칸이 존재하거나 잘못된 입력 형식입니다.")
+
+    
