@@ -2,11 +2,15 @@ from pathlib import Path
 from tkinter import *
 from tkinter import messagebox
 import tkinter.font
+import tkinter as tk
+from tkinter import ttk
 import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__))+'/../../..')
 from GUI.center_window import center_window
 from func.admin.VocaManage.DeleteVoca import is_str_valid
+from func.admin.VocaManage.DeleteVoca import delete_word
+from func.user.Voca import Voca
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -48,14 +52,17 @@ class AdminDelete:
             image=image_image
         )
 
-        image_image_1 = PhotoImage(
-            file=relative_to_assets("image-1.png"))
-        image_1 = self.canvas.create_image(
-            720.0,
-            270.0,
-            image=image_image_1
-        )
-        
+        # 스크롤바 프레임 생성
+        scroll_frame = Frame(self.canvas)
+        scroll_frame.place(x=277, y=154, width=890, height=250)
+        # 스크롤바 생성
+        scrollbar = ttk.Scrollbar(scroll_frame)
+        scrollbar.pack(side=RIGHT, fill=Y)
+
+        # 리스트박스 생성
+        self.listbox = Listbox(scroll_frame, yscrollcommand=scrollbar.set)
+        self.listbox.pack(side=LEFT, fill=BOTH, expand=True)
+
         # text box
         self.entry_1 = Entry(
             self.canvas,
@@ -81,10 +88,10 @@ class AdminDelete:
             font=font,
         )
         self.entry_2.place(
-            x=110.0,
-            y=210.0,
-            width=80.0,
-            height=60.0,
+            x=40.0,
+            y=220.0,
+            width=195.0,
+            height=48.0,
         )
 
         # search 버튼
@@ -115,8 +122,8 @@ class AdminDelete:
             relief="flat"
         )
         self.button.place(
-            x = 45.0,
-            y = 320.0,
+            x = 35.0,
+            y = 310.0,
         )
     
          # back 버튼
@@ -139,9 +146,16 @@ class AdminDelete:
         self.window.mainloop()
 
     def search(self):
-        delete_word = self.entry_1.get()
-        if not is_str_valid(delete_word):
+        self.listbox.delete(0, tk.END)
+        delete_word_list = self.entry_1.get()
+        if not is_str_valid(delete_word_list):
             messagebox.showerror("단어 삭제 실패", "유효한 형식으로 입력하세요")
+        else: 
+            voca = Voca()
+            word_list = voca.search_voca(delete_word_list)
+            for word in word_list:
+                eng_kor_c = f"{word[0]}-{word[1]}-{word[2]}"
+                self.listbox.insert(tk.END, eng_kor_c)
 
     def Back(self):
         from GUI.admin.AdminMenu.AdminMenu import AdminMenu
@@ -149,6 +163,9 @@ class AdminDelete:
         AdminMenu(self.window)
 
     def delete(self):
-        delete_word = self.entry_2.get()
-        if not is_str_valid(delete_word):
+        entered_delete_word = self.entry_2.get()
+        if not is_str_valid(entered_delete_word):
             messagebox.showerror("단어 삭제 실패", "유효한 형식으로 입력하세요")
+        else:
+            delete_word(entered_delete_word)
+            messagebox.showinfo("삭제 성공", "성공적으로 단어가 삭제되었습니다.")

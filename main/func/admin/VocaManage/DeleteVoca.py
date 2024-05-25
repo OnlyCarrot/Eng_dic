@@ -7,7 +7,7 @@ from func.admin.VocaManage.AdminViewVoca import get_words_in_level
 
 def delete_word(word_name):
     """
-        DB에서 해당 단어를 삭제합니다.
+    DB에서 해당 단어를 삭제합니다.
     """
     sheet = Sheet("wordsheet1")
     wordsheets = sheet.wordsheets
@@ -23,8 +23,6 @@ def delete_word(word_name):
     word_records = word_records[row_loc-1:]
     word_records.append(("","",""))
 
-    print(word_records)
-
     ws = wordsheets[word_level - 1]
     max_row = ws.max_row
 
@@ -32,10 +30,7 @@ def delete_word(word_name):
     for record in word_records:
         ws[f'A{row_loc}'], ws[f'B{row_loc}'], ws[f'C{row_loc}'] = record
         row_loc += 1
-        #print(row_loc)
-        #sheet.save()
     sheet.save()
-    #print("max_row:", max_row)
     return
 
 def is_str_valid(ans):
