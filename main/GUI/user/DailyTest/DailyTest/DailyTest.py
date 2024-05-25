@@ -1,3 +1,5 @@
+# global 변수가 2개 사용되었습니다. 시험 점수를 나타내는 'score', 시험단어 리스트 'index'
+# 참고하시길 바랍니다.
 from pathlib import Path
 from tkinter import *
 from tkinter import messagebox
@@ -241,27 +243,23 @@ class DailyTest:
                 height=35.0
             )
 
-        
-
         #Test
+        global index
         index = Daily.show_word_meaning(self)
-        
-        """word = Daily.show_word_meaning(self, index)
-        user_input_word = []
-        user_input_word.append("apply for")
-        score = Daily.grade_score(user_input_word, word)
-        print(score)"""
 
         self.window.resizable(False, False)
         self.window.mainloop()
 
     def Submit(self):
+        global score
         all_valid = True
         for entry in self.entrys:
             if not Daily.is_str_valid(entry.get()):
                 all_valid = False
                 break
         if all_valid:
+            EnteredEntry = [entry.get() for entry in self.entrys]
+            score = Daily.grade_score(EnteredEntry, index)
             self.window.withdraw()
             ShowResult(self.window)
         else:

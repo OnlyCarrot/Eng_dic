@@ -5,6 +5,9 @@ import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
+from GUI.user.DailyTest.DailyTest import DailyTest
+from func.user.DailyTest import Daily
+from func.User import User
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -90,6 +93,17 @@ class ShowResult:
             y = 408.0,
         )
         
+        # 점수별 이미지 출력
+        image_image_5 = PhotoImage(
+            file=relative_to_assets(f"i{DailyTest.score}.png"))
+        image_5 = self.canvas.create_image(
+            630.0,
+            230.0,
+            image=image_image_5
+        )
+        
+        # ToDo
+        # Daily.change_level(User.get_level(), DailyTest.score)
         self.window.resizable(False, False)
         self.window.mainloop()
 

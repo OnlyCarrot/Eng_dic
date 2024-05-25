@@ -27,8 +27,8 @@ class Daily:
 
     def daily_test(start_index, end_index):
         # start_col, end_col정보를 저장해서 넘김
-        Daily.index.append(int(start_index))
-        Daily.index.append(int(end_index))
+        Daily.index.append(int(start_index) + 1)
+        Daily.index.append(int(end_index) + 1)
 
     #area에 맞는 단어 뽑아오기
     def select_word():
@@ -56,13 +56,11 @@ class Daily:
 
         return word
 
-
-    # user_input_word는 list로 받을거라 나중에 user_input_word[i] 로 수정
     def grade_score(user_input_word, word):
         score = 0
-        for i in range(0, len(word)):
+        for i in range(0, len(user_input_word)):
             correct_answer = word[i][0]
-            if user_input_word[0] == correct_answer:
+            if user_input_word[i] == correct_answer:
                 score += 1
 
         return score
@@ -71,7 +69,7 @@ class Daily:
         if(score == 10):
             user_level += 10
         elif(score >= 7):
-            user_level += 5 
+            user_level += 5
         return user_level
     
     def is_digit_valid(ans):
@@ -91,7 +89,4 @@ class Daily:
             print("알파벳이 아닌 문자열이 입력되었습니다.")
             return False
         return True
-    
-#Test
-#Daily.is_runned(date(2024, 5, 20))
-#Daily.update_last_runned_date()
+
