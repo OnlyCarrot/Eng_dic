@@ -8,6 +8,10 @@ from GUI.center_window import center_window  # center_window 모듈 가져오기
 from GUI.user.VocaSearch.VocaSearch import VocaSearch
 from GUI.user.LevelVoca.LevelVoca import LevelVoca
 from GUI.user.DailyTest.AreaSelect.AreaSelect import AreaSelect
+from func.user.DailyTest import Daily
+from func.User import User
+from datetime import date
+
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -163,8 +167,16 @@ class UserMenu:
         LevelVoca(self.window)
 
     def DailyTest(self):
-        self.window.withdraw()
-        AreaSelect(self.window)
+        user = User()
+        last_test_date = user.get_last_test_date()
+        last_test_date = last_test_date.strftime("%Y-%m-%d")
+        today = date.today().strftime("%Y-%m-%d")
+        if last_test_date == today:
+            messagebox.showinfo("오류", "오늘은 이미 일일테스트를 수행하셨습니다.")
+            return
+        else:
+            self.window.withdraw()
+            AreaSelect(self.window)
 
     def Quit(self):
         self.window.destroy()
