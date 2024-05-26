@@ -109,6 +109,8 @@ class ShowResult:
 
     def Done(self):
         from GUI.user.UserMenu.UserMenu import UserMenu
+        user = User()
+        Daily.update_user(DailyTest.score, user)
         self.window.withdraw()
         UserMenu(self.window)
     

@@ -253,8 +253,6 @@ class DailyTest:
         self.window.mainloop()
 
     def Submit(self):
-        user = User()
-        Daily.update_last_runned_date(user)
         global score
         all_valid = True
         for entry in self.entrys:

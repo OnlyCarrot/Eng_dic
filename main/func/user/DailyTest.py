@@ -7,16 +7,19 @@ from datetime import date
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from main.func.Sheet import Sheet
-from main.func.User import User
 
 class Daily:
     index = []
         
-    def update_last_runned_date(user):
-        #sheet 값 수정
-        print(user.get_id())
+    def update_user(score, user):
+        #sheet 값 수정            
         user_id_index = user.get_idx_of_user(user.get_id())
-        user.edit_user(user_id_index, user.get_id(), user.get_password(), user.get_name(), user.get_role(), user.get_level(), date.today())
+        if(score == 10):
+            user.edit_user(user_id_index, user.get_id(), user.get_password(), user.get_name(), user.get_role(), user.get_level() + 10, date.today())
+        elif(score > 5):
+            user.edit_user(user_id_index, user.get_id(), user.get_password(), user.get_name(), user.get_role(), user.get_level() + 5, date.today())
+        else:
+            user.edit_user(user_id_index, user.get_id(), user.get_password(), user.get_name(), user.get_role(), user.get_level(), date.today())
         print(date.today(), "로 업데이트 되었습니다")
 
     def daily_test(start_index, end_index):
@@ -58,13 +61,6 @@ class Daily:
                 score += 1
 
         return score
-    
-    def change_level(user_level, score):
-        if(score == 10):
-            user_level += 10
-        elif(score >= 7):
-            user_level += 5
-        return user_level
     
     def is_digit_valid(ans):
         if ans.strip() == '':
