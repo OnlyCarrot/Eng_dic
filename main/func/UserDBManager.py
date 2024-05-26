@@ -38,15 +38,14 @@ class UserDBManager:
 
     # 해당 유저가 있는 행의 번호를 반환한다.
     def get_idx_of_user(self, user_id):
-        if self.word_exists(user_id):
-            idx_counter = 1
-            ws = self.ws
-            for row in ws.iter_rows(min_row=2, max_col=1, max_row=ws.max_row, values_only=True):
-                idx_counter += 1
-                if user_id in row:
-                    break
-            return idx_counter
-        return False
+        #if self.user_exists(user_id):
+        idx_counter = 1
+        ws = self.ws
+        for row in ws.iter_rows(min_row=2, max_col=1, max_row=ws.max_row, values_only=True):
+            idx_counter += 1
+            if user_id in row:
+                break
+        return idx_counter
 
     def user_exists(self, user_id):
         ws = self.ws
@@ -69,6 +68,8 @@ class UserDBManager:
             user_level = self.get_user_record(user_id)[4]
             return user_level
         return False
+    
+
 
 
 user_manager = UserDBManager(user_file_path)

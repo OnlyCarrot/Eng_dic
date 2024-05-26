@@ -1,29 +1,23 @@
 from openpyxl import load_workbook
 import random
+from tkinter import messagebox
 import os
 import sys
 from datetime import date
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from main.func.Sheet import Sheet
+from main.func.User import User
 
 class Daily:
-    last_run_date =  None
     index = []
-
-    #지금 날짜랑 비교해서 수행여부 확인
-    def is_runned(user):
-        Daily.last_run_date = user
-        today = date.today()
-        print(Daily.last_run_date, today)
-        if Daily.last_run_date == today:
-            print("오늘은 이미 daily_test를 실행했습니다.")
-            return None
         
-    def update_last_runned_date():
+    def update_last_runned_date(user):
         #sheet 값 수정
-        Daily.last_run_date = date.today()
-        print(Daily.last_run_date, "로 업데이트 되었습니다")
+        print(user.get_id())
+        user_id_index = user.get_idx_of_user(user.get_id())
+        user.edit_user(user_id_index, user.get_id(), user.get_password(), user.get_name(), user.get_role(), user.get_level(), date.today())
+        print(date.today(), "로 업데이트 되었습니다")
 
     def daily_test(start_index, end_index):
         # start_col, end_col정보를 저장해서 넘김
