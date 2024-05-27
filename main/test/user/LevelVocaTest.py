@@ -1,9 +1,10 @@
 import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../..')
-from func.user.DailyTest import Daily
 from tkinter import *
+from tkinter import ttk
 from GUI.center_window import center_window  
+from func.user.LevelVoca import LevelVoca
 
 #Test 창 띄우기
 class Test:
@@ -25,14 +26,21 @@ class Test:
             relief="ridge"
         )
 
-        self.canvas.place(x=0, y=0)
+        self.canvas.place(x=0, y=0)   
 
-        #Test: 단어 제대로 찍히는지 확인
-        Daily.daily_test(1, 10)
-        Daily.show_word_meaning(self, 700)
+        scroll_frame = Frame(self.canvas)
+        scroll_frame.place(x=409, y=116, width=744, height=250)
+        scrollbar = ttk.Scrollbar(scroll_frame)
+        scrollbar.pack(side=RIGHT, fill=Y)
+        self.listbox = Listbox(scroll_frame, yscrollcommand=scrollbar.set)
+        self.listbox.pack(side=LEFT, fill=BOTH, expand=True)
+        scrollbar.config(command=self.listbox.yview)
+        
+        # Test: 예시로 650 레벨의 단어장 표시
+        levelVoca = LevelVoca()
+        levelVoca.show_word(self.listbox, 650)  
 
         self.window.resizable(False, False)
         self.window.mainloop()
 
 Test()
-
