@@ -21,15 +21,16 @@ def delete_word(word_name):
     word_records = get_words_in_level(word_level)
     row_loc = get_row_loc_of_word(word_name)
     word_records = word_records[row_loc-1:]
-    word_records.append(("","",""))
+    word_records.append((None, None, None))
 
     ws = wordsheets[word_level - 1]
-    max_row = ws.max_row
-
     # 레코드를 한 칸씩 올리는 코드
     for record in word_records:
         ws[f'A{row_loc}'], ws[f'B{row_loc}'], ws[f'C{row_loc}'] = record
         row_loc += 1
+    
+    ws.delete_rows(ws.max_row, 1)
+    #print("Max Row: ",ws.max_row)
     sheet.save()
     return
 
