@@ -247,7 +247,8 @@ class DailyTest:
 
         #Test
         global index
-        index = Daily.show_word_meaning(self)
+        user = User()
+        index = Daily.show_word_meaning(self, user.get_level())
 
         self.window.resizable(False, False)
         self.window.mainloop()

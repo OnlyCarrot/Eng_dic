@@ -28,8 +28,15 @@ class Daily:
         Daily.index.append(int(end_index) + 1)
 
     #area에 맞는 단어 뽑아오기
-    def select_word():
-        sheet = Sheet("wordsheet1").worksheet
+    def select_word(level):
+        if(level < 600):
+            sheet = Sheet("wordsheet1").worksheet
+        elif(level < 700):
+            sheet = Sheet("wordsheet2").worksheet
+        elif(level < 800):
+            sheet = Sheet("wordsheet3").worksheet
+        elif(level < 900):
+            sheet = Sheet("wordsheet4").worksheet  
 
         word = []
         for row in sheet.iter_rows(Daily.index[0], Daily.index[1], values_only=True):
@@ -41,8 +48,8 @@ class Daily:
     
 
     #뽑아온 단어 화면에 쏴주기
-    def show_word_meaning(self):
-        word = Daily.select_word()
+    def show_word_meaning(self, level):
+        word = Daily.select_word(level)
 
         # 단어 뜻을 보여줌 x좌표가 610 에 1~5번 단어
         for i in range(0, 5):
