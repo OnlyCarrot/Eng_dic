@@ -3,7 +3,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from func.Sheet import Sheet
 from func.admin.VocaManage.AdminSearchVoca import word_exists, get_row_loc_of_word, get_level_of_word, is_str_vaild, process_str
-from func.admin.VocaManage.AdminViewVoca import get_words_in_level
+from func.admin.VocaManage.AdminViewVoca import AdminViewVoca
 
 def delete_word(word_name):
     """
@@ -17,8 +17,9 @@ def delete_word(word_name):
     if not word_exists(word_name):
         return False
     
+    adminViewVoca = AdminViewVoca()
     word_level = get_level_of_word(word_name)
-    word_records = get_words_in_level(word_level)
+    word_records = adminViewVoca.get_words_in_level(word_level)
     row_loc = get_row_loc_of_word(word_name)
     word_records = word_records[row_loc-1:]
     word_records.append((None, None, None))
@@ -41,5 +42,7 @@ def is_str_valid(ans):
     # 공백을 제거한 문자열이 모두 알파벳인지 확인
     if not ans.replace(' ', '').isalpha():
         print("알파벳과 공백이 아닌 문자열이 입력되었습니다.")
+        return False
+    if not word_exists(ans):
         return False
     return True
