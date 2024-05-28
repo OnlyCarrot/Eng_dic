@@ -7,11 +7,13 @@ from main.func.user import LevelTest
 
 
 class SignUp:
+    temp_id = ""
+    temp_username = ""
+    temp_password = ""
     def temp_storage(id, username, password):
-        global temp_id, temp_username, temp_password
-        temp_id = id
-        temp_username = username
-        temp_password = password
+        SignUp.temp_id = id
+        SignUp.temp_username = username
+        SignUp.temp_password = password
 
     def sign_up(level):
         loaded_xlsx = Sheet("usersheet")
@@ -19,7 +21,7 @@ class SignUp:
         workbook = loaded_xlsx.workbook
 
         # 마지막 행에 새로운 사용자 정보 추가
-        new_user = [temp_id, temp_password, temp_username, "user", level]
+        new_user = [SignUp.temp_id, SignUp.temp_password, SignUp.temp_username, "user", level]
         sheet.append(new_user)
 
         # 엑셀 파일 저장
