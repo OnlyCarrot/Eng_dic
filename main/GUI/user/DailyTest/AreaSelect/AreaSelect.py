@@ -141,8 +141,11 @@ class AreaSelect:
         entered_end_num = self.entry_1.get()
 
         if Daily.is_digit_valid(entered_start_num) and Daily.is_digit_valid(entered_end_num):
-            Daily.save_index(entered_start_num, entered_end_num)
-            self.window.withdraw()
-            DailyTest(self.window)
+            if int(entered_end_num) - int(entered_start_num) == 10 and int(entered_start_num) != 0:
+                Daily.save_index(entered_start_num, entered_end_num)
+                self.window.withdraw()
+                DailyTest(self.window)
+            else:
+                messagebox.showerror("비정상 범위 설정","올바른 숫자 범위가 아닙니다.")
         else:
             messagebox.showerror("숫자 입력 실패", "빈칸이거나 숫자가 아닙니다.")
