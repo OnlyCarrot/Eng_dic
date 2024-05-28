@@ -164,8 +164,8 @@ class AdminDelete:
 
     def delete(self):
         entered_delete_word = self.entry_2.get()
-        if not is_str_valid(entered_delete_word):
-            messagebox.showerror("단어 삭제 실패", "유효한 형식으로 입력하세요")
-        else:
+        if is_str_valid(entered_delete_word):
             delete_word(entered_delete_word)
             messagebox.showinfo("삭제 성공", "성공적으로 단어가 삭제되었습니다.")
+        else:
+            messagebox.showerror("단어 삭제 실패", "형식이 유효하지 않거나, 존재하지 않는 단어입니다.")
