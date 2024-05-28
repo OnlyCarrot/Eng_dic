@@ -7,7 +7,7 @@ import tkinter.font
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
 from GUI.user.LevelTest.LevelTest1 import LevelTest1
-from func.user.SignUp import SignUp
+from func.user.SignUp import SignUp as SignUpFunc
 from func.UserDBManager import UserDBManager
 
 OUTPUT_PATH = Path(__file__).parent
@@ -212,15 +212,15 @@ class SignUp:
 
         entries = [EnteredId, EnteredUsername, EnteredPw1, EnteredPw2]
 
-        SignUp.temp_storage(EnteredId, EnteredUsername, EnteredPw1)
+        SignUpFunc.temp_storage(EnteredId, EnteredUsername, EnteredPw1)
 
         ub = UserDBManager()
 
         if ub.user_exists(EnteredId):   
             messagebox.showerror("ID 중복", "중복되는 ID입니다!")
-        elif not SignUp.is_str_vaild(entries):
+        elif not SignUpFunc.is_str_vaild(entries):
             messagebox.showerror("회원가입 실패", "빈 칸이 존재합니다")
-        elif SignUp.is_pw_dupli(EnteredPw1, EnteredPw2):
+        elif SignUpFunc.is_pw_dupli(EnteredPw1, EnteredPw2):
             messagebox.showerror("회원가입 실패", "비밀번호가 일치하지 않습니다")
         else:
             self.window.withdraw()
