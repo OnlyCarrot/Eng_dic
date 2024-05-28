@@ -7,7 +7,7 @@ import tkinter.font
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
 from func.user.LevelTest import LevelTest
-from func.user.SignUp import sign_up
+from func.user.SignUp import SignUp
 from GUI.user.UserMenu.UserMenu import UserMenu
 
 OUTPUT_PATH = Path(__file__).parent
@@ -259,7 +259,9 @@ class LevelTest4:
             score = LevelTest.grade_score(EnteredEntry, index)
             test_score = LevelTest.temp_score(score)
             final = LevelTest.set_user_level(test_score)
-            sign_up(final)
+            
+            SignUp.sign_up(final)
+            
             messagebox.showinfo("회원가입 성공", "성공적으로 회원가입이 되었습니다.")
             from GUI.Login.Login import Login
             self.window.withdraw

@@ -7,10 +7,9 @@ import tkinter.font
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
 from GUI.user.LevelTest.LevelTest1 import LevelTest1
-from func.user.SignUp import sign_up
 from func.user.SignUp import temp_storage
 from func.UserDBManager import UserDBManager
-from func.user.SignUp import is_str_vaild, is_pw_dupli
+from func.user.SignUp import SignUp
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -202,9 +201,6 @@ class SignUp:
             height=77.0
         )
 
-        #Test
-        #sign_up("S", "ss", "sss", "ssss", 4)
-
         self.window.resizable(False, False)
         self.window.mainloop()
     
@@ -216,13 +212,16 @@ class SignUp:
         EnteredPw2 = self.entry_4.get()
 
         entries = [EnteredId, EnteredUsername, EnteredPw1, EnteredPw2]
+
         temp_storage(EnteredId, EnteredUsername, EnteredPw1)
+
         ub = UserDBManager()
+
         if ub.user_exists(EnteredId):   
             messagebox.showerror("ID 중복", "중복되는 ID입니다!")
-        elif not is_str_vaild(entries):
+        elif not SignUp.is_str_vaild(entries):
             messagebox.showerror("회원가입 실패", "빈 칸이 존재합니다")
-        elif is_pw_dupli(EnteredPw1, EnteredPw2):
+        elif SignUp.is_pw_dupli(EnteredPw1, EnteredPw2):
             messagebox.showerror("회원가입 실패", "비밀번호가 일치하지 않습니다")
         else:
             self.window.withdraw()
