@@ -181,14 +181,14 @@ class AdminUserInfo1:
         level4 = 0
         for record in all_user_records:
             user_level = record[4]
-            if user_level == 1:
-                level1 += 1
-            elif user_level == 2:
-                level2 += 1
-            elif user_level == 3:
-                level3 += 1
-            elif user_level == 4:
+            if int(user_level) // 100 >= 9:
                 level4 += 1
+            elif int(user_level) // 100 >= 8:
+                level3 += 1
+            elif int(user_level) // 100 >= 7:
+                level2 += 1
+            else:
+                level1 += 1
 
         levels_arr = [level1,level2,level3,level4]
         for i in range(0, 4):

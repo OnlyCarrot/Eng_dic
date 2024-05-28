@@ -31,14 +31,14 @@ class Daily:
 
     #area에 맞는 단어 뽑아오기
     def select_word(level):
-        if(level < 600):
-            sheet = Sheet("wordsheet1").worksheet
-        elif(level < 700):
-            sheet = Sheet("wordsheet2").worksheet
-        elif(level < 800):
+        if(level >= 900):
+            sheet = Sheet("wordsheet4").worksheet
+        elif(level >= 800):
             sheet = Sheet("wordsheet3").worksheet
-        elif(level < 900):
-            sheet = Sheet("wordsheet4").worksheet  
+        elif(level >= 700):
+            sheet = Sheet("wordsheet2").worksheet
+        else:
+            sheet = Sheet("wordsheet1").worksheet  
 
         word = []
         for row in sheet.iter_rows(Daily.index[0], Daily.index[1], values_only=True):

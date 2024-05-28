@@ -13,14 +13,14 @@ class LevelVoca:
         self.sheet4 = Sheet("wordsheet4").worksheet
 
     def show_word(self, listbox, level):
-        if(level < 600):
-            sheet = self.sheet1
-        elif(level < 700):
-            sheet = self.sheet2    
-        elif(level < 800):
+        if(level >= 900):
+            sheet = self.sheet4
+        elif(level >= 800):
             sheet = self.sheet3    
-        elif(level < 900):
-            sheet = self.sheet4    
+        elif(level >= 700):
+            sheet = self.sheet2    
+        else:
+            sheet = self.sheet1   
 
         # 리스트박스 초기화
         listbox.delete(0, END)
