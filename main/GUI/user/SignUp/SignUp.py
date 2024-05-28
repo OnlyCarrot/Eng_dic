@@ -7,9 +7,8 @@ import tkinter.font
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from GUI.center_window import center_window  # center_window 모듈 가져오기
 from GUI.user.LevelTest.LevelTest1 import LevelTest1
-from func.user.SignUp import temp_storage
-from func.UserDBManager import UserDBManager
 from func.user.SignUp import SignUp
+from func.UserDBManager import UserDBManager
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -213,7 +212,7 @@ class SignUp:
 
         entries = [EnteredId, EnteredUsername, EnteredPw1, EnteredPw2]
 
-        temp_storage(EnteredId, EnteredUsername, EnteredPw1)
+        SignUp.temp_storage(EnteredId, EnteredUsername, EnteredPw1)
 
         ub = UserDBManager()
 
