@@ -9,7 +9,7 @@ from GUI.center_window import center_window  # center_window 모듈 가져오기
 from GUI.user.SignUp.SignUp import SignUp
 from GUI.user.UserMenu.UserMenu import UserMenu
 from GUI.admin.AdminMenu.AdminMenu import AdminMenu
-from func.Login import login
+from func.Login import Login as LoginFunc
 from func.User import User
 
 
@@ -200,7 +200,8 @@ class Login:
         entered_username = self.entry_1.get()
         entered_password = self.entry_2.get()
 
-        valid = login(entered_username, entered_password)
+        login = LoginFunc()
+        valid = login.login(entered_username, entered_password)
         user = User()
 
 
