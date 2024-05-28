@@ -28,7 +28,7 @@ class Test:
         self.canvas.place(x=0, y=0)
 
         #Test: 단어 제대로 찍히는지 확인
-        Daily.daily_test(1, 10)
+        Daily.save_index(1, 10)
         Daily.show_word_meaning(self, 700)
 
         self.window.resizable(False, False)

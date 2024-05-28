@@ -24,7 +24,7 @@ class Daily:
             userDBManager.edit_user(user_id_index, user.get_id(), user.get_password(), user.get_name(), user.get_role(), user.get_level(), date.today())
         print(date.today(), "로 업데이트 되었습니다")
 
-    def daily_test(start_index, end_index):
+    def save_index(start_index, end_index):
         # start_col, end_col정보를 저장해서 넘김
         Daily.index.append(int(start_index) + 1)
         Daily.index.append(int(end_index) + 1)
