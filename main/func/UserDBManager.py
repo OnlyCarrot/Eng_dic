@@ -54,20 +54,6 @@ class UserDBManager:
             if user_id in row:
                 return True
         return False
-
-    # 해당 유저의 패스워드를 가져온다.
-    def get_user_password(self, user_id):
-        if self.user_exists(user_id):
-            user_password = self.get_user_record(user_id)[1]
-            return user_password
-        return False
-
-    # 해당 유저의 레벨을 가져온다.
-    def get_user_level(self, user_id):
-        if self.user_exists(user_id):
-            user_level = self.get_user_record(user_id)[4]
-            return user_level
-        return False
     
     def edit_user(self, user_id_index,id, password, name, role, update_level, today):
         print(user_id_index)
