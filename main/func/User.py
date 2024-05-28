@@ -45,23 +45,4 @@ class User(metaclass=Singleton):
     def get_last_test_date(self):
         return self.user_data.get('last_test_date')
     
-    # 해당 유저가 있는 행의 번호를 반환한다.
-    def get_idx_of_user(self, user_id):
-        #if self.user_exists(user_id):
-        idx_counter = 1
-        for row in self.ws.iter_rows(min_row=2, max_col=1, max_row=self.ws.max_row, values_only=True):
-            idx_counter += 1
-            if user_id in row:
-                break
-        return idx_counter
     
-    def edit_user(self, user_id_index,id, password, name, role, update_level, today):
-        print(user_id_index)
-        self.ws[f'A{user_id_index}'] = id
-        self.ws[f'B{user_id_index}'] = password
-        self.ws[f'C{user_id_index}'] = name
-        self.ws[f'D{user_id_index}'] = role
-        self.ws[f'E{user_id_index}'] = update_level
-        self.ws[f'F{user_id_index}'] = today
-
-        self.wb.save("main/DB/UserList.xlsx")

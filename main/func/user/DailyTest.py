@@ -7,19 +7,21 @@ from datetime import date
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from main.func.Sheet import Sheet
+from main.func.UserDBManager import UserDBManager
 
 class Daily:
     index = []
         
     def update_user(score, user):
         #sheet 값 수정            
-        user_id_index = user.get_idx_of_user(user.get_id())
+        userDBManager = UserDBManager() 
+        user_id_index = userDBManager.get_idx_of_user(user.get_id())
         if(score == 10):
-            user.edit_user(user_id_index, user.get_id(), user.get_password(), user.get_name(), user.get_role(), user.get_level() + 10, date.today())
+            userDBManager.edit_user(user_id_index, user.get_id(), user.get_password(), user.get_name(), user.get_role(), user.get_level() + 10, date.today())
         elif(score > 5):
-            user.edit_user(user_id_index, user.get_id(), user.get_password(), user.get_name(), user.get_role(), user.get_level() + 5, date.today())
+            userDBManager.edit_user(user_id_index, user.get_id(), user.get_password(), user.get_name(), user.get_role(), user.get_level() + 5, date.today())
         else:
-            user.edit_user(user_id_index, user.get_id(), user.get_password(), user.get_name(), user.get_role(), user.get_level(), date.today())
+            userDBManager.edit_user(user_id_index, user.get_id(), user.get_password(), user.get_name(), user.get_role(), user.get_level(), date.today())
         print(date.today(), "로 업데이트 되었습니다")
 
     def daily_test(start_index, end_index):
