@@ -21,7 +21,7 @@ def sign_up(level):
     workbook = loaded_xlsx.workbook
 
     # 마지막 행에 새로운 사용자 정보 추가
-    new_user = [temp_id, temp_username, temp_password, "user", level]
+    new_user = [temp_id, temp_password, temp_username, "user", level]
     sheet.append(new_user)
 
     # 엑셀 파일 저장
