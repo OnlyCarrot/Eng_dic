@@ -102,10 +102,10 @@ class LevelTest:
     
     def set_user_level(final_score):
         if final_score <= 10:
-            return 1
+            return 600
         elif final_score <= 20:
-            return 2
+            return 700
         elif final_score <= 30:
-            return 3
+            return 800
         else:
-            return 4
+            return 900

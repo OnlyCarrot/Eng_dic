@@ -4,7 +4,8 @@ from tkinter import messagebox
 import tkinter.font 
 import os
 import sys
-
+import tkinter as tk
+from tkinter import ttk
 
 
 
@@ -63,6 +64,17 @@ class AdminModify1:
             image=image_image_1
         )
 
+         # 스크롤바 프레임 생성
+        scroll_frame = Frame(self.canvas)
+        scroll_frame.place(x=275, y=145, width=890, height=250)
+        # 스크롤바 생성
+        scrollbar = ttk.Scrollbar(scroll_frame)
+        scrollbar.pack(side=RIGHT, fill=Y)
+
+        # 리스트박스 생성
+        self.listbox = Listbox(scroll_frame, yscrollcommand=scrollbar.set)
+        self.listbox.pack(side=LEFT, fill=BOTH, expand=True)
+
         # text box
         self.entry_1 = Entry(
             self.canvas,
@@ -114,6 +126,41 @@ class AdminModify1:
 
         self.window.resizable(False, False)
         self.window.mainloop()
+    
+    def search(self):
+        from main.func.admin.VocaManage.ModifyVoca import is_str_valid
+        from func.user.Voca import Voca
+        from func.admin.VocaManage.AdminSearchVoca import word_exists
+        self.listbox.delete(0, tk.END)
+        modify_word = self.entry_1.get()
+        if not is_str_valid(modify_word):
+            messagebox.showerror("단어 수정 실패", "유효한 형식으로 입력하세요")
+        else:
+            voca = Voca()
+            word_list = voca.search_voca(modify_word)
+            for word in word_list:
+                eng_kor_c = f"{word[0]}-{word[1]}-{word[2]}"
+                self.listbox.insert(tk.END, eng_kor_c)
+            if word_exists(modify_word):
+                self.window.withdraw()
+                AdminModify2(self.window, modify_word)
+                return modify_word
+            else:
+                messagebox.showerror("단어 수정 실패", "정확한 단어를 입력해주세요")
+            
+    # def search(self):
+    #     from func.admin.VocaManage.AdminSearchVoca import word_exists
+    #     from main.func.admin.VocaManage.ModifyVoca import is_str_valid
+    #     modify_word = self.entry_1.get()
+    #     if not is_str_valid(modify_word):
+    #         messagebox.showerror("단어 수정 실패", "유효한 형식으로 입력하세요")
+    #     else:
+    #         if word_exists(modify_word):
+    #             self.window.withdraw()
+    #             AdminModify2(self.window, modify_word)
+    #             return modify_word
+    #         else:
+    #             messagebox.showerror("단어 수정 실패", "단어장에 존재하지 않는 단어입니다")
 
     # edit 버튼이 생길 시에 동작할 AdminModify2화면으로 이동하는 함수
     def Next(self):
@@ -125,19 +172,7 @@ class AdminModify1:
         self.window.withdraw()
         AdminMenu(self.window)
 
-    def search(self):
-        from func.admin.VocaManage.AdminSearchVoca import word_exists
-        from main.func.admin.VocaManage.ModifyVoca import is_str_valid
-        modify_word = self.entry_1.get()
-        if not is_str_valid(modify_word):
-            messagebox.showerror("단어 수정 실패", "유효한 형식으로 입력하세요")
-        else:
-            if word_exists(modify_word):
-                self.window.withdraw()
-                AdminModify2(self.window, modify_word)
-                return modify_word
-            else:
-                messagebox.showerror("단어 수정 실패", "단어장에 존재하지 않는 단어입니다")
+
 
         
         

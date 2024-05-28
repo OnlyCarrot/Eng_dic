@@ -171,4 +171,8 @@ class AdminModify2:
             else:
                 messagebox.showerror("단어 수정 실패", "단어장에 존재하는 단어입니다")
                 # 뒤로가기 기능 실행
-                self.Back()        
+                self.Back()
+        else:
+            messagebox.showerror("단어 수정 실패", "단어장에 존재하지 않는 단어입니다")
+            # 뒤로가기 기능 실행
+            self.Back()
