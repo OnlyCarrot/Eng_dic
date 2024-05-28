@@ -5,7 +5,10 @@ from func.Sheet import Sheet
 from func.admin.VocaManage.AdminSearchVoca import word_exists, get_row_loc_of_word, get_level_of_word, get_word_record,is_str_vaild, process_str
 
 class AddWord:
-    def add_word(word_name, kor_meaning, word_class, word_level):
+    def __init__(self):
+        self.sheet = Sheet("wordsheet1")
+
+    def add_word(self, word_name, kor_meaning, word_class, word_level):
         """
             DB에 새로운 단어를 추가합니다.
             word_name: 영어 단어명
@@ -14,8 +17,7 @@ class AddWord:
             word_level: 단어의 레벨(1,2,3,4 중 하나)
 
         """
-        sheet = Sheet("wordsheet1")
-        wordsheets = sheet.wordsheets
+        wordsheets = self.sheet.wordsheets
 
         if(kor_meaning.strip() == ''):
             print("공백 값이 입력되었습니다. 유효한 단어를 입력하세요.")
@@ -47,6 +49,6 @@ class AddWord:
         ws[f'B{empty_row}'] = kor_meaning
         ws[f'C{empty_row}'] = word_class
         
-        sheet.save()
+        self.sheet.save()
         return True
 
