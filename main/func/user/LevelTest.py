@@ -11,22 +11,48 @@ class LevelTest:
     word = []
 
     def select_word():
-        
+    # 이미 추출된 단어를 추적하기 위한 세트
+        extracted_words = set()
+
         # 각 시트에서 10개씩 단어 추출
         for sheet_num in range(1, 5):
             sheet_name = f"wordsheet{sheet_num}"
             sheet = Sheet(sheet_name).worksheet
 
+            count = 0
             # 각 시트에서 10번씩 랜덤한 단어 추출
-            for _ in range(10):
+            while count < 10:
                 # 랜덤한 행 번호 생성
                 random_row_num = random.randint(2, sheet.max_row)
 
                 # 랜덤한 행의 데이터 추출
-                for row in sheet.iter_rows(random_row_num, random_row_num, values_only=True):
-                    LevelTest.word.append([row[0], row[1]])
+                for row in sheet.iter_rows(min_row=random_row_num, max_row=random_row_num, values_only=True):
+                    word = (row[0], row[1])
+                    if word not in extracted_words:
+                        LevelTest.word.append([row[0], row[1]])
+                        extracted_words.add(word)
+                        count += 1
+                        break
 
         return LevelTest.word
+
+    # def select_word():
+        
+    #     # 각 시트에서 10개씩 단어 추출
+    #     for sheet_num in range(1, 5):
+    #         sheet_name = f"wordsheet{sheet_num}"
+    #         sheet = Sheet(sheet_name).worksheet
+
+    #         # 각 시트에서 10번씩 랜덤한 단어 추출
+    #         for _ in range(10):
+    #             # 랜덤한 행 번호 생성
+    #             random_row_num = random.randint(2, sheet.max_row)
+
+    #             # 랜덤한 행의 데이터 추출
+    #             for row in sheet.iter_rows(random_row_num, random_row_num, values_only=True):
+    #                 LevelTest.word.append([row[0], row[1]])
+
+    #     return LevelTest.word
     
     def show_word_meaning1(self):
         wordlist1 = []
