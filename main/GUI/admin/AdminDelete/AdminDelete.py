@@ -8,8 +8,7 @@ import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__))+'/../../..')
 from GUI.center_window import center_window
-from func.admin.VocaManage.DeleteVoca import is_str_valid
-from func.admin.VocaManage.DeleteVoca import delete_word
+from func.admin.VocaManage.DeleteVoca import DeleteVoca
 from func.user.Voca import Voca
 
 OUTPUT_PATH = Path(__file__).parent
@@ -148,7 +147,7 @@ class AdminDelete:
     def search(self):
         self.listbox.delete(0, tk.END)
         delete_word_list = self.entry_1.get()
-        if not is_str_valid(delete_word_list):
+        if not DeleteVoca.is_str_valid(delete_word_list):
             messagebox.showerror("단어 삭제 실패", "유효한 형식으로 입력하세요")
         else: 
             voca = Voca()
@@ -164,8 +163,8 @@ class AdminDelete:
 
     def delete(self):
         entered_delete_word = self.entry_2.get()
-        if is_str_valid(entered_delete_word):
-            delete_word(entered_delete_word)
+        if DeleteVoca.is_str_valid(entered_delete_word):
+            DeleteVoca.delete_word(entered_delete_word)
             messagebox.showinfo("삭제 성공", "성공적으로 단어가 삭제되었습니다.")
         else:
             messagebox.showerror("단어 삭제 실패", "형식이 유효하지 않거나, 존재하지 않는 단어입니다.")
