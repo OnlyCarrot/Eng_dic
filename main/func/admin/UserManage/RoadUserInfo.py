@@ -32,21 +32,49 @@ class UserInfo:
 
     # 숫자 표기를 통한 분포도 확인
     def show_distribution_user(self):
-        levels_count = {1: 0, 2: 0, 3: 0, 4: 0}
+        levels_count = {
+            "~700": 0,
+            "700+": 0,
+            "800+": 0,
+            "900+": 0
+        }
 
         for row in self.sheet.iter_rows(values_only=True):
-            level = row[-1]
-            if level in levels_count:
-                levels_count[level] += 1
-        for level, count in levels_count.items():
-            print(f"Level {level}: {count}명")
+            level = row[-2]
+
+            try:
+                level = int(level)
+            except ValueError:
+                # If conversion fails, skip this row
+                continue
+            
+            # Determine the range for the level
+            if level < 700:
+                key = "~700"
+            elif 700 <= level < 800:
+                key = "700+"
+            elif 800 <= level < 900:
+                key = "800+"
+            elif 900 <= level < 990:
+                key = "900+"
+            
+            # Update the levels_count dictionary
+            if key in levels_count:
+                levels_count[key] += 1
+            else:
+                levels_count[key] = 1
+
+        order = ["~700", "700+", "800+", "900+"]
+        for level in order:
+            count = levels_count.get(level, 0)
+            print(f"{level}: {count}명")
 
 #UserInfo().show_selected_user("user1")
 #UserInfo().show_all_user()
 
-UserInfo().show_distribution_user()
-UserInfo().show_total_user_count()
-UserInfo().show_all_user()
+#UserInfo().show_distribution_user()
+#UserInfo().show_total_user_count()
+#UserInfo().show_all_user()
 
 def is_str_valid(ans):
     if ans.strip() == '':

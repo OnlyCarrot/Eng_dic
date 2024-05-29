@@ -148,19 +148,6 @@ class AdminModify1:
             else:
                 messagebox.showerror("단어 수정 실패", "정확한 단어를 입력해주세요")
             
-    # def search(self):
-    #     from func.admin.VocaManage.AdminSearchVoca import word_exists
-    #     from main.func.admin.VocaManage.ModifyVoca import is_str_valid
-    #     modify_word = self.entry_1.get()
-    #     if not is_str_valid(modify_word):
-    #         messagebox.showerror("단어 수정 실패", "유효한 형식으로 입력하세요")
-    #     else:
-    #         if word_exists(modify_word):
-    #             self.window.withdraw()
-    #             AdminModify2(self.window, modify_word)
-    #             return modify_word
-    #         else:
-    #             messagebox.showerror("단어 수정 실패", "단어장에 존재하지 않는 단어입니다")
 
     # edit 버튼이 생길 시에 동작할 AdminModify2화면으로 이동하는 함수
     def Next(self):
