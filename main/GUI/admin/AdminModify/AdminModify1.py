@@ -128,12 +128,13 @@ class AdminModify1:
         self.window.mainloop()
     
     def search(self):
-        from main.func.admin.VocaManage.ModifyVoca import is_str_valid
+        from main.func.admin.VocaManage.ModifyVoca import ModifyVoca
         from func.user.Voca import Voca
         from func.admin.VocaManage.AdminSearchVoca import word_exists
         self.listbox.delete(0, tk.END)
         modify_word = self.entry_1.get()
-        if not is_str_valid(modify_word):
+        modifyVoca = ModifyVoca()
+        if not modifyVoca.is_str_valid(modify_word):
             messagebox.showerror("단어 수정 실패", "유효한 형식으로 입력하세요")
         else:
             voca = Voca()

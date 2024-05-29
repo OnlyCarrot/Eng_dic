@@ -157,14 +157,15 @@ class AdminModify2:
 
     def Modify_then_Back(self):
         #Modify 기능 실행
-        from func.admin.VocaManage.ModifyVoca import edit_word
+        from func.admin.VocaManage.ModifyVoca import ModifyVoca
         from main.func.admin.VocaManage.AdminSearchVoca import word_exists
         modify_eng = self.entry_1.get()
         if(word_exists(modify_eng)):
             if(modify_eng == self.modify_word):
                 modify_kor = self.entry_2.get()
                 modify_wc = self.entry_3.get()
-                edit_word(self.modify_word, modify_eng, modify_kor, modify_wc)
+                modifyVoca = ModifyVoca()
+                modifyVoca.edit_word(self.modify_word, modify_eng, modify_kor, modify_wc)
 
                 # 뒤로가기 기능 실행
                 self.Back()
