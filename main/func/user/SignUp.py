@@ -4,12 +4,14 @@ import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../../..')
 from main.func.Sheet import Sheet
 from main.func.user import LevelTest
+from datetime import date, timedelta
 
 
 class SignUp:
     temp_id = ""
     temp_username = ""
     temp_password = ""
+
     def temp_storage(id, username, password):
         SignUp.temp_id = id
         SignUp.temp_username = username
@@ -21,7 +23,7 @@ class SignUp:
         workbook = loaded_xlsx.workbook
 
         # 마지막 행에 새로운 사용자 정보 추가
-        new_user = [SignUp.temp_id, SignUp.temp_password, SignUp.temp_username, "user", level]
+        new_user = [SignUp.temp_id, SignUp.temp_password, SignUp.temp_username, "user", level, date.today() - timedelta(days = 1)]
         sheet.append(new_user)
 
         # 엑셀 파일 저장
