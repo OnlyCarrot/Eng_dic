@@ -160,19 +160,9 @@ class AdminModify2:
         from func.admin.VocaManage.ModifyVoca import edit_word
         from main.func.admin.VocaManage.AdminSearchVoca import word_exists
         modify_eng = self.entry_1.get()
-        if(word_exists(modify_eng)):
-            if(modify_eng == self.modify_word):
-                modify_kor = self.entry_2.get()
-                modify_wc = self.entry_3.get()
-                edit_word(self.modify_word, modify_eng, modify_kor, modify_wc)
+        modify_kor = self.entry_2.get()
+        modify_wc = self.entry_3.get()
+        edit_word(self.modify_word, modify_eng, modify_kor, modify_wc)
 
-                # 뒤로가기 기능 실행
-                self.Back()
-            else:
-                messagebox.showerror("단어 수정 실패", "단어장에 존재하는 단어입니다")
-                # 뒤로가기 기능 실행
-                self.Back()
-        else:
-            messagebox.showerror("단어 수정 실패", "단어장에 존재하지 않는 단어입니다")
-            # 뒤로가기 기능 실행
-            self.Back()
+        # 뒤로가기 기능 실행
+        self.Back()
