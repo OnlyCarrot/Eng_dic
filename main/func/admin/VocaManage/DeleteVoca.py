@@ -6,12 +6,14 @@ from func.admin.VocaManage.AdminSearchVoca import word_exists, get_row_loc_of_wo
 from func.admin.VocaManage.AdminViewVoca import AdminViewVoca
 
 class DeleteVoca:
-    def delete_word(word_name):
+    def __init__(self):
+        self.sheet = Sheet("wordsheet1")
+
+    def delete_word(self, word_name):
         """
         DB에서 해당 단어를 삭제합니다.
         """
-        sheet = Sheet("wordsheet1")
-        wordsheets = sheet.wordsheets
+        wordsheets = self.sheet.wordsheets
 
         if(not is_str_vaild(word_name)): return False
         word_name = process_str(word_name)
@@ -33,10 +35,10 @@ class DeleteVoca:
         
         ws.delete_rows(ws.max_row, 1)
         #print("Max Row: ",ws.max_row)
-        sheet.save()
+        self.sheet.save()
         return
 
-    def is_str_valid(ans):
+    def is_str_valid(self, ans):
         if ans.strip() == '':
             print("공백 값이 입력되었습니다. 유효한 단어를 입력하세요.")
             return False
