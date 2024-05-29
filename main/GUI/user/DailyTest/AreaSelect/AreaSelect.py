@@ -141,7 +141,7 @@ class AreaSelect:
         entered_end_num = self.entry_1.get()
 
         if Daily.is_digit_valid(entered_start_num) and Daily.is_digit_valid(entered_end_num):
-            if int(entered_end_num) - int(entered_start_num) < 10 and int(entered_start_num) != 0:
+            if int(entered_end_num) - int(entered_start_num) >= 9 and int(entered_start_num) != 0:
                 Daily.save_index(entered_start_num, entered_end_num)
                 self.window.withdraw()
                 DailyTest(self.window)
