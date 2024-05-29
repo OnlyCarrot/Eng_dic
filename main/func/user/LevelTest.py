@@ -36,24 +36,7 @@ class LevelTest:
 
         return LevelTest.word
 
-    # def select_word():
-        
-    #     # 각 시트에서 10개씩 단어 추출
-    #     for sheet_num in range(1, 5):
-    #         sheet_name = f"wordsheet{sheet_num}"
-    #         sheet = Sheet(sheet_name).worksheet
 
-    #         # 각 시트에서 10번씩 랜덤한 단어 추출
-    #         for _ in range(10):
-    #             # 랜덤한 행 번호 생성
-    #             random_row_num = random.randint(2, sheet.max_row)
-
-    #             # 랜덤한 행의 데이터 추출
-    #             for row in sheet.iter_rows(random_row_num, random_row_num, values_only=True):
-    #                 LevelTest.word.append([row[0], row[1]])
-
-    #     return LevelTest.word
-    
     def show_word_meaning1(self):
         wordlist1 = []
         # 단어 뜻을 보여줌 x좌표가 610 에 1~5번 단어
