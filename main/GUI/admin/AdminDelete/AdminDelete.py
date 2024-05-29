@@ -149,14 +149,11 @@ class AdminDelete:
         delete_word_list = self.entry_1.get()
         deleteVoca = DeleteVoca()
 
-        if not deleteVoca.is_str_valid(delete_word_list):
-            messagebox.showerror("단어 삭제 실패", "유효한 형식으로 입력하세요")
-        else: 
-            voca = Voca()
-            word_list = voca.search_voca(delete_word_list)
-            for word in word_list:
-                eng_kor_c = f"{word[0]}-{word[1]}-{word[2]}"
-                self.listbox.insert(tk.END, eng_kor_c)
+        voca = Voca()
+        word_list = voca.search_voca(delete_word_list)
+        for word in word_list:
+            eng_kor_c = f"{word[0]}-{word[1]}-{word[2]}"
+            self.listbox.insert(tk.END, eng_kor_c)
 
     def Back(self):
         from GUI.admin.AdminMenu.AdminMenu import AdminMenu
