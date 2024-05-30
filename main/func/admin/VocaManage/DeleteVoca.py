@@ -39,11 +39,9 @@ class DeleteVoca:
 
     def is_str_valid(self, ans):
         if ans.strip() == '':
-            print("공백 값이 입력되었습니다. 유효한 단어를 입력하세요.")
             return False
         # 공백을 제거한 문자열이 모두 알파벳인지 확인
         if not ans.replace(' ', '').isalpha():
-            print("알파벳과 공백이 아닌 문자열이 입력되었습니다.")
             return False
         if not word_exists(ans):
             return False

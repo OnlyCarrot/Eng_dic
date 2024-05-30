@@ -55,7 +55,6 @@ class UserDBManager:
         return False
     
     def edit_user(self, user_id_index,id, password, name, role, update_level, today):
-        print(user_id_index)
         self.ws[f'A{user_id_index}'] = id
         self.ws[f'B{user_id_index}'] = password
         self.ws[f'C{user_id_index}'] = name

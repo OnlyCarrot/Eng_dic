@@ -72,6 +72,5 @@ class UserInfo:
 
 def is_str_valid(ans):
     if ans.strip() == '':
-        print("공백 값이 입력되었습니다. 유효한 단어를 입력하세요.")
         return False
     return True 

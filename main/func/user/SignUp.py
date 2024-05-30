@@ -27,7 +27,6 @@ class SignUp:
         # 엑셀 파일 저장
         workbook.save("main/DB/UserList.xlsx")
 
-        print("추가되었습니다.")
 
     def is_str_vaild(entries):
         for entry in entries:

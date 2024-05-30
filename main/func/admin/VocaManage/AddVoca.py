@@ -20,23 +20,18 @@ class AddWord:
         wordsheets = self.sheet.wordsheets
 
         if(kor_meaning.strip() == ''):
-            print("공백 값이 입력되었습니다. 유효한 단어를 입력하세요.")
             return False
         
         # Check if word_class is valid
         valid_word_classes = {"n", "v", "adj", "adv", "phr", "prep"}
         if word_class not in valid_word_classes:
-            print("word_class는 n, v, adj, adv, phr, prep 중 하나여야 합니다.")
             return False
 
         # Check if the word is already in the Excel file
         if word_exists(word_name):
-            print(f"The word '{word_name}' already exists in DB.")
-            print("Go to Edit Word page.")
             return False
 
         if (not word_level in (1,2,3,4)):
-            print("word_level 값이 잘못되었습니다.")
             return False
         
         ws = wordsheets[word_level - 1]
