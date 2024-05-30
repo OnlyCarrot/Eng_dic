@@ -21,7 +21,6 @@ class VocaSearch:
     def __init__(self, parent):
         self.parent = parent
         self.window = Toplevel(parent)
-        #self.window = Tk()
         self.window.title("수준별 토익 영단어 프로그램")
         self.window.geometry("1200x500")
         self.window.configure(bg="#FFFFFF")

@@ -38,7 +38,6 @@ class UserDBManager:
 
     # 해당 유저가 있는 행의 번호를 반환한다.
     def get_idx_of_user(self, user_id):
-        #if self.user_exists(user_id):
         idx_counter = 1
         ws = self.ws
         for row in ws.iter_rows(min_row=2, max_col=1, max_row=ws.max_row, values_only=True):

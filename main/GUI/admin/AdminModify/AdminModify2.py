@@ -5,9 +5,6 @@ import tkinter.font
 import os
 import sys
 
-
-
-
 sys.path.append(os.path.dirname(os.path.abspath(__file__))+'/../../..')
 from GUI.center_window import center_window
 import tkinter as tk
@@ -24,7 +21,6 @@ class AdminModify2:
         self.parent = parent
         self.modify_word = modify_word
         self.window = Toplevel(parent)
-        #self.window = Tk()
         self.window.title("수준별 토익 영단어 프로그램")
         self.window.geometry("1200x500")
         self.window.configure(bg="#FFFFFF")

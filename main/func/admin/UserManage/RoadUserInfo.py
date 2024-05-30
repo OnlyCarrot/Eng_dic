@@ -69,12 +69,6 @@ class UserInfo:
             count = levels_count.get(level, 0)
             print(f"{level}: {count}명")
 
-#UserInfo().show_selected_user("user1")
-#UserInfo().show_all_user()
-
-#UserInfo().show_distribution_user()
-#UserInfo().show_total_user_count()
-#UserInfo().show_all_user()
 
 def is_str_valid(ans):
     if ans.strip() == '':

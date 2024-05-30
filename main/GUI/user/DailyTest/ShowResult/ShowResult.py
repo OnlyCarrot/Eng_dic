@@ -20,7 +20,6 @@ class ShowResult:
     def __init__(self, parent):
         self.parent = parent
         self.window = Toplevel(parent)
-        #self.window = Tk()
         self.window.title("수준별 토익 영단어 프로그램")
         self.window.geometry("1200x500")
         self.window.configure(bg="#FFFFFF")
@@ -102,8 +101,6 @@ class ShowResult:
             image=image_image_5
         )
         
-        # ToDo
-        # Daily.change_level(User.get_level(), DailyTest.score)
         self.window.resizable(False, False)
         self.window.mainloop()
 

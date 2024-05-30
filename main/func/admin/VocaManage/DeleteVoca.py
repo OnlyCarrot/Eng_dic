@@ -34,7 +34,6 @@ class DeleteVoca:
             row_loc += 1
         
         ws.delete_rows(ws.max_row, 1)
-        #print("Max Row: ",ws.max_row)
         self.sheet.save()
         return
 

@@ -22,7 +22,6 @@ class AdminUserInfo1:
     def __init__(self, parent):
         self.parent = parent
         self.window = Toplevel(parent)
-        #self.window = Tk()
         self.window.title("수준별 토익 영단어 프로그램")
         self.window.geometry("1200x500")
         self.window.configure(bg="#FFFFFF")
@@ -210,7 +209,6 @@ class AdminUserInfo1:
         user_id = self.entry_1.get()
         user_id = process_str(user_id)
         glo_user_info1 = um.get_user_record(user_id)
-        #print(glo_user_info1)
 
         search_user_name = self.entry_1.get()
         if not is_str_valid(search_user_name):

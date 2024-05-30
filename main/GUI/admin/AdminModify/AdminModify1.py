@@ -12,8 +12,6 @@ from tkinter import ttk
 sys.path.append(os.path.dirname(os.path.abspath(__file__))+'/../../..')
 from GUI.center_window import center_window
 from GUI.admin.AdminModify.AdminModify2 import AdminModify2
-# from func.admin.VocaManage.ModifyVoca import is_str_valid
-# from main.func.admin.VocaManage.AdminSearchVoca import word_exists
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = Path(__file__).resolve().parent / "assets" / "frame"
@@ -27,7 +25,6 @@ class AdminModify1:
     def __init__(self, parent):
         self.parent = parent
         self.window = Toplevel(parent)
-        #self.window = Tk()
         self.window.title("수준별 토익 영단어 프로그램")
         self.window.geometry("1200x500")
         self.window.configure(bg="#FFFFFF")
